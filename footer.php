@@ -1,0 +1,37 @@
+
+<!-- <script src="./js/jquery-3.4.0.min.js"></script> -->
+<!-- <script src="./js/jqmodal.js"></script> -->
+<script src="./js/lightbox-plus-jquery.min.js"></script>
+<script src="./js/main.modal.js"></script>
+<script src="./js/jquery-3.4.0.min.js"></script>
+
+<script>
+    $(document).ready( function(){
+        $('#search_txt').keyup( function(){
+        let txt = $(this).val();
+
+        if(txt != ''){
+            $.ajax({
+                url: 'search.php',
+                method: 'post',
+                data:{
+                    search: txt
+                },
+                dataType: 'text',
+                success: function(data){
+                    $('#result').html(data);
+                    $('#normal-list').hide(300)
+                }
+            });
+        }else {
+            $('#result').html('');
+            $('#normal-list').show(250)
+        }
+    });
+    $('#addStudent').click(()=>{
+        alert('It\'s works');
+    });
+});
+</script>
+</body>
+</html>

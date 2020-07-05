@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+.body{
+    position: absolute;
+    top: 0;
+    left: 250px;
+    padding: 10px;
+    height: 100vh;
+    background: #ccc;
+    transition: 3s;
+}
+.sidemenu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.25);
+    transition: 2s;
+}
+.sidemenu label{
+    float: right;
+    margin: 10px;
+    font-size: 20px;
+}
+body input[type=checkbox]{
+    appearance: none;
+    visibility: hidden;
+}
+
+#switch:checked ~ .sidemenu{
+    width: 50px;
+}
+#switch:checked ~ .body{
+    transform: scale(1.2);
+    margin: 5% auto;
+    width: 70%;
+}
