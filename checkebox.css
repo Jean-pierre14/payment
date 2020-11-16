@@ -17,11 +17,11 @@ body{
     transition: 3s;
 }
 .sidemenu{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 250px;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(0,0,0,0.25);
     transition: 2s;
 }

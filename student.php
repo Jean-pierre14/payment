@@ -16,16 +16,11 @@ if(isset($_GET['logout'])){
 
 <?php include("./header.php");include("./includes/sql.php");?>
 
-<div class="ui menu bg-dark header fixed">
-    <a href="#">
-        <!-- user profile img -->
-        <img src="" alt="">
-        <!-- user profile img -->
-    </a>
-    <a href="" class="item white"><?php print $adm; ?></a>
+<div class="ui menu bg-dark header fixed d-flex justify-content-between align-items-center text-light">
+    <a href="" class="item text-light"><?php print $adm; ?></a>
     
-    <div class="navbar navbar-right">
-        <a href="loggout.php" class="btn btn-success"><i class="icon cog"></i>Loggout</a>
+    <div class="navbar">
+        <a href="loggout.php" class="btn btn-success"><i class="icon logout"></i>Loggout</a>
     </div>
     
 </div>

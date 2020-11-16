@@ -11,4 +11,4 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/lightbox.min.css">
 </head>
-<body>
+<body class="bg-light">

@@ -8,13 +8,17 @@
     if(mysqli_num_rows($run_sql) > 0){
         ?>
         <ul>
-            <img src="./images/loading.gif" alt="loading animation" align='center' style='width: 50px;height: 50px;margin: 0 auto'>
+            <img src="./images/loading.gif" alt="loading animation" align='center' style='width: 20px;height: 20px;margin: 0 auto'>
         <?php
         while($row = mysqli_fetch_array($run_sql)){
-            $id = $row['id'];
+            $id = $row['id_student'];
             $user_name = $row['username'];
             ?>
-            <li class="" id="element"><a href="py.php?student=<?php print $id ?>"><?php print $user_name ?></a></li>
+            <li class="" id="element">
+                <a href="py.php?student=<?php print $id; ?>">
+                    <?php print $user_name; ?>
+                </a>
+            </li>
             <?php
         }
         ?>

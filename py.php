@@ -14,18 +14,18 @@ if(!isset($_SESSION['username'])){
     <?php include("./header.php");?>
 </div>
 <div class="ui main">
-    <div class="container-fluid m-0 p-0 ui">
-
+    <div class="container-fluid m-0 ui">
+<!-- 
         <div class="ui iu menu inverted">
             <a href="#" class="item"><i class="icon home"></i>Home</a>
             <a href="#" class="item"><i class="icon user"></i>profile</a>
             <a href="#" class="item"><i class="icon users"></i>Contacts</a>
             <a href="#" class="item"><i class="icon help"></i>Help</a>
-        </div>
+        </div> -->
 
-        <div class="row m-0 p-0 ui">
+        <div class="row ui">
 
-            <div class="col-md-4 sidebar">
+            <div class="col-md-4 col-sm-12 sidebar">
                     <!-- <h3 class="text-center">List of student</h3> -->
                     <div class="header bg-success p-2">
                         <form action="py.php" method="post" id="search" autocomplete="on">
@@ -56,7 +56,7 @@ if(!isset($_SESSION['username'])){
                     </div>
                 </div>
 
-                <div class="col-md-8 p-0 bg-light">
+                <div class="col-md-8 col-sm-12 bg-light">
                     <?php
                         if(isset($_GET['student'])){
                             $id = $_GET['student'];
@@ -76,7 +76,7 @@ if(!isset($_SESSION['username'])){
                         <h3 class="white"><?php print $get_user .' '.$get_sname;?></h3>
                     </div>
                 <div class="row">
-                    <div class="col-md-8 m-0 p-0">
+                    <div class="col-md-8 m-0 col-sm-12">
                         <div class="table-height">
                             <div class="table-responsive">
                                 <table class="table table-striped m-0">
@@ -130,7 +130,7 @@ if(!isset($_SESSION['username'])){
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-12">
                         <div class="card m-1 p-1 bg-success white margin-0">
                             <p>class : <?php print $get_class;?></p>
                             <p>Department: <span><?php print $get_depart;?></span></p>

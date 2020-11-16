@@ -26,10 +26,18 @@
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'May'],
         datasets: [{
             label: 'Payment System',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 11, 5, 19, 21, 30, 45, 22, 35]
-        }]
+            backgroundColor: 'rgb(255, 99, 132, 0.6)',
+            borderColor: 'rgb(255, 99, 132, 0.6)',
+            borderWidth: 1,
+            data: [0, 11, 3, 19, 21, 30, 45, 22, 35]
+        },{
+            label: 'Students',
+            backgroundColor: 'rgb(20, 100, 122, 0.6)',
+            borderColor: 'rgb(20, 100, 122, 0.6)',
+            borderWidth: 1,
+            data: [20, 23, 9, 19, 16, 7, 35, 12, 25]
+        }
+        ]
     },
 
     // Configuration options go here
@@ -37,6 +45,7 @@
         title: {
             text: "Evolution of Data"
         },
+        resposinve: true,
         elements: {
             point: {
                 radius: 5

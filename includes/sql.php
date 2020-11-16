@@ -261,3 +261,9 @@ $run_lecturer = mysqli_query($con, $lecturer);
 
 
 // end payment
+
+// Details
+$sqlMale = mysqli_query($con, "SELECT COUNT(*) AS countItem FROM student WHERE sex = 'Male'");
+$rowMale = mysqli_fetch_assoc($sqlMale);
+$sqlFemale = mysqli_query($con, "SELECT COUNT(*) AS countItem FROM student WHERE sex = 'Female'");
+$rowFemale = mysqli_fetch_assoc($sqlFemale);

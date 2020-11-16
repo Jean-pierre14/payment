@@ -7,7 +7,7 @@
     <div class="row">
 
         <div class="col-md-8">
-            <table class="table m-0">
+            <table class="table m-0 table-sm table-hover table-hover">
                     <thead>
                             <tr>
                                 <th> Name </th>
@@ -19,7 +19,7 @@
                             </tr>
                         </thead>
             </table>
-            <div class="table-responsive table-size">
+            <div class="table-responsive table-size m-0 table-sm table-hover table-hover">
                 <table class="table table-striped">
                     
                     <tbody>
@@ -32,8 +32,10 @@
                                 <td><?php print $data['class'];?></td>
                                 <td><?php print $data['depart'];?></td>
                                 <td>
-                                    <a title="edit <?php print $data['sname'] ;?>" href="student.php?edt=<?php echo $data['id_student']; ?>"><i class="icon edit"></i></a>
-                                    <a title="delete <?php print $data['sname'] ;?>" href="student.php?del=<?php print $data['id_student']; ?>"><i class="icon red trash"></i></a>
+                                    <div class="btn-group">
+                                        <a title="edit <?php print $data['sname'] ;?>" class="btn btn-sm btn-primary" href="student.php?edt=<?php echo $data['id_student']; ?>"><i class="icon edit"></i></a>
+                                        <a title="delete <?php print $data['sname'] ;?>" class="btn btn-sm btn-danger text-light" href="student.php?del=<?php print $data['id_student']; ?>"><i class="icon trash"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
