@@ -61,11 +61,6 @@ CREATE TABLE `payment`.`stud_pay` (
 ) ENGINE = InnoDB;
 
 
-
-
-
-
-
 -- Payment table
 
 CREATE TABLE payement_std(
