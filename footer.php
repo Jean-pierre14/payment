@@ -9,7 +9,6 @@
     $(document).ready( function(){
         $('#search_txt').keyup( function(){
         let txt = $(this).val();
-
         if(txt != ''){
             $.ajax({
                 url: 'search.php',
@@ -28,10 +27,17 @@
             $('#normal-list').show(250)
         }
     });
+
     $('#addStudent').click(()=>{
         alert('It\'s works');
     });
 });
+
+function allStudents(){
+    $.ajax({
+        url: ''
+    })
+}
 </script>
 </body>
 </html>
