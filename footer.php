@@ -31,12 +31,21 @@
     $('#addStudent').click(()=>{
         alert('It\'s works');
     });
+    allStudents(); 
 });
 
 function allStudents(){
+    let action = 'allStudents';
+
     $.ajax({
-        url: ''
+        url: './configuration/action.php',
+        method: 'post',
+        data: {action},
+        success: function(data){
+            $('#allStudents').html(data)
+        }
     })
+    setTimeout( 'allStudents()', 1000);
 }
 </script>
 </body>
