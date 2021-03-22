@@ -7,6 +7,8 @@
             </form>
             list...
         </div>
-        <div class="col-md-8"></div>
+        <div class="col-md-8">
+            <h2 class="alert alert-danger">get data of th student getted</h2>
+        </div>
     </div>
 </div>
