@@ -31,11 +31,19 @@ if(isset($_POST['action'])){
         $query = mysqli_query($con, $sql);
 
         if(@mysqli_num_rows($query) > 0){
-            $output .= '<h2 class="bg-success text-white text-center p-2">Student''</h2>';
+            $output .= '<h2 class="bg-success text-white text-center p-2">Student</h2>';
             while($row = mysqli_fetch_assoc($query)){
                 $output .= '
-                <div class="card card-body">
-                    <
+                <div class="card">
+                    <div class="card-header p-1">
+                        <h3>Student '.$row['sname'].' '.$row['username'].'</h3>
+                    </div>
+                    <div class="card-body">
+                        <h3>Data of the student</h3>
+                    </div>
+                    <div class="card-footer">
+                        <h3>footer of the card</h3>
+                    </div>
                 </div>';
             }
 
