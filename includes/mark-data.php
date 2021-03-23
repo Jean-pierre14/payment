@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="col-md-9">
-            <h2 class="alert alert-danger">get data of th student getted</h2>
+            <img src="undraw_Web_search_re_efla.png" alt="Instructions" class="img-fluid">
         </div>
     </div>
 </div>
