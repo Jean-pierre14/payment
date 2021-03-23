@@ -4,8 +4,9 @@ include './db.con.php';
 $output = '';
 
 if(isset($_POST['action'])){
-    
+
     if($_POST['action'] == 'allStudents'){
+        sleep(10);
         $sql = mysqli_query($con, "SELECT * FROM student ORDER BY id_student DESC");
         if(@mysqli_num_rows($sql) > 0){
             $output .= '<ul lass="list-group shadow-sm">';

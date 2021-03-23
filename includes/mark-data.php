@@ -6,6 +6,12 @@
                 <input type="search" name="search" id="search_mark" placeholder="Searching..." class="form-control">
             </form>
             <div class="result mt-2" id="allStudents">
+                <div class="ph-item p-1">
+                    <div class="ph-picture"></div>
+                        <div class="ph-row">
+                        <div class="ph-col-12 empty"></div>
+                    </div>
+                </div>
                 <!-- Ajax datas -->
             </div>
             <div class="details">
@@ -18,21 +24,21 @@
                 <button onclick="window.history.back()" class="btn btn-sm btn-success">Back</button>
                 <input type="text" id="getStudent" value="<?= $_GET['student'];?>" class="form-control">
                 <div id="resultGetstudent">
-                <div class="ph-item">
-                    <div class="ph-col-12">
-                        <div class="ph-picture"></div>
-                        <div class="ph-row">
-                            <div class="ph-col-6 big"></div>
-                            <div class="ph-col-4 empty big"></div>
-                            <div class="ph-col-2 big"></div>
-                            <div class="ph-col-4"></div>
-                            <div class="ph-col-8 empty"></div>
-                            <div class="ph-col-6"></div>
-                            <div class="ph-col-6 empty"></div>
-                            <div class="ph-col-12"></div>
+                    <div class="ph-item">
+                        <div class="ph-col-12">
+                            <div class="ph-picture"></div>
+                            <div class="ph-row">
+                                <div class="ph-col-6 big"></div>
+                                <div class="ph-col-4 empty big"></div>
+                                <div class="ph-col-2 big"></div>
+                                <div class="ph-col-4"></div>
+                                <div class="ph-col-8 empty"></div>
+                                <div class="ph-col-6"></div>
+                                <div class="ph-col-6 empty"></div>
+                                <div class="ph-col-12"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
                     <!--Ajax data  -->
                 </div>
             <?php else:?>
