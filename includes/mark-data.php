@@ -20,9 +20,10 @@
             </div>
         </div>
         <div class="col-md-9">
+            
             <?php if(isset($_GET['student'])):?>
-                <button onclick="window.history.back()" class="btn btn-sm btn-success">Back</button>
-                <input type="text" id="getStudent" value="<?= $_GET['student'];?>" class="form-control">
+                <button onclick="window.history.back()" class="btn btn-sm btn-success my-2">Back</button>
+                <input type="hidden" id="getStudent" value="<?= $_GET['student'];?>" class="form-control">
                 <div id="resultGetstudent">
                     <div class="ph-item">
                         <div class="ph-col-12">
