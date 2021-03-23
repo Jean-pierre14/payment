@@ -6,7 +6,20 @@
 <script src="./js/dist/Chart.bundle.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script>
+    function GetStudent() {
+        let Id = $('#getStudent').val();
+        let action = 'getStudent';
+        $.ajax({
+            url: './configuration/action.php',
+            method: 'POST',
+            data: { Id, action },
+            success: function (data) {
+                $('#resultGetstudent').html(data)
+            }
+        })
+    }
     $(document).ready(function () {
+        GetStudent();
         $('#search_txt').keyup(function () {
             let txt = $(this).val();
             if (txt != '') {
