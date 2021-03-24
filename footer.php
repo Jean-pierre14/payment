@@ -10,7 +10,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                Modal body..
+                body of the qdd class
             </div>
 
             <!-- Modal footer -->
