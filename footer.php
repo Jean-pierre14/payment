@@ -10,7 +10,16 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                body of the qdd class
+                <form action="">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="classN">Class Name</label>
+                            <input type="text" name="classN" id="classN" placeholder="Class Name" value="<?= $classN;?>"
+                                class="form-control">
+                        </div>
+
+                    </div>
+                </form>
             </div>
 
             <!-- Modal footer -->
