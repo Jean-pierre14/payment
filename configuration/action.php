@@ -2,6 +2,7 @@
 include './db.con.php';
 
 $output = '';
+$errors = [];
 
 if(isset($_POST['action'])){
 
@@ -54,6 +55,22 @@ if(isset($_POST['action'])){
     }
 
     if($_POST['action'] == 'EventAddClass'){
-        print 'success';
+        $clsN = mysqli_real_escape_string($con, trim($_POST['className']));
+        $sy = mysqli_real_escape_string($con, trim($_POST['syear']));
+        $ey = mysqli_real_escape_string($con, trim($_POST['eyear']));
+        
+        if(empty($clsN)){array_push($errors, "These no class name");}
+        if(empty($sy)){array_push($errors, "Start year");}
+        if(empty($ey)){array_push($errors, "End year");}
+        
+        if(count($errors) == 0){
+            // Check informations.
+            $sql = "INSERT INTO class_tb(`class_name`, `start_year`, `end_year`) VALUES('$clsN','$sy','$ey')";
+            $query = mysqli_query($con, $sql);
+            print 'success';
+        }else{
+            print 'error';
+        }
+        
     }
 }
