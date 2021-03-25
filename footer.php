@@ -10,6 +10,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
+                <div id="msg"></div>
                 <form action="">
                     <div class="form-row">
                         <div class="form-group col-md-12">
@@ -50,19 +51,28 @@
 <script src="./js/bootstrap.min.js"></script>
 <script>
     function EventAddClass() {
-        let className = $('#class').val()
-        let syear = $('#syear').val()
-        let eyear = $('#eyear').val()
+        let className = $('#classN').val();
+        let syear = $('#syear').val();
+        let eyear = $('#eyear').val();
+        let action = 'EventAddClass';
 
-        $.ajax({
-            url: './configuration/action.php',
-            method: 'post',
-            data: { action, className, syear, eyear },
-            beforeSend: function (data) { },
-            success: function (data) {
-                $('#msg').html(data)
-            }
-        })
+        if (!className || !syear || $eyear) {
+            alert('check all fields if there field')
+        } else {
+            $.ajax({
+                url: './configuration/action.php',
+                method: 'post',
+                data: { action, className, syear, eyear },
+                success: function (data) {
+                    if (data == 'success') {
+                        $('#msg').html('<p class="alert alert-success">Class added! </p>')
+                    } else {
+                        $('#msg').html('<p class="alert alert-danger">Your class didn\'t added! :(</p>')
+                    }
+                }
+            })
+        }
+
     }
     function GetStudent() {
         let Id = $('#getStudent').val();
@@ -77,7 +87,9 @@
         })
     }
     $(document).ready(function () {
-        EventAddClass();
+        $('#EventAddClass').click(function () {
+            EventAddClass();
+        })
         GetStudent();
         $('#search_txt').keyup(function () {
             let txt = $(this).val();
