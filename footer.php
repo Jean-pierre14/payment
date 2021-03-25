@@ -49,6 +49,21 @@
 <script src="./js/dist/Chart.bundle.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script>
+    function EventAddClass() {
+        let className = $('#class').val()
+        let syear = $('#syear').val()
+        let eyear = $('#eyear').val()
+
+        $.ajax({
+            url: './configuration/action.php',
+            method: 'post',
+            data: { action, className, syear, eyear },
+            beforeSend: function (data) { },
+            success: function (data) {
+                $('#msg').html(data)
+            }
+        })
+    }
     function GetStudent() {
         let Id = $('#getStudent').val();
         let action = 'getStudent';
@@ -62,6 +77,7 @@
         })
     }
     $(document).ready(function () {
+        EventAddClass();
         GetStudent();
         $('#search_txt').keyup(function () {
             let txt = $(this).val();
