@@ -17,7 +17,17 @@
                             <input type="text" name="classN" id="classN" placeholder="Class Name" value="<?= $classN;?>"
                                 class="form-control">
                         </div>
-
+                        <div class="form-group col-md-6">
+                            <label for="syear">Start Year</label>
+                            <input type="date" id="syear" name="syear" value="<?= $syear;?>" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="eyear">End Year</label>
+                            <input type="date" id="eyear" name="eyear" value="<?= $eyear;?>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="EventAddClass" class="btn btn-success">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>

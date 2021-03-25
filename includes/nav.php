@@ -46,7 +46,7 @@ include('./header.php');
 <div class="ui menu bg-dark header fixed d-flex justify-content-between align-items-center p-0">
     <a href="#">
         <!-- user profile img -->
-        <img src="" alt="">
+        <img src="./images/" alt="user images">
         <!-- user profile img -->
     </a>
     <a href="#<?php print $username; ?>" class="text-light">

@@ -18,6 +18,8 @@ include("./db.con.php");
     // to the button update 
     $update = false;
 
+    $classN = '';$syear = '';$eyear = '';
+
 
 // Total of admin 
 $query = "SELECT COUNT(*) AS mount FROM admin";
@@ -40,7 +42,7 @@ $query = "SELECT COUNT(*) AS mount_lecturer FROM lecturer";
     
 
 //  Total of Employees
-$query = "SELECT COUNT(*) AS mount_Employees FROM employees";
+    $query = "SELECT COUNT(*) AS mount_Employees FROM employees";
     $run = mysqli_query($con, $query);
     $row = mysqli_fetch_array($run);
     $mount_Employees = $row['mount_Employees'];
