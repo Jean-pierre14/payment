@@ -11,7 +11,7 @@ if(isset($_POST['action'])){
         $query = mysqli_query($con, $sql);
 
         if(@mysqli_num_rows($query) > 0){
-            $output .= '<select name="class" class="form-control"><option>-- select --</option>';
+            $output .= '<select id="class" name="class" class="form-control"><option>-- select --</option>';
             while($row = mysqli_fetch_assoc($query)){
                 $output .= '<option value="'.$row['class_id'].'">'.$row['class_name'].'</option>';
             }

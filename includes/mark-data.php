@@ -17,6 +17,7 @@
             <div class="details">
                 <h2 class="bg-success text-center text-white p-2">Class</h2>
                 <button class="btn btn-sm btn-success btn-block shadow-sm" data-toggle="modal" data-target="#myModal">Add class</button>
+                <button class="btn btn-sm btn-success btn-block shadow-sm" data-toggle="modal" data-target="#myRegister">Add Student</button>
                 
             </div>
         </div>

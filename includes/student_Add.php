@@ -123,7 +123,7 @@
                     <?php if($update == true): ?>
                         <button type="submit" name="student_update" class="icon ui labeled button green"><i class="icon record"></i>UPDATE</button>
                     <?php else:?>
-                        <button type="submit" name="register" class="icon ui labeled button blue"><i class="icon save"></i>Register</button>
+                        <button type="submit" id="register_student" name="register" class="icon ui labeled button blue"><i class="icon save"></i>Register</button>
                     <?php endif;?>
                 </div>
             </form>
