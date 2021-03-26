@@ -6,6 +6,25 @@ $errors = [];
 
 if(isset($_POST['action'])){
 
+    if($_POST['action'] == 'classess'){
+        $sql = "SELECT * FROM class_tb ORDER BY class_name ASC";
+        $query = mysqli_query($con, $sql);
+
+        if(@mysqli_num_rows($query) > 0){
+            $output .= '<select name="class" class="form-control"><option>-- select --</option>';
+            while($row = mysqli_fetch_assoc($query)){
+                $output .= '<option value="'.$row['class_id'].'">'.$row['class_name'].'</option>';
+            }
+            $output .= '</select>';
+        }else{
+            $output .= '
+            <p class="alert alert-danger">There is no class record</p>
+            <button class="btn btn-sm btn-success btn-block shadow-sm" data-toggle="modal" data-target="#myModal">Add class</button>
+            ';
+        }
+        print $output;
+    }
+
     if($_POST['action'] == 'allStudents'){
         
         $sql = mysqli_query($con, "SELECT * FROM student ORDER BY id_student DESC");

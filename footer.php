@@ -93,11 +93,23 @@
             }
         })
     }
+    function classess() {
+        let action = 'classess'
+        $.ajax({
+            url: './configuration/action.php',
+            method: 'post',
+            data: { action },
+            success: function (data) {
+                $('#classess').html(data)
+            }
+        })
+    }
     $(document).ready(function () {
         $('#EventAddClass').click(function () {
             EventAddClass();
         })
         GetStudent();
+        classess();
         $('#search_txt').keyup(function () {
             let txt = $(this).val();
             if (txt != '') {

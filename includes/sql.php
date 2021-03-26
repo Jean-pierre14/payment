@@ -121,7 +121,7 @@ if(isset($_POST['register'])){
     $fetch_mail = mysqli_fetch_array($run_chk_mail);
 
 //  Check the email webmaster chiruzabisimwa@outlook.fr
-    if($email == $fetch_mail['email']){array_push($error, "This email is used :-(");}
+    // if($email == $fetch_mail['email']){array_push($error, "This email is used :-(");}
 
     $stud_username = $_POST['username'];
     $stud_sname = $_POST['sname'];
