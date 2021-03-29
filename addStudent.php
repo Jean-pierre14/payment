@@ -21,6 +21,7 @@
                             <div class="ui" id="classess">
                                 <select name="class" value="<?php print $stud_class; ?>" id="class" class="form-control"
                                     require>
+                                    
                                     <option value="">-- select --</option>
                                     <option value="YEAR 1">Year 1</option>
                                     <option value="YEAR 2">Year 2</option>
