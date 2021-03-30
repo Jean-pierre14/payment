@@ -73,6 +73,17 @@ if(isset($_POST['action'])){
         print $output;
     }
 
+    if($_POST['action'] == 'getClasse'){
+        $SQL = "SELECT * FROM class_tb ORDER BY class_name ASC";
+        $query = mysqli_query($con, $SQL);
+
+        if(@mysqli_query($query) > 0){
+
+        }else{
+            $output .= '<p class="alert aler-danger my-2">There no class registered :(</p>';
+        }
+    }
+
     if($_POST['action'] == 'EventAddClass'){
         $clsN = mysqli_real_escape_string($con, trim($_POST['className']));
         $sy = mysqli_real_escape_string($con, trim($_POST['syear']));

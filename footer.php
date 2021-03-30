@@ -156,6 +156,7 @@
 <script src="./js/dist/Chart.bundle.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script>
+    let urls = './configuration/action.php'
     function EventAddClass() {
         let className = $('#classN').val();
         let syear = $('#syear').val();
@@ -197,6 +198,19 @@
             }
         })
     }
+    function GetClasses() {
+        // alert("Classes")
+        let action = 'getClasse'
+        $.ajax({
+            url: './configuration/action.php',
+            method: 'POST',
+            data: { action },
+            success: function (data) {
+                $('#allClass').html(data)
+            }
+        })
+        setTimeout('GetClasses()', 5000)
+    }
     function classess() {
         let action = 'classess'
         $.ajax({
@@ -209,7 +223,7 @@
         })
     }
     $(document).ready(function () {
-
+        GetClasses();
         $('#EventAddClass').click(function () {
             EventAddClass();
         })
