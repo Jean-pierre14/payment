@@ -47,7 +47,7 @@ if(isset($_POST['action'])){
 
     if($_POST['action'] == 'getStudent'){
         $id = $_POST['Id'];
-        $sql = "SELECT * FROM student INNER JOIN class_tb on student_id = class_id";
+        $sql = "SELECT * FROM student WHERE id_student = '$id'";
         $query = mysqli_query($con, $sql);
 
         if(@mysqli_num_rows($query) > 0){
