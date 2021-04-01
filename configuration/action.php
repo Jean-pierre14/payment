@@ -74,14 +74,24 @@ if(isset($_POST['action'])){
     }
 
     if($_POST['action'] == 'getClasse'){
-        $SQL = "SELECT * FROM class_tb ORDER BY class_name ASC";
-        $query = mysqli_query($con, $SQL);
+        
+        $query = mysqli_query($con, "SELECT * FROM class_tb ORDER BY class_name ASC");
 
-        if(@mysqli_query($query) > 0){
-
+        if(@mysqli_num_rows($query) > 0){
+            $output .= '<ul lass="list-group shadow-sm">';
+            while($row = mysqli_fetch_assoc($query)){
+                $output .= '
+                    <li class="list-group-item list-group-item-action">
+                        <a href="?class='.$row['class_id'].'">'.$row['class_name'].'</a>
+                    </li>
+                ';
+                
+            }
+            $output .= '</ul>';
         }else{
             $output .= '<p class="alert aler-danger my-2">There no class registered :(</p>';
         }
+        print $output;
     }
 
     if($_POST['action'] == 'EventAddClass'){
