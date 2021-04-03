@@ -43,13 +43,13 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal">
+<div class="modal fade" id="myCours">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Add class</h4>
+                <h4 class="modal-title">Add Cours</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -59,22 +59,20 @@
                 <form action="">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="classN">Class Name</label>
-                            <input type="text" name="classN" id="classN" placeholder="Class Name" value="<?= $classN;?>"
+                            <label for="coursN">Cours name</label>
+                            <input type="text" name="coursN" id="coursN" placeholder="Cours Name" value="<?= $coursN;?>"
                                 class="form-control">
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="syear">Start Year</label>
-                            <input type="number" id="syear" name="syear" placeholder="Starting year"
-                                value="<?= $syear;?>" class="form-control">
+                        <div class="form-group col-md-12">
+                            <label for="comptence">Comptence (s)</label>
+                            <input type="text" id="comptence" name="comptence" placeholder="Comptence"
+                                value="<?= $comptence;?>" class="form-control">
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="eyear">End Year</label>
-                            <input type="number" placeholder="End year" id="eyear" name="eyear" value="<?= $eyear;?>"
-                                class="form-control">
+                        <div class="form-group col-md-12">
+                            <div id="classess"></div>
                         </div>
                         <div class="form-group">
-                            <button type="button" id="EventAddClass" class="btn btn-success">Submit</button>
+                            <button type="button" id="EventAddCours" class="btn btn-success">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -213,7 +211,7 @@
         } else {
             // alert(className + + syear + + eyear)
             $.ajax({
-                url: './configuration/action.php',
+                url: urls,
                 method: 'post',
                 data: { action, className, syear, eyear },
                 success: function (data) {

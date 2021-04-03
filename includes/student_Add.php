@@ -4,7 +4,7 @@
         <h3 class="icon ui"><i class="icon graduation"></i>STUDENTS</h3>
     </div>
 
-    <div class="row">
+    <div class="row m-0 p-0">
 
         <div class="col-md-8">
             <table class="table m-0 table-sm table-hover table-hover">
