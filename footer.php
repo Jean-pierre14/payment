@@ -43,6 +43,51 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add class</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div id="msg"></div>
+                <form action="">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="classN">Class Name</label>
+                            <input type="text" name="classN" id="classN" placeholder="Class Name" value="<?= $classN;?>"
+                                class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="syear">Start Year</label>
+                            <input type="number" id="syear" name="syear" placeholder="Starting year"
+                                value="<?= $syear;?>" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="eyear">End Year</label>
+                            <input type="number" placeholder="End year" id="eyear" name="eyear" value="<?= $eyear;?>"
+                                class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="EventAddClass" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="myRegister">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -190,7 +235,7 @@
         let Id = $('#getStudent').val();
         let action = 'getStudent';
         $.ajax({
-            url: './configuration/action.php',
+            url: urls,
             method: 'POST',
             data: { Id, action },
             success: function (data) {

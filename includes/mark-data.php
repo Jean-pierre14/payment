@@ -27,6 +27,7 @@
                     <!-- Ajax datas -->
                 </div>
                 <button class="btn btn-sm btn-success btn-block shadow-sm" data-toggle="modal" data-target="#myModal">Add class</button>
+                <button class="btn btn-sm btn-success btn-block shadow-sm" data-toggle="modal" data-target="#myCours">Add Cours</button>
                 <button class="btn btn-sm btn-success btn-block shadow-sm" data-toggle="modal" data-target="#myRegister">Add Student</button>
                 
             </div>
