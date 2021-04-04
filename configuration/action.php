@@ -113,4 +113,19 @@ if(isset($_POST['action'])){
         }
         // Table added into my own PC
     }
+
+    if($_POST['action'] == 'EventAddCours'){
+        $coursName = mysqli_real_escape_string($con, trim($_POST['coursName']));
+        $classId = mysqli_real_escape_string($con, trim($_POST['classId']));
+
+        if(empty($coursName)){array_push($errors, "Cours name is empty"); $output .= 'error';}
+        if(empty($classId)){array_push($errors, "Id class is empty"); $output .= 'error';}
+
+        if(count($errors) == 0){
+            $sql = "INSERT INTO cours_tb(cours_name, class_id) VALUES('$coursName', '$classId')";
+            $query = mysqli_query($con, $sql);
+            $output .= 'success';
+        }
+        print $output;
+    }
 }

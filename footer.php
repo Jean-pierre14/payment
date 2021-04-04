@@ -55,7 +55,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <div id="msg"></div>
+                <div id="msg1"></div>
                 <form action="">
                     <div class="form-row">
                         <div class="form-group col-md-12">
@@ -78,7 +78,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
             </div>
 
         </div>
@@ -227,27 +227,6 @@
         }
     }
 
-    function EventAddCours(){
-        
-        let coursName = $('#coursN').val()
-        let classId = $('#class').val()
-
-        // onkeyup() on cours name field to check if the cours is not yet registered.
-        // insert data into the database or table.
-        $.ajax({
-            url: urls,
-            method: 'POST',
-            data: {action, coursName, classId},
-            success: function(data){
-                if(data == 'success'){
-                    $('#msg').html('<p class="alert alert-success">Data Regitered</p>')
-                }else{
-                    $('#msg').html('<p class="alert alert-warning">There is some issues</p>')
-                }
-            }
-        })
-
-    }
     
     function GetStudent() {
         let Id = $('#getStudent').val();
@@ -290,10 +269,33 @@
         $('#EventAddClass').click(function () {
             EventAddClass();
         })
-        
+
         $('#EventAddCours').click(function() {
-            // EventAddCours()
-            alert("Add")
+            let coursName = $('#coursN').val();
+            let classId = $('#class').val();
+            let action = 'EventAddCours';
+
+            // alert("Add")
+
+            if(!coursName || !classId){
+                $('#msg1').html('<p class="alert alert-warning">fields are not set</p>')
+            }else{
+                // onkeyup() on cours name field to check if the cours is not yet registered.
+                // insert data into the database or table.
+                $.ajax({
+                    url: './configuration/action.php',
+                    method: 'POST',
+                    data: {action, coursName, classId},
+                    success: function(data){
+                        if(data == 'success'){
+                            $('#msg1').html('<p class="alert alert-success">Data Regitered</p>')
+                        }else{
+                            $('#msg1').html('<p class="alert alert-warning">There is some issues</p>')
+                        }
+                    }
+                })
+                $('#msg1').html('')
+            }
         })
         GetStudent();
         classess();
