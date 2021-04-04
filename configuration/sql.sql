@@ -75,8 +75,5 @@ CREATE TABLE payement_std(
 
 CREATE TABLE `payment`.`py` ( `id` INT NOT NULL AUTO_INCREMENT , `mount` INT NOT NULL , `create_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , `id_pay` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 ALTER TABLE `py` ADD `bank` VARCHAR(50) NOT NULL AFTER `id_pay`;
-create table class_tb(
-    int class_id PRIMARY KEY AUTO_INCREMENT,
-    class_name VARCHAR(50),
-    year
-)
+
+CREATE TABLE `payment`.`cours_tb` ( `cours_id` INT NOT NULL AUTO_INCREMENT , `cours_name` VARCHAR(255) NOT NULL , `comptence` INT NOT NULL , `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`cours_id`)) ENGINE = InnoDB;

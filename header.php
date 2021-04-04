@@ -1,3 +1,8 @@
+<?php
+$coursN = '';
+$comptence = '';
+$classN = '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
