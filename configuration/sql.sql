@@ -77,4 +77,11 @@ CREATE TABLE `payment`.`py` ( `id` INT NOT NULL AUTO_INCREMENT , `mount` INT NOT
 ALTER TABLE `py` ADD `bank` VARCHAR(50) NOT NULL AFTER `id_pay`;
 
 CREATE TABLE `payment`.`cours_tb` ( `cours_id` INT NOT NULL AUTO_INCREMENT , `cours_name` VARCHAR(255) NOT NULL , `comptence` INT NOT NULL , `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`cours_id`)) ENGINE = InnoDB;
+
+ALTER TABLE `cours_tb` ADD `class_id` INT NOT NULL AFTER `comptence`;
+
 CREATE TABLE `payment`.`comptence_tb` ( `comptence_id` INT(11) NOT NULL AUTO_INCREMENT , `comptence_name` VARCHAR(255) NOT NULL , `cours_id` INT NOT NULL , `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`comptence_id`)) ENGINE = InnoDB;
+
+ALTER TABLE `comptence_tb` ADD FOREIGN KEY (`cours_id`) REFERENCES `cours_tb`(`cours_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `cours_tb` ADD FOREIGN KEY (`class_id`) REFERENCES `class_tb`(`class_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;

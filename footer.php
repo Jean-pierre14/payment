@@ -63,13 +63,11 @@
                             <input type="text" name="coursN" id="coursN" placeholder="Cours Name" value="<?= $coursN;?>"
                                 class="form-control">
                         </div>
+                        
                         <div class="form-group col-md-12">
-                            <label for="comptence">Comptence (s)</label>
-                            <input type="text" id="comptence" name="comptence" placeholder="Comptence"
-                                value="<?= $comptence;?>" class="form-control">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <div id="classess"></div>
+                            <div id="classess">
+                                <!-- Data comes from Ajax url -->
+                            </div>
                         </div>
                         <div class="form-group">
                             <button type="button" id="EventAddCours" class="btn btn-success">Submit</button>
