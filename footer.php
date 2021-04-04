@@ -227,6 +227,28 @@
         }
     }
 
+    function EventAddCours(){
+        
+        let coursName = $('#coursN').val()
+        let classId = $('#class').val()
+
+        // onkeyup() on cours name field to check if the cours is not yet registered.
+        // insert data into the database or table.
+        $.ajax({
+            url: urls,
+            method: 'POST',
+            data: {action, coursName, classId},
+            success: function(data){
+                if(data == 'success'){
+                    $('#msg').html('<p class="alert alert-success">Data Regitered</p>')
+                }else{
+                    $('#msg').html('<p class="alert alert-warning">There is some issues</p>')
+                }
+            }
+        })
+
+    }
+    
     function GetStudent() {
         let Id = $('#getStudent').val();
         let action = 'getStudent';
@@ -267,6 +289,11 @@
         GetClasses();
         $('#EventAddClass').click(function () {
             EventAddClass();
+        })
+        
+        $('#EventAddCours').click(function() {
+            // EventAddCours()
+            alert("Add")
         })
         GetStudent();
         classess();
