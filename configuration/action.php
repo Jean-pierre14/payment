@@ -22,6 +22,7 @@ if(isset($_POST['action'])){
             <button class="btn btn-sm btn-success btn-block shadow-sm" data-toggle="modal" data-target="#myModal">Add class</button>
             ';
         }
+        sleep(2);
         print $output;
     }
 
@@ -41,7 +42,7 @@ if(isset($_POST['action'])){
         }else{
             $output .= '<p class="alert alert-warning">There is no data!</p>';
         }
-        sleep(2);
+        sleep(1);
         print $output;
     }
 
@@ -122,9 +123,15 @@ if(isset($_POST['action'])){
         if(empty($classId)){array_push($errors, "Id class is empty"); $output .= 'error';}
 
         if(count($errors) == 0){
-            $sql = "INSERT INTO cours_tb(cours_name, class_id) VALUES('$coursName', '$classId')";
-            $query = mysqli_query($con, $sql);
-            $output .= 'success';
+            $check = mysqli_query($con, "SELECT cours_name FROM cours_tb WHERE cours_name = '$coursName'");
+            if(@mysqli_num_rows($check) == 0){
+                $sql = "INSERT INTO cours_tb(cours_name, class_id) VALUES('$coursName', '$classId')";
+                $query = mysqli_query($con, $sql);
+                $output .= 'Data registered successfully <b>' . $coursName . '</b>';
+            }else{
+                $output .= 'This cours it\'s already added';
+            }
+            
         }
         print $output;
     }

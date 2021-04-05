@@ -10,7 +10,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <div id="msg"></div>
+                <div id="msg" class="msg"></div>
                 <form action="">
                     <div class="form-row">
                         <div class="form-group col-md-12">
@@ -43,6 +43,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="myCours">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -55,7 +56,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <div id="msg1"></div>
+                <div id="msg1" class="msg"></div>
                 <form action="">
                     <div class="form-row">
                         <div class="form-group col-md-12">
@@ -228,6 +229,10 @@
     }
 
     
+    function Hide(){
+        $('.msg').hide()
+    }
+    
     function GetStudent() {
         let Id = $('#getStudent').val();
         let action = 'getStudent';
@@ -266,10 +271,13 @@
     }
     $(document).ready(function () {
         GetClasses();
+
         $('#EventAddClass').click(function () {
             EventAddClass();
         })
-
+        function Hide(){
+            $('.msg').delay(5000).hide('blind', 500)
+        }
         $('#EventAddCours').click(function() {
             let coursName = $('#coursN').val();
             let classId = $('#class').val();
@@ -289,12 +297,20 @@
                     success: function(data){
                         if(data == 'success'){
                             $('#msg1').html('<p class="alert alert-success">Data Regitered</p>')
+                            $('#msg1').delay(300).hide()
+                            
                         }else{
-                            $('#msg1').html('<p class="alert alert-warning">There is some issues</p>')
+                            $('#msg1').html('<p class="alert alert-warning">' + data + '</p>')
+                            setTimeout(function(){
+                                $('.msg').hide({},300)
+                            }, 3000)
+                            $('#coursN').val('')
+                            $('#class').val('--select--')
                         }
+                        // console.log(data)
                     }
                 })
-                $('#msg1').html('')
+                // $('#msg1').html('')
             }
         })
         GetStudent();
