@@ -6,6 +6,26 @@ $errors = [];
 
 if(isset($_POST['action'])){
 
+    if($_POST['action'] == 'GetCours'){
+        $sql = "SELECT * FROM cours_tb ORDER BY cours_name ASC";
+        $query = mysqli_query($con, $sql);
+
+        if(@mysqli_num_rows($query) > 0){
+            $output .= '<ul lass="list-group shadow-sm">';
+            while($row = mysqli_fetch_assoc($sql)){
+                $output .= '
+                    <li class="list-group-item list-group-success list-group-item-action">
+                        <a href="?cours='.$row['cours_id'].'">'.$row['cours_name'].'</a>
+                    </li>
+                ';
+            }
+            $output .= '</ul>';
+        }else{
+            $output .= '<p class="alert alert-danger">There is no course registered</p>';
+        }
+        print $output;
+    }
+
     if($_POST['action'] == 'classess'){
         $sql = "SELECT * FROM class_tb ORDER BY class_name ASC";
         $query = mysqli_query($con, $sql);
@@ -135,4 +155,5 @@ if(isset($_POST['action'])){
         }
         print $output;
     }
+
 }
