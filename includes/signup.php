@@ -38,6 +38,14 @@ if(isset($_POST['register'])) {
     $em = $row['email'];
 
     if($email == $row['email']) {array_push($error, "Email is already used! ");}
+    // To check the username
+    
+    $sqlUsername = "SELECT username FROM admin  WHERE username = '$username'";
+    $run_sqlUsername = mysqli_query($con, $sqlUsername);
+    $row = mysqli_fetch_array($run_sqlUsername);
+    $username = $row['username'];
+
+    if($email == $row['username']) {array_push($error, "This username is already taken!");}
 
     // end check
 
