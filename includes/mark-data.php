@@ -7,10 +7,12 @@
             </form>
             <div class="result mt-2" id="allStudents">
                 <div class="ph-item p-1">
+                    
                     <div class="ph-picture"></div>
                         <div class="ph-row">
                         <div class="ph-col-12 empty"></div>
                     </div>
+                
                 </div>
                 <!-- Ajax datas -->
             </div>
@@ -31,6 +33,7 @@
                 <div class="content-hide" id="allCours">
                     <!-- Get data using ajax  -->
                 </div>
+
                 <button class="btn btn-sm btn-success btn-block shadow-sm" data-toggle="modal" data-target="#myRegister">Add Student</button>
                 
             </div>
