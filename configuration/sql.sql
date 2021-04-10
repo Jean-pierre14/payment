@@ -7,7 +7,7 @@ CREATE TABLE `payment`.`admin` (
      `sname` VARCHAR(50) NOT NULL ,
     `email` VARCHAR(100) NOT NULL ,
      `pass` VARCHAR(255) NOT NULL ,
-      PRIMARY KEY (`id_admin`
+      PRIMARY KEY (`id_admin`)
 )) ENGINE = InnoDB;
 
 ALTER TABLE `admin` ADD `status` VARCHAR(12) NOT NULL AFTER `pass`;

@@ -51,7 +51,17 @@
 
                 <div class="col-md-4">
                     <?php include("./error.php"); ?>
-                    <h4 class="p-2 bg-secondary text-center"><?php if(isset($_GET['edit']) || isset($_GET['delete'])){if($user_get == ''){print 'Edit or update';}else{print $user_get;}}else{print 'Edit';}?></h4>
+                    <h4 class="p-2 bg-secondary text-center">
+                        <?php if(isset($_GET['edit']) || isset($_GET['delete'])){
+                        if($user_get == ''){
+                            print 'Edit or update';
+                            }else{
+                                print $user_get;
+                            }
+                        }else{
+                            print 'Edit';
+                        }?>
+                    </h4>
                     <form action="" method="post">
                         <div class="from-group">
                             <label for="user_name">Username</label>
@@ -75,7 +85,6 @@
                                 <button type="submit" disabled class="ui button labeled icon submit"><i class="icon edit"></i>Edit</button>
                             <?php endif;?>
                         </div>
-
                     </form>
                 </div>
             </div>

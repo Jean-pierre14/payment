@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 // Connection to Database
 include('./db.con.php');
 
@@ -15,7 +14,7 @@ $pass_2 = '';
 
 
 // Registration Event
-if(isset($_POST['register'])) {
+if(isset($_POST['registerAdm'])) {
     
     $username = htmlentities(mysqli_real_escape_string($con, $_POST['username']));
     $sname = htmlentities(mysqli_real_escape_string($con, $_POST['sname']));
@@ -62,17 +61,14 @@ if(isset($_POST['register'])) {
         $email = htmlentities(mysqli_real_escape_string($con, $_POST['email']));
         $pass_1 = htmlentities(mysqli_real_escape_string($con, $_POST['password_1']));
         $pass_2 = htmlentities(mysqli_real_escape_string($con, $_POST['password_2']));
-        $level = 0;
+        $level = htmlentities(mysqli_real_escape_string($con, $_POST['level']));
 
         $password = md5($pass_1);
-        $query = "INSERT INTO admin (username, sname, email, pass, `auth`) VALUES('$username','$sname','$email','$password', 2)";
+        $query = "INSERT INTO admin (username, sname, email, pass, `status`, `auth`) VALUES('$username','$sname','$email','$password', 'Offline', '$level')";
         $run_sql = mysqli_query($con, $query);
         
         $_SESSION['email'] = $email;
         $_SESSION['success'] = "You're logged in";
-        header('Location: index.php');
-        
+        // header('Location: index.php');   
     }
-
-
 }
