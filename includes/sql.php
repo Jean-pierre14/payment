@@ -109,7 +109,7 @@ if(isset($_POST['register'])){
     $depart = mysqli_real_escape_string($con, $_POST['depart']);
     $sex = mysqli_real_escape_string($con, $_POST['sex']);
 
-    if(empty($user_name)){array_push($error, "The username field is empty");}
+    if(empty($user_name)){array_push($error, "The username 234556 field is empty");}
     if(empty($sname)){array_push($error, "The second name field is empty");}
 
     if(empty($email)){array_push($error, "The Email field is empty");}
@@ -121,14 +121,19 @@ if(isset($_POST['register'])){
     $fetch_mail = mysqli_fetch_array($run_chk_mail);
 
     //  Check the email webmaster chiruzabisimwa@outlook.fr
-    // if($email == $fetch_mail['email']){array_push($error, "This email is used :-(");}
+    if(@mysqli_num_rows($fetch_mail) > 0){array_push($error, "This email is used :-(");}
 
-    $stud_username = $_POST['username'];
-    $stud_sname = $_POST['sname'];
-    $stud_em = $_POST['email'];
-    $stud_class = $_POST['class'];
-    $stud_depart = $_POST['depart'];
-    $stud_sex = $_POST['sex'];
+    // check the username
+    $checkUsername = mysqli_query($con, "SELECT username FROM student WHERE username = '$user_name'");
+    $makeItRun = mysqli_fetch_assoc($checkUsername);
+    if(@mysqli_num_rows($makeItRun) > 0){array_push($error, "This username is taken :(");}
+
+    // $stud_username = $_POST['username'];
+    // $stud_sname = $_POST['sname'];
+    // $stud_em = $_POST['email'];
+    // $stud_class = $_POST['class'];
+    // $stud_depart = $_POST['depart'];
+    // $stud_sex = $_POST['sex'];
 
     if(count($error) == 0){
         $save = "INSERT INTO `student`(`username`,`sname`,`email`,`class`,`depart`,`sex`,`create_at`) 

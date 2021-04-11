@@ -63,12 +63,12 @@
 
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" name="username" value="<?php print $stud_username; ?>" id="username" placeholder="Username" class="form-control">
+                        <input type="text" name="username" value="<?= $stud_username; ?>" id="username" placeholder="Username" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="sname">Second name</label>
-                        <input type="text" name="sname" value="<?php print $stud_sname; ?>" id="sname" placeholder="Second name" class="form-control">
+                        <input type="text" name="sname" value="<?= $stud_sname; ?>" id="sname" placeholder="Second name" class="form-control">
                     </div>
 
                     <div class="form-row">
@@ -76,7 +76,7 @@
                                     <label for="class">Class</label>
 
                                     <div class="ui" id="classess">
-                                        <select name="class" value="<?php print $stud_class; ?>" id="class" class="form-control" require>
+                                        <select name="class" value="<?= $stud_class; ?>" id="class" class="form-control" require>
                                             <option value="">-- select --</option>
                                             <option value="YEAR 1">Year 1</option>
                                             <option value="YEAR 2">Year 2</option>
@@ -87,7 +87,7 @@
 
                                 <div class="form-group col-md-8">
                                     <label for="depart">Department</label>
-                                    <select name="depart" value="<?php print $stud_depart; ?>" id="depart" class="form-control" require>
+                                    <select name="depart" value="<?= $stud_depart; ?>" id="depart" class="form-control" require>
                                         <option value="">-- select --</option>
                                         <option value="computer science">Computer Science</option>
                                         <option value="Law">Law</option>
