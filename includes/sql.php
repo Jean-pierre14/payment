@@ -107,6 +107,7 @@ if(isset($_POST['register'])){
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $class = mysqli_real_escape_string($con, $_POST['class']);
     $depart = mysqli_real_escape_string($con, $_POST['depart']);
+    
     $sex = mysqli_real_escape_string($con, $_POST['sex']);
 
     if(empty($user_name)){array_push($error, "The username 234556 field is empty");}
@@ -118,7 +119,9 @@ if(isset($_POST['register'])){
 
     $check_email = "SELECT * FROM student WHERE email = '$email'";
     $run_chk_mail = mysqli_query($con, $check_email);
+    
     $fetch_mail = mysqli_fetch_array($run_chk_mail);
+
 
     //  Check the email webmaster chiruzabisimwa@outlook.fr
     if(@mysqli_num_rows($fetch_mail) > 0){array_push($error, "This email is used :-(");}
