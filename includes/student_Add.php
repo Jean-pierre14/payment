@@ -73,7 +73,7 @@
 
                     <div class="form-row">
                             <div class="form-group col-md-4">
-                                    <label for="class">Class</label>
+                                    <label for="class">Class </label>
 
                                     <div class="ui" id="classess">
                                         <select name="class" value="<?= $stud_class; ?>" id="class" class="form-control" require>
