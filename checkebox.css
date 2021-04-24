@@ -43,3 +43,24 @@ body input[type=checkbox]{
     margin: 5% auto;
     width: 70%;
 }
+
+.box{
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+input {
+    border: none;
+    background: none;
+    outline: none !important;
+    width: 30%;
+    border-radius: 10px;
+    padding: 8px;
+    border: 1px solid rgb(97, 97, 97);
+    transition: all ease 0.9s;
+}
+input:focus{
+    width: 100%;
+}
