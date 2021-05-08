@@ -6,18 +6,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Try</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
 </head>
 
 <body>
-    <header>
-        <h3>header html</h3>
-    </header>
-    <main>
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum quo similique pariatur molestiae id?
-            Voluptate praesentium ad magnam earum aut.
-        </p>
-    </main>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="alert alert-danger mt-2">
+                <h2>crud using php on server side and html with jquery on front-end side</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <form action="" method="post">
+                        <h3>form</h3>
+                    </form>
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped table-responsive-sm table-sm">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Full name</th>
+                                <th>Class</th>
+                                <th>Gendre</th>
+                                <th>Events</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students">
+                            <tr>
+                                <td>username</td>
+                                <td>Full name db</td>
+                                <td>1</td>
+                                <td>Male</td>
+                                <td>
+                                    <div class="btn-group btn-sm">
+                                        <a href="" class="btn btn-info">edit</a>
+                                        <a href="" class="btn btn-danger">delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
+<script src="./js/jquery-3.4.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        SelectStudent()
+    })
+
+    function SelectStudent() {
+        let action = 'student'
+        $.ajax({
+            url: './_data.json.php',
+            type: 'POST',
+            data: { action },
+            success: function (data) {
+                console.log(data)
+                if(data.lenght > 0){
+                    foreach(student in data){
+                        document.getElementById('students').innerHTML =
+                    `
+                    <tbody>
+                        <tr>
+                            <td>${data.username}</td>
+                            <td>${data.sname}</td>
+                            <td>${data.class}</td>
+                            <td>${data.sex}</td>
+                            <td>
+                                <div class="btn-group btn-sm">
+                                    <a href="" class="btn btn-info">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                    </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    `
+                    }
+                }
+                
+            },
+            error: function (data) { }
+        })
+    }
+</script>
 
 </html>
