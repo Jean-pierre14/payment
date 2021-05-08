@@ -57,9 +57,17 @@
 <script src="./js/jquery-3.4.0.min.js"></script>
 <script>
     $(document).ready(function () {
-        SelectStudent()
+        
     })
-
+    Students()
+    function Students(){
+        fetch('http://localhost/payment/_data.json.php?action=student')
+            .then(res => {
+                res.json().then(data =>{
+                    console.log(data)
+                })
+            })
+    }
     function SelectStudent() {
         let action = 'student'
         $.ajax({
@@ -68,11 +76,12 @@
             data: { action },
             success: function (data) {
                 console.log(data)
-                if(data.lenght > 0){
-                    foreach(student in data){
-                        document.getElementById('students').innerHTML =
-                    `
-                    <tbody>
+                if(data.length > 0){
+                    console.log(data.length)
+                    let output = ''
+                    data.forEach((student)=>{
+                        output += `
+                        <tbody>
                         <tr>
                             <td>${data.username}</td>
                             <td>${data.sname}</td>
@@ -87,7 +96,9 @@
                         </tr>
                     </tbody>
                     `
-                    }
+                    })
+                }else{
+                    console.log("there is data into your data jquery")
                 }
                 
             },
