@@ -57,16 +57,27 @@
 <script src="./js/jquery-3.4.0.min.js"></script>
 <script>
     $(document).ready(function () {
-        
+        jsonData()
     })
-    Students()
-    function Students(){
-        fetch('http://localhost/payment/_data.json.php?action=student')
-            .then(res => {
-                res.json().then(data =>{
-                    console.log(data)
-                })
-            })
+    function jsonData() {
+        $.ajax({
+            url: './_data.json.php?action=student',
+            method: 'GET',
+            success: function (data) {
+                document.getElementById('students')
+                let out = ""
+
+                if (data.length > 0) {
+                    console.log('Before loop')
+                    data.forEach((u)=>{
+                        out += `${u.username}`
+                    })
+                    console.log(out)
+                } else {
+                    out = "<p class='alert alert-dander'>There is no data register</p>";
+                }
+            }
+        })
     }
     function SelectStudent() {
         let action = 'student'
@@ -76,10 +87,10 @@
             data: { action },
             success: function (data) {
                 console.log(data)
-                if(data.length > 0){
+                if (data.length > 0) {
                     console.log(data.length)
                     let output = ''
-                    data.forEach((student)=>{
+                    data.forEach((student) => {
                         output += `
                         <tbody>
                         <tr>
@@ -97,10 +108,10 @@
                     </tbody>
                     `
                     })
-                }else{
+                } else {
                     console.log("there is data into your data jquery")
                 }
-                
+
             },
             error: function (data) { }
         })

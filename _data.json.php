@@ -57,11 +57,11 @@ if (isset($_GET['action'])) {
         $sql = mysqli_query($con, sprintf("SELECT * FROM student WHERE student_id"));
         if (@mysqli_num_rows($sql) > 0) {
             while ($row = mysqli_fetch_array($sql)) {
-                $output[] = $row;
+                $datas[] = $row;
             }
         } else {
             $output = 'there no data';
         }
-        print json_encode($output);
+        print json_encode($datas);
     }
 }
