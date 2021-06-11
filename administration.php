@@ -2,13 +2,23 @@
 <div class="side-bar ui bg-dark white">
     <?php include("./includes/sideBar.php"); ?>
 </div>
+<style>
+    .event {
+        visibility: hidden;
+        transition: 0.3s;
+    }
+
+    table tr:hover .event {
+        visibility: visible;
+    }
+</style>
 <div class="ui main">
     <div class="container-fluid m-0">
         <div class="row p-0">
             <div class="col-md-8">
                 <h3 class="bg-success p-2 text-center text-white">Administrators and users</h3>
                 <div class="card card-body">
-                    <table class="table table-active table-sm table-responsive-sm table-striped">
+                    <table class="table table-active table-success table-bordered table-sm table-responsive-sm table-striped">
                         <thead>
                             <tr>
                                 <th> Name </th>
@@ -35,7 +45,7 @@
                                     <td><?= $status; ?></td>
                                     <td><?= $auth; ?></td>
                                     <td>
-                                        <div class="btn-group">
+                                        <div class="btn-group event">
                                             <a href="administration.php?edit=<?php print $id; ?>" class="btn btn-sm btn-info"><i class="icon edit"></i></a>
                                             <a href="administration.php?delete=<?php print $id; ?>" class="btn btn-sm btn-danger"><i class="icon trash"></i></a>
                                         </div>
