@@ -40,6 +40,18 @@ function Students() {
         }
     })
 }
+$.ajax({
+    url: './configuration/chartjs.php',
+    method: 'POST',
+    dataType: 'JSON',
+    data: {
+        action: 'chartjs1'
+    },
+    success: function(data) {
+        let data1 = data.studentNum
+        alert(data1)
+    }
+})
 let ctx = document.getElementById('myChart').getContext('2d');
 let chart = new Chart(ctx, {
     // The type of chart we want to create
