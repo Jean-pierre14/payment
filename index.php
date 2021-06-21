@@ -49,44 +49,47 @@ $.ajax({
     },
     success: function(data) {
         let data1 = data.studentNum
-        alert(data1)
+        // let data2 = data.studentNum1
+        // alert(data1)
+        let ctx = document.getElementById('myChart').getContext('2d');
+        let chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+            // The data for our dataset
+            data: {
+                labels: ['Students', 'Employees', 'Lecturer', 'crud', 'May', 'June', 'July',
+                    'August',
+                    'May'
+                ],
+                datasets: [{
+                    label: 'Payment System',
+                    backgroundColor: 'rgb(255, 99, 132, 0.6)',
+                    borderColor: 'rgb(255, 99, 132, 0.6)',
+                    borderWidth: 2,
+                    data: [2, 11, 3, 19, 21, 30, 45, 22, 35]
+                }, {
+                    label: 'Students',
+                    backgroundColor: 'rgb(20, 100, 122, 0.6)',
+                    borderColor: 'rgb(20, 100, 122, 0.6)',
+                    borderWidth: 1,
+                    data: [data1, 23, 9, 19, 16, 7, 35, 12, 25]
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                title: {
+                    text: "System io"
+                },
+                resposinve: true,
+                elements: {
+                    point: {
+                        radius: 5
+                    }
+                }
+            }
+        });
     }
 })
-let ctx = document.getElementById('myChart').getContext('2d');
-let chart = new Chart(ctx, {
-    // The type of chart we want to create
-
-    type: 'line',
-    // The data for our dataset
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'May'],
-        datasets: [{
-            label: 'Payment System',
-            backgroundColor: 'rgb(255, 99, 132, 0.6)',
-            borderColor: 'rgb(255, 99, 132, 0.6)',
-            borderWidth: 2,
-            data: [2, 11, 3, 19, 21, 30, 45, 22, 35]
-        }, {
-            label: 'Students',
-            backgroundColor: 'rgb(20, 100, 122, 0.6)',
-            borderColor: 'rgb(20, 100, 122, 0.6)',
-            borderWidth: 1,
-            data: [20, 23, 9, 19, 16, 7, 35, 12, 25]
-        }]
-    },
-
-    // Configuration options go here
-    options: {
-        title: {
-            text: "System io"
-        },
-        resposinve: true,
-        elements: {
-            point: {
-                radius: 5
-            }
-        }
-    }
-});
 </script>
 <?php include('./footer.php'); ?>
