@@ -6,6 +6,8 @@ $action = '';
 $output = '';
 $error = '';
 
+// POST EVENT
+
 if (isset($_POST['action'])) {
 
     if ($_POST['action'] == 'student') {

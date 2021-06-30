@@ -63,19 +63,10 @@
         $.ajax({
             url: './_data.json.php?action=student',
             method: 'GET',
-            dataType: 'json',
+            dataType: 'JSON',
             success: function (data) {
                 // document.getElementById('students')
-                let out = ""
-                if (data.length > 0) {
-                    console.log('Before loop')
-                    data.forEach((u) => {
-                        out += `${u.username}`
-                    })
-                    console.log(out)
-                } else {
-                    out = "<p class='alert alert-dander'>There is no data register</p>";
-                }
+                console.log(data)
             }
         })
     }
