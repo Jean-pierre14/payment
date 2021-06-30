@@ -124,11 +124,11 @@ if(isset($_POST['register'])){
 
 
     //  Check the email webmaster chiruzabisimwa@outlook.fr
-    if(@mysqli_num_rows($fetch_mail) > 0){array_push($error, "This email is used :-(");}
+    // if(@mysqli_num_rows($fetch_mail) > 0){array_push($error, "This email is used :-(");}
 
     // check the username
     $checkUsername = mysqli_query($con, "SELECT username FROM student WHERE username = '$user_name'");
-    $makeItRun = mysqli_fetch_assoc($checkUsername);
+    $makeItRun = @mysqli_fetch_assoc($checkUsername);
     if(@mysqli_num_rows($makeItRun) > 0){array_push($error, "This username is taken :(");}
 
     // $stud_username = $_POST['username'];

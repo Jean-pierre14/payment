@@ -63,13 +63,13 @@
         $.ajax({
             url: './_data.json.php?action=student',
             method: 'GET',
+            dataType: 'json',
             success: function (data) {
-                document.getElementById('students')
+                // document.getElementById('students')
                 let out = ""
-
                 if (data.length > 0) {
                     console.log('Before loop')
-                    data.forEach((u)=>{
+                    data.forEach((u) => {
                         out += `${u.username}`
                     })
                     console.log(out)
