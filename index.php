@@ -25,7 +25,6 @@ Chart.defaults.globals.elements.point.radius = 10;
 const resStudents = ''
 
 function Students() {
-
     let action = 'StudentsCount'
     $.ajax({
         url: './configuration/chart.js.php',
@@ -61,6 +60,7 @@ $.ajax({
                     'August',
                     'May'
                 ],
+                
                 datasets: [{
                     label: 'Payment System',
                     backgroundColor: 'rgb(255, 99, 132, 0.6)',

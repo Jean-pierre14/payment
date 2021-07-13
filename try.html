@@ -57,25 +57,42 @@
 <script src="./js/jquery-3.4.0.min.js"></script>
 <script>
     $(document).ready(function () {
-        jsonData()
+        // jsonData()
+        selectFetch()
     })
-    function jsonData() {
-        $.ajax({
-            url: './_data.json.php?action=student',
-            method: 'GET',
-            dataType: 'JSON',
-            success: function (data) {
-                // document.getElementById('students')
-                console.log(data)
-            }
-        })
-    }
+    // function selectFetch() {
+    //     let action = 'Student'
+    //     $.ajax({
+    //         url: `./_data.json.php?action=${action}`,
+    //         method: 'POST',
+    //         dataType: 'JSON',
+    //         success: function (data) {
+    //             // console.log(data)
+    //             // $('#students').html(data)
+    //             // data.forEach((u) => {
+    //             //     console.log(u.username)
+    //             // })
+    //         }
+    //     })
+    // }
+    // function jsonData() {
+    //     $.ajax({
+    //         url: './_data.json.php?action=student',
+    //         method: 'GET',
+    //         dataType: 'JSON',
+    //         success: function (data) {
+    //             // document.getElementById('students')
+    //             $('#students').html(data)
+    //         }
+    //     })
+    // }
     function SelectStudent() {
         let action = 'student'
         $.ajax({
             url: './_data.json.php',
             type: 'POST',
             data: { action },
+            dataType: 'JSON',
             success: function (data) {
                 console.log(data)
                 if (data.length > 0) {
@@ -98,6 +115,7 @@
                         </tr>
                     </tbody>
                     `
+                        $('#students').html(output)
                     })
                 } else {
                     console.log("there is data into your data jquery")

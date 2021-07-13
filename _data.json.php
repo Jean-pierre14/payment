@@ -41,8 +41,14 @@ if (isset($_POST['action'])) {
 
 if (isset($_GET['action'])) {
 
+    if($_GET['action'] == 'Student'){
+        $sql = mysqli_query($con, "SELECT * FROM student");
+        $row = mysqli_fetch_array($sql);
+        print json_encode($row);
+    }
+
     if ($_GET['action'] == 'student') {
-        $sql = sprintf("SELECT * FROM student ORDER BY id_student DESC");
+        $sql = "SELECT * FROM student ORDER BY id_student DESC";
         $query = mysqli_query($con, $sql);
         if (@mysqli_num_rows($query) > 0) {
             while ($row = mysqli_fetch_array($query)) {
