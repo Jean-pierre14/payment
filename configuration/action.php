@@ -47,6 +47,49 @@ if (isset($_POST['action'])) {
         print $output;
     }
 
+    if($_POST['action'] == 'adminResult'){
+        $sql = mysqli_query($con, "SELECT * FROM `admin` ORDER BY admin_id DESC");
+        if(@mysqli_num_rows($sql) > 0){
+            $output .= '
+            <table class="table table-active table-success table-bordered table-sm table-responsive-sm table-striped">
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Second Name </th>
+                    <th> Email </th>
+                    <th> Status </th>
+                    <th> Level </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+            ';
+            while():
+                $output .= '
+                <tr class="text-bold">
+                    <td>'.$row['username'].'</td>
+                    <td>'.$row['sname'].'</td>
+                    <td>'.$row['email'].'</td>
+                    <td>'.$row['status'].'</td>
+                    <td>'.$row['auth'].'</td>
+                    <td>
+                        <div class="btn-group event">
+                            <button type="button" id="'.$row['admin_id'].'" class="btn btn-sm btn-info"><i class="icon edit"></i></button>
+                            <button type="button" id="'.$row['admin_id'].'" class="btn btn-sm btn-danger"><i class="icon trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                ';
+            endwhile;
+            $output .= '
+                </tbody>
+            </table>
+            ';
+        }else{
+
+        }
+    }
+
     if ($_POST['action'] == 'allStudents') {
 
         $sql = mysqli_query($con, "SELECT * FROM student ORDER BY id_student DESC");

@@ -272,7 +272,7 @@
     function adminResult(){
         let action = 'adminResult'
         $.ajax({
-            url: './config/action.php',
+            url: './configuration/action.php',
             method: 'POST',
             data: {action},
             success: function(data){
@@ -282,6 +282,7 @@
     }
     $(document).ready(function () {
         GetClasses();
+        adminResult()
 
         $('#EventAddClass').click(function () {
             EventAddClass();
