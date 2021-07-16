@@ -17,7 +17,7 @@
         <div class="row p-0">
             <div class="col-md-8">
                 <h3 class="bg-success p-2 text-center text-white">Administrators and users</h3>
-                <div class="card card-body">
+                <div class="card card-body" id="adminResult">
                     <table class="table table-active table-success table-bordered table-sm table-responsive-sm table-striped">
                         <thead>
                             <tr>
@@ -36,7 +36,7 @@
                                 $full = $rowAdm['sname'];
                                 $email = $rowAdm['email'];
                                 $status = $rowAdm['status'];
-                                $auth = $rowAdm['auth'];
+                                $auth = $rowAdm['auth'];     
                                 ?>
                                 <tr class="text-bold">
                                     <td><?= $user; ?></td>

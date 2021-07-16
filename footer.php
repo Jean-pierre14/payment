@@ -269,6 +269,17 @@
             }
         })
     }
+    function adminResult(){
+        let action = 'adminResult'
+        $.ajax({
+            url: './config/action.php',
+            method: 'POST',
+            data: {action},
+            success: function(data){
+                $('#adminResult').html(data)
+            }
+        })
+    }
     $(document).ready(function () {
         GetClasses();
 
