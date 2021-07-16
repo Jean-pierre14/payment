@@ -48,8 +48,9 @@ if (isset($_POST['action'])) {
     }
 
     if($_POST['action'] == 'adminResult'){
-        $sql = mysqli_query($con, "SELECT * FROM `admin` ORDER BY admin_id DESC");
+        $sql = mysqli_query($con, "SELECT * FROM `admin` ORDER BY id_admin DESC");
         if(@mysqli_num_rows($sql) > 0){
+            $CounT = mysqli_num_rows($sql);
             $output .= '
             <table class="table table-active table-success table-bordered table-sm table-responsive-sm table-striped">
             <thead>
@@ -64,7 +65,7 @@ if (isset($_POST['action'])) {
             </thead>
             <tbody>
             ';
-            while():
+            while($row = mysqli_fetch_array($sql)):
                 $output .= '
                 <tr class="text-bold">
                     <td>'.$row['username'].'</td>
@@ -74,8 +75,8 @@ if (isset($_POST['action'])) {
                     <td>'.$row['auth'].'</td>
                     <td>
                         <div class="btn-group event">
-                            <button type="button" id="'.$row['admin_id'].'" class="btn btn-sm btn-info"><i class="icon edit"></i></button>
-                            <button type="button" id="'.$row['admin_id'].'" class="btn btn-sm btn-danger"><i class="icon trash"></i></button>
+                            <button type="button" id="'.$row['id_admin'].'" class="btn btn-sm btn-info"><i class="icon edit"></i></button>
+                            <button type="button" id="'.$row['id_admin'].'" class="btn btn-sm btn-danger"><i class="icon trash"></i></button>
                         </div>
                     </td>
                 </tr>
@@ -84,10 +85,17 @@ if (isset($_POST['action'])) {
             $output .= '
                 </tbody>
             </table>
+            <div class="my-2 shadow-sm p-3">
+                <p class="d-flex justify-content-between align-items-center">
+                    <span>Admin number: </span>
+                    <span class="badge badge-success">'.$CounT.'</span>
+                </p>
+            </div>
             ';
         }else{
-
+            header("Location: ../login.php");
         }
+        print $output;
     }
 
     if ($_POST['action'] == 'allStudents') {
