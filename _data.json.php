@@ -22,6 +22,14 @@ if (isset($_POST['action'])) {
         }
     }
 
+    if($_POST['action'] == 'r'){
+        $today = date('Y-m-d');
+
+        $l = $today;
+        $m = $today - 1;
+        print $today .' ' . $m;
+    }
+
     if ($_POST['action'] == 'getStudent') {
         $Id = mysqli_real_escape_string($con, trim(htmlentities($_POST['id'])));
 
