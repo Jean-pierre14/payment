@@ -10,3 +10,21 @@
     print "without semicolon if you close your statement <?php?>";
     
     ?>
+
+<?php
+
+function myFunction($a, $b){
+    return $a + $b;
+}
+$run = 'myFunction';
+print $run(3, 4);
+
+class myClass{
+    public function __construct(){
+        $functionName = "Grace";
+        $this->$functionName('Hello wolrd');
+    }
+    private function Grace($string){
+        print $string;
+    }
+}
