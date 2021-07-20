@@ -25,6 +25,7 @@ for($row = 0; $row < 2; $row++){
     }
     echo "</ul>";
 }
+
 $a = "";
 if($a){
     print "All";
