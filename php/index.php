@@ -6,8 +6,8 @@
     // header("Content-Type: application/json");
     // $res = ['response' => 'json format'];
     // print json_encode($res);
-    print "Display";
-    print "without semicolon if you close your statement <?php?>";
+    print "Display\n";
+    print "without semicolon if you close your statement <?php?>\n";
     
     ?>
 
