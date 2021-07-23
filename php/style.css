@@ -3,3 +3,39 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    position: relative;
+    width: 100%;
+    background: linear-gradient(90deg, rgb(58, 139, 167), rgb(24, 48, 92));
+}
+.container{
+    position: relative;
+    width: 30%;
+    margin: 10px auto;
+}
+.form{
+    width: 100%;
+    display: block;
+    position: relative;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.form label, input{
+    display: block;
+}
+.form input{
+    padding: 10px;
+    width: 100%;
+    margin: 5px 0;
+    outline: none !important;
+    border: 1px solid #111;
+    border-radius: 0.2rem;
+}
+.button{
+    padding: 10px;
+    border: none !important;
+    outline: none !important;
+    background-color: coral;
+}
