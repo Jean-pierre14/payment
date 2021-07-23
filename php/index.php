@@ -13,7 +13,7 @@
     <div class="container">
         <div class="form">
             <h3>PDO code PHP</h3>
-            <form action="./condes.php" method="get">
+            <form action="./_pdo.php" method="get">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="Username">
                 <label for="fullname">Fullname</label>
