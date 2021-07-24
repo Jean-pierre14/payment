@@ -12,7 +12,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="username"><i class="icon user"></i>Username</label>
-                                <input type="text" name="username" id="username" placeholder="Username" class="form-control">
+                                <input type="text" name="username" id="username" value="<?= $username;?>" placeholder="Username" class="form-control">
                             </div>
 
                             <div class="form-group col-md-6">

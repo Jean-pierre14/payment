@@ -30,16 +30,15 @@ if(isset($_POST['register'])) {
     if(empty($pass_2)){array_push($error, "password field name is empty");}
 
     // check the password
-
     if($pass_1 != $pass_2){array_push($error, "The Password are not match");}
 
     // end if password
     // Check if the email is not yet used
 
-    $sql = "SELECT * FROM admin  WHERE email = '$email'";
+    $sql = "SELECT * FROM admin";
     $run_sql = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($run_sql);
-    $em = $row['email'];
+    // $em = $row['email'];
 
     if($email == $row['email']) {array_push($error, "Email is already used! ");}
     // To check the username
