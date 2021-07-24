@@ -34,8 +34,6 @@ if(isset($_POST['register'])) {
     if($pass_1 != $pass_2){array_push($error, "The Password are not match");}
 
     // end if password
-
-
     // Check if the email is not yet used
 
     $sql = "SELECT * FROM admin  WHERE email = '$email'";
