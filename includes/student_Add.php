@@ -59,7 +59,7 @@
             <div class="card card-body">
                 <form autocomplete="off" action="" method="post">
 
-                    <?php include("./error.php");?>
+                    <?php include "./error.php";?>
 
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -113,6 +113,7 @@
                         </div>
 
                         <div class="form-group col-md-9">
+                            
                             <?php if($email_edit == true):?>
                                 <label for="email">Email</label>
                                 <input type="email" value="<?php print $stud_em; ?>" name="email" id="email" placeholder="Email" class="form-control" readonly>
