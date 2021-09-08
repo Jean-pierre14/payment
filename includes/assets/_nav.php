@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="100">
         <div class="container">
             <div class="navbar-translate">
                 <a class="navbar-brand" href="https://demos.creative-tim.com/blk-design-system/index.html" rel="tooltip"
@@ -82,3 +83,4 @@
             </div>
         </div>
     </nav>
+</div>

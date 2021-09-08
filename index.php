@@ -18,6 +18,35 @@
 
 <body>
     <?php include './includes/assets/_nav.php';?>
+    <div class="my-5 container">
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <h4>Welcome to BISIMWA platform</h4>
+                <button class="btn btn-lg btn-success">Get started</button>
+            </div>
+            <div class="col-md-5">
+                <?php
+                    $con = mysqli_connect("localhost", "root", "", "ramall");
+
+                    // if(@$con){
+                    //     print '<h4>Welcome to the DB.io</h4>';
+                    // }else{
+                    //     print 'Sorry';
+                    // }
+                ?>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem optio ex maiores beatae deleniti
+                    quis, sunt a. Aliquid sequi fugit recusandae quia? Ipsum libero aliquam eaque provident accusantium
+                    pariatur, nihil voluptas sapiente repellat enim. Sequi recusandae eos quas, id earum et! Sapiente
+                    provident mollitia, itaque repellendus velit nostrum incidunt aliquam veniam. Asperiores debitis
+                    earum explicabo iusto natus harum amet perferendis quasi similique, soluta architecto. Reiciendis
+                    iusto impedit, sit vero magni, modi optio dicta eum alias facilis nulla! Quo beatae odit molestias,
+                    ipsam dolores sint earum doloribus nulla laborum repudiandae, optio exercitationem quidem magnam
+                    reiciendis eos nobis dolore ullam rem saepe.
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
 <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
