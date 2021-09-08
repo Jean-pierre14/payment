@@ -33,6 +33,12 @@
                     // }else{
                     //     print 'Sorry';
                     // }
+                    $sql = mysqli_query($con, "SELECT payMonth FROM employees_tb");
+                    $row = mysqli_fetch_array($sql);
+
+                    // if($row['payMonth'] !== 'thisMonth' ){
+
+                    // }
                 ?>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem optio ex maiores beatae deleniti
