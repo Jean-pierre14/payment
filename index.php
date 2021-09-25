@@ -16,8 +16,7 @@ if (!isset($_SESSION['username'])) {
 </div>
 <div class="ui main">
     <div class="container-fluid m-0 ui">
-        <!-- 
-        <div class="ui iu menu inverted">
+        <!-- <div class="ui iu menu inverted">
             <a href="#" class="item"><i class="icon home"></i>Home</a>
             <a href="#" class="item"><i class="icon user"></i>profile</a>
             <a href="#" class="item"><i class="icon users"></i>Contacts</a>
@@ -31,6 +30,10 @@ if (!isset($_SESSION['username'])) {
                         <span>Students: </span>
                         <span class="badge badge-success">23</span>
                     </p>
+                    <div class="btn-group">
+                        <a href="studentAdd.php" class="btn btn-sm btn-primary">Add new</a>
+                        <a href="student.php" class="btn btn-sm btn-success">View all</a>
+                    </div>
                 </div>
                 <div class="col-md-3 p-3 m-1 shadow-sm">
                     <p class="d-flex justify-content-between align-items-center">
