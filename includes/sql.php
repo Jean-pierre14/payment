@@ -110,7 +110,7 @@ if(isset($_POST['register'])){
     
     $sex = mysqli_real_escape_string($con, $_POST['sex']);
 
-    if(empty($user_name)){array_push($error, "The username 234556 field is empty");}
+    if(empty($user_name)){array_push($error, "The username field is empty");}
     if(empty($sname)){array_push($error, "The second name field is empty");}
 
     if(empty($email)){array_push($error, "The Email field is empty");}
@@ -127,9 +127,10 @@ if(isset($_POST['register'])){
     // if(@mysqli_num_rows($fetch_mail) > 0){array_push($error, "This email is used :-(");}
 
     // check the username
-    $checkUsername = mysqli_query($con, "SELECT username FROM student WHERE username = '$user_name'");
-    $makeItRun = @mysqli_fetch_assoc($checkUsername);
-    if(@mysqli_num_rows($makeItRun) > 0){array_push($error, "This username is taken :(");}
+    // $checkUsername = mysqli_query($con, "SELECT username FROM student");
+    // $rowCheck = @mysqli_fetch_array($checkUsername);
+
+    // if($rowcheck['username'] == $user_name){ array_push($error, "This Username is taken :( ");}
 
     // $stud_username = $_POST['username'];
     // $stud_sname = $_POST['sname'];
