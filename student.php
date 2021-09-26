@@ -14,3 +14,24 @@
 </div>
 
 <?php include("./footer.php");?>
+
+<script>
+    $(document).ready(function(){
+        FetchAllStudent()
+    })
+    function FetchAllStudent(){
+            let action = 'fetch'
+            $.ajax({
+                url: './configuration/action.php',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {action},
+                success: function(data){
+                    render(data)
+                }
+            })
+        }
+        function render(data){
+            console.log("Cool "+data)
+        }
+</script>

@@ -282,7 +282,11 @@
     }
     $(document).ready(function () {
         GetClasses();
-        adminResult()
+        adminResult();
+        FetchAllStudent();
+        let Url = './configuration/action.php';
+
+        
 
         $('#EventAddClass').click(function () {
             EventAddClass();

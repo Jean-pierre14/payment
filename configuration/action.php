@@ -216,4 +216,20 @@ if (isset($_POST['action'])) {
         }
         print $output;
     }
+
+    if($_POST['action'] == 'fetch'){
+        $sql = mysqli_query($con, "SELECT * FROM student ORDER BY id DESC");
+        if(@mysqli_num_rows($sql) > 0){
+            while($row = mysqli_fetch_array($sql)){
+                $datas = array();
+                $datas['username'] = $row['username'];
+                $datas['sname'] = $row['sname'];
+                $datas['email'] = $row['class'];
+
+                print json_encode($datas);
+            }
+        }else{
+            print json_encode(0);
+        }
+    }
 }
