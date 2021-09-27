@@ -241,7 +241,7 @@ if(isset($_GET['action'])){
         $sql = mysqli_query($con, "SELECT * FROM student ORDER BY id_student DESC");
         if(@mysqli_num_rows($sql) > 0){
             while($row = mysqli_fetch_array($sql)){
-                $datas = array();
+                // $datas = array();
                 $datas['items'][] = $row;
 
                 print json_encode($datas);

@@ -23,8 +23,10 @@
     let url = 'http://localhost/payment/configuration/action.php'
     function Fetch(){
         action = 'fetch'
-        $.get(`${url}?action=${action}`, function(data){
-            console.log(data)
+        $.get(`${url}?action=${action}`, function(datas){
+            datas => datas.json().then(item=>{
+                console.log(item)
+            })
         })
     }
     function FetchAllStudent(){
