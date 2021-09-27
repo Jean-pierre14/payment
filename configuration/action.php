@@ -225,7 +225,24 @@ if (isset($_POST['action'])) {
                 $datas['id_student'] = $row['id_student'];
                 $datas['username'] = $row['username'];
                 $datas['sname'] = $row['sname'];
-                $datas['email'] = $row['class'];
+                $datas['email'] = $row['email'];
+                $datas['class'] = $row['class'];
+
+                print json_encode($datas);
+            }
+        }else{
+            print json_encode(0);
+        }
+    }
+}
+
+if(isset($_GET['action'])){
+    if($_GET['action'] == 'fetch'){
+        $sql = mysqli_query($con, "SELECT * FROM student ORDER BY id_student DESC");
+        if(@mysqli_num_rows($sql) > 0){
+            while($row = mysqli_fetch_array($sql)){
+                $datas = array();
+                $datas['items'][] = $row;
 
                 print json_encode($datas);
             }

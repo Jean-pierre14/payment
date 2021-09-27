@@ -18,12 +18,20 @@
 <script>
     $(document).ready(function(){
         FetchAllStudent()
+        Fetch()
     })
+    let url = 'http://localhost/payment/configuration/action.php'
+    function Fetch(){
+        action = 'fetch'
+        $.get(`${url}?action=${action}`, function(data){
+            console.log(data)
+        })
+    }
     function FetchAllStudent(){
         let action = 'fetch'
         $.ajax({
             url: './configuration/action.php',
-            method: 'POST',
+            method: 'get',
             dataType: 'JSON',
             data: {action},
             success: function(data){
