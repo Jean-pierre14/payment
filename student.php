@@ -20,16 +20,17 @@
         FetchAllStudent()
     })
     function FetchAllStudent(){
-            let action = 'fetch'
-            $.ajax({
-                url: './configuration/action.php',
-                method: 'POST',
-                dataType: 'JSON',
-                data: {action},
-                success: function(data){
-                    render(data)
-                }
-            })
+        let action = 'fetch'
+        $.ajax({
+            url: './configuration/action.php',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {action},
+            success: function(data){
+                // render(data)
+                console.log(data)
+            }
+        })
         }
         function render(data){
             console.log("Cool "+data)

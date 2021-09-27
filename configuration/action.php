@@ -218,10 +218,11 @@ if (isset($_POST['action'])) {
     }
 
     if($_POST['action'] == 'fetch'){
-        $sql = mysqli_query($con, "SELECT * FROM student ORDER BY id DESC");
+        $sql = mysqli_query($con, "SELECT * FROM student ORDER BY id_student DESC");
         if(@mysqli_num_rows($sql) > 0){
             while($row = mysqli_fetch_array($sql)){
                 $datas = array();
+                $datas['id_student'] = $row['id_student'];
                 $datas['username'] = $row['username'];
                 $datas['sname'] = $row['sname'];
                 $datas['email'] = $row['class'];
