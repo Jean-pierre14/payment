@@ -23,7 +23,12 @@ if (!isset($_SESSION['username'])) {
             <a href="#" class="item"><i class="icon help"></i>Help</a>
         </div> -->
 
-        <div class="row">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <form action="" method="get">
+                    <input type="search" name="search" id="search" placeholder="Search..." class="form-control">
+                </form>
+            </div>
             <div class="col-md-10">
                 <h2>Admin</h2>
                 <p>
