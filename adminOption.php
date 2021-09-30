@@ -24,7 +24,20 @@ if (!isset($_SESSION['username'])) {
         </div> -->
 
         <div class="row">
-            <h2>Admin</h2>
+            <div class="col-md-10">
+                <h2>Admin</h2>
+                <p>
+                    Dans cette partie je vais ajouter toute les options que l'administrateur aura besoin d'ajouter.
+                </p>
+                <ol>
+                    <li>La classe</li>
+                    <li>Les cours</li>
+                    <li>Et Bien d'autres choses viendront avec les temps</li>
+                </ol>
+                <h1>
+                    Je vais utilise le popup model pour eveiter plus d'interface...
+                </h1>    
+            </div>
         </div>
     </div>
 </div>
