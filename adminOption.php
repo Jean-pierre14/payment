@@ -23,27 +23,49 @@ if (!isset($_SESSION['username'])) {
             <a href="#" class="item"><i class="icon help"></i>Help</a>
         </div> -->
 
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <form action="" method="get">
-                    <input type="search" name="search" id="search" placeholder="Search..." class="form-control">
-                </form>
+        <?php if(isset($_GET['action'])):?>
+            <?php if($_GET['action'] == 'Classe'):?>
+                <h3>Classe</h3>
+            <?php elseif($_GET['action'] == 'Cours'):?>
+                <h3>Cours</h3>
+            <?php else:?>
+                <div class="card card-body my-5">
+                    <h2 class="text-center">
+                        Sorry guy but you need bad things
+                    </h2>
+                    <a href="adminOption.php" class="text-center btn btn-lg btn-block btn-primary">Back</a>
+                </div>
+            <?php endif;?>
+        <?php else:?>
+            <div class="row justify-content-center">
+            <div class="col-md-12 mb-2">
+                <div class="card card-body">
+                    <form action="" method="get">
+                        <input type="search" name="search" id="search" placeholder="Search..." class="form-control">
+                    </form>
+                </div>
             </div>
-            <div class="col-md-10">
-                <h2>Admin</h2>
-                <p>
-                    Dans cette partie je vais ajouter toute les options que l'administrateur aura besoin d'ajouter.
-                </p>
-                <ol>
-                    <li>La classe</li>
-                    <li>Les cours</li>
-                    <li>Et Bien d'autres choses viendront avec les temps</li>
-                </ol>
-                <h1>
-                    Je vais utilise le popup model pour eveiter plus d'interface...
-                </h1>    
+
+            <div class="col-md-12 my-1">
+                <div class="card card-body">
+                    <p class="d-flex justify-content-between align-items-center">
+                        <span>Classe</span>
+                        <span class="badge badge-success">nombre des classe</span>
+                        <a href="adminOption.php?action=Classe" class="btn btn-sm btn-success" type="button">Add</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12 my-1">
+                <div class="card card-body">
+                    <p class="d-flex justify-content-between align-items-center">
+                        <span>Cours</span>
+                        <span class="badge badge-success">nombre des cours</span>
+                        <a href="adminOption.php?action=Cours" class="btn btn-sm btn-success" type="button">Add</a>
+                    </p>
+                </div>
             </div>
         </div>
+        <?php endif;?>
     </div>
 </div>
 </div>
