@@ -29,7 +29,9 @@ if (!isset($_SESSION['username'])) {
                     <h2>Classe</h2>
                 </div>
             <?php elseif($_GET['action'] == 'Cours'):?>
-                <h3>Cours</h3>
+                <div class="card card-body">
+                    <h2>Cours </h2>
+                </div>
             <?php else:?>
                 <div class="card card-body my-5">
                     <h2 class="text-center">
