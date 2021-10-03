@@ -24,12 +24,14 @@ if (!isset($_SESSION['username'])) {
         </div> -->
 
         <?php if(isset($_GET['action'])):?>
+            <a href="adminOption.php" class="btn btn-sm btn-success my-1">Retour</a>
             <?php if($_GET['action'] == 'Classe'):?>
+                
                 <div class="row">
                     <div class="col-md-4">
-                    <div class="card card-body">
-                    <h2>Classe</h2>
-                </div>
+                        <div class="card card-body">
+                            <h2>Classe</h2>
+                        </div>
                     </div>
                     <div class="col-md-8">
                         <div class="card card-body">
