@@ -46,7 +46,7 @@ if (!isset($_SESSION['username'])) {
             <?php else:?>
                 <div class="card card-body my-5">
                     <h2 class="text-center">
-                        Sorry guy but you need bad things
+                        Sorry guy but you need bad things ...
                     </h2>
                     <a href="adminOption.php" class="text-center btn btn-lg btn-block btn-primary">Back</a>
                 </div>
