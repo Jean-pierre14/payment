@@ -73,6 +73,30 @@
     </div>
 </div>
 
+<script src="./js/jquery-3.4.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        Select()
+    })
+
+    function Select(){
+        let action = 'select_student'
+        $.ajax({
+            url: './configuration/action.php',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {action},
+            success: function(data){
+                if(data !== 'error'){
+                    alert('This no internet')
+                }else{
+                    $('#result').innerHTML = data
+                }
+            }
+        })
+    }
+    
+</script>
 <script>
     function CheckDelete() {
         confirm('Do you want to delete?')
