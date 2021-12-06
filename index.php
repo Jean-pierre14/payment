@@ -24,6 +24,58 @@ if (!isset($_SESSION['username'])) {
         </div> -->
 
         <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box p-4 shadow-sm">
+                        <h2> <i class="fa fa-users"></i> Students</h2>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="btn-group">
+                                    <a href="#add" class="btn btn-sm btn-info">Add new</a>
+                                    <a href="#add" class="btn btn-sm btn-success">View</a>
+                                </div>
+                            </div>
+                            <div>
+                                <span><small>234500</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box p-4 shadow-sm">
+                        <h2> <i class="fa fa-users"></i> Males</h2>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="btn-group">
+                                    <a href="#add" class="btn btn-sm btn-info">Add new</a>
+                                    <a href="#add" class="btn btn-sm btn-success">View</a>
+                                </div>
+                            </div>
+                            <div>
+                                <span><small>234500</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box p-4 shadow-sm">
+                        <h2> <i class="fa fa-users"></i> Females</h2>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="btn-group">
+                                    <a href="#add" class="btn btn-sm btn-info">Add new</a>
+                                    <a href="#add" class="btn btn-sm btn-success">View</a>
+                                </div>
+                            </div>
+                            <div>
+                                <span><small>234500</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid p-0">
             <div class="row ui py-3 justify-content-center">
                 <div class="col-md-3 p-3 m-1 shadow-sm">
                     <p class="d-flex justify-content-between align-items-center">
@@ -50,7 +102,9 @@ if (!isset($_SESSION['username'])) {
             </div>
             <div class="row mt-3">
                 <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi modi fugit minima ab vero accusantium voluptatem minus doloribus culpa cumque dolorem consequatur eveniet delectus quos atque blanditiis, porro labore maxime?
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi modi fugit minima ab vero
+                    accusantium voluptatem minus doloribus culpa cumque dolorem consequatur eveniet delectus quos atque
+                    blanditiis, porro labore maxime?
                 </p>
             </div>
         </div>
