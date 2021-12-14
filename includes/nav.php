@@ -67,5 +67,17 @@ include('./header.php');
             <input type="search" name="search" id="search" placeholder="Search..." class="form-control">
         </form>
     </div>
-    <div class="Right">Logout</div>
+    <div class="Right">
+        <ul>
+            <li>
+                <a href="#">Dashbord</a>
+            </li>
+            <li>
+                <a href="#">Profil</a>
+            </li>
+            <li>
+                <a href="loggout.php">Logout</a>
+            </li>
+        </ul>
+    </div>
 </nav>
