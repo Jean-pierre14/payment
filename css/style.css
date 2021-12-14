@@ -259,6 +259,7 @@
 }
 .navBar .Left {
   flex: 3.5;
+  padding: 10px;
 }
 .navBar .Center {
   flex: 5;
@@ -266,6 +267,7 @@
 .navBar .Right {
   flex: 3.5;
   display: flex;
+  justify-self: end;
   align-items: center;
   padding: 0 10px;
 }

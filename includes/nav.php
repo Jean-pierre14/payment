@@ -44,23 +44,10 @@ include('./header.php');
         $username = $row['username'];
         $sname = $row['sname'];
     ?>
-<!-- <div class="ui menu bg-dark header fixed d-flex justify-content-between align-items-center p-0">
-    <a href="#">
-        
-        <img src="./images/" alt="user images">
-        
-    </a>
-    <a href="#<?php print $username; ?>" class="text-light">
-        <?php print $username; ?>
-    </a>
-    <div class="navbar navbar-right">
-        <a href="loggout.php" class="btn btn-success"><i class="icon sign-out"></i>Loggout</a>
-    </div>
-</div> -->
 
 <nav class="navBar">
     <div class="Left">
-        Logo
+        <span>Bisimwa</span>
     </div>
     <div class="Center">
         <form action="" method="post">
@@ -70,10 +57,10 @@ include('./header.php');
     <div class="Right">
         <ul>
             <li>
-                <a href="#">Dashbord</a>
+                <a href="index.php">Dashbord</a>
             </li>
             <li>
-                <a href="#">Profil</a>
+                <a href="profil.php">Profil</a>
             </li>
             <li>
                 <a href="loggout.php">Logout</a>
