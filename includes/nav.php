@@ -22,19 +22,19 @@ include('./header.php');
 
 ?>
 
-    <?php
+<?php
     if(isset($_SESSION['success'])) : ?>
-    <div>
-        <h3>
-            <?php
+<div>
+    <h3>
+        <?php
             echo $_SESSION['success'];
             unset($_SESSION['success']);
             ?>
-        </h3>
-    </div>
+    </h3>
+</div>
 <?php endif; ?>
 
-    <?php
+<?php
         $username = $_SESSION['username'];                      
 
         $query = "SELECT * FROM admin WHERE username = '$username'";
@@ -44,11 +44,11 @@ include('./header.php');
         $username = $row['username'];
         $sname = $row['sname'];
     ?>
-<div class="ui menu bg-dark header fixed d-flex justify-content-between align-items-center p-0">
+<!-- <div class="ui menu bg-dark header fixed d-flex justify-content-between align-items-center p-0">
     <a href="#">
-        <!-- user profile img -->
+        
         <img src="./images/" alt="user images">
-        <!-- user profile img -->
+        
     </a>
     <a href="#<?php print $username; ?>" class="text-light">
         <?php print $username; ?>
@@ -56,4 +56,16 @@ include('./header.php');
     <div class="navbar navbar-right">
         <a href="loggout.php" class="btn btn-success"><i class="icon sign-out"></i>Loggout</a>
     </div>
-</div>
+</div> -->
+
+<nav class="navBar">
+    <div class="Left">
+        Logo
+    </div>
+    <div class="Center">
+        <form action="" method="post">
+            <input type="search" name="search" id="search" placeholder="Search..." class="form-control">
+        </form>
+    </div>
+    <div class="Right">Logout</div>
+</nav>
