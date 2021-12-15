@@ -24,49 +24,12 @@
                     </div>
                     <div class="col-md-8">
                         <?php if(isset($_GET['getStudent'])):?>
-                        <?php $id = $_GET['getStudent'];
-                                $sql = mysqli_query($con, "SELECT * FROM student WHERE id_student = ${id}");
-                                $out = '';
-                                $out .= '<a href="student.php?edit='.$id.'" class="btn btn-sm btn-warning my-2">Edit</a>';
-                                if(mysqli_num_rows($sql) > 0){
-                                    $out .= '<div class="list-group">';
-                                    while($row = mysqli_fetch_array($sql)){
-                                        $out .= '
-                                        <p class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span>Username:</span>
-                                            <span>'.$row['username'].'</span>
-                                        </p>
+                        <?php include_once './includes/GetStudent.php';?>
 
-                                        <p class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span>Fullname:</span>
-                                            <span>'.$row['sname'].'</span>
-                                        </p>
-
-                                        <p class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span>Class:</span>
-                                            <span>'.$row['class'].'</span>
-                                        </p>
-
-                                        <p class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span>Sexe:</span>
-                                            <span>'.$row['sex'].'</span>
-                                        </p>
-
-                                        <p class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span>Enregistre:</span>
-                                            <span>'.$row['created_at'].'</span>
-                                        </p>
-                                        ';
-                                    }
-                                    $out .= '</div>';
-                                }else{
-                                    $out = '<p  class="alert alert-danger">:( Mal jouer</p>';
-                                }
-                                print $out;
-                            ?>
                         <?php else:?>
                         <div class="card card-body mt-2">
                             <h2>Student platform</h2>
+                            <img src="./images/undraw_Domain_names_re_0uun.png" alt="" class="img-fluid">
                         </div>
                         <?php endif;?>
                     </div>

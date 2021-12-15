@@ -53,20 +53,20 @@ $Admin = "SELECT * FROM admin";
 $admin_run = mysqli_query($con, $Admin);
 
 // get Edit
-if(isset($_GET['edit'])){
+// if(isset($_GET['edit'])){
 
-    $id = $_GET['edit'];
-    $update = true;
+//     $id = $_GET['edit'];
+//     $update = true;
 
-    $get_edit = "SELECT * FROM admin WHERE id_admin = '$id'";
-    $run = mysqli_query($con, $get_edit);
-    $row = mysqli_fetch_array($run);
+//     $get_edit = "SELECT * FROM admin WHERE id_admin = '$id'";
+//     $run = mysqli_query($con, $get_edit);
+//     $row = mysqli_fetch_array($run);
 
-    $user_get = $row['username'];
-    $edit_sname = $row['sname'];
-    $edit_email = $row['email'];
+//     $user_get = $row['username'];
+//     $edit_sname = $row['sname'];
+//     $edit_email = $row['email'];
 
-}
+// }
 // Update student
 
 if(isset($_POST['update'])) {
