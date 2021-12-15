@@ -27,7 +27,7 @@
                         <?php $id = $_GET['getStudent'];
                                 $sql = mysqli_query($con, "SELECT * FROM student WHERE id_student = ${id}");
                                 $out = '';
-                                $out .= '<a href="student.php?edit='.$row['id_student'].'" class="btn btn-sm btn-warning mt-2">Edit</a>'
+                                $out .= '<a href="student.php?edit='.$id.'" class="btn btn-sm btn-warning my-2">Edit</a>';
                                 if(mysqli_num_rows($sql) > 0){
                                     $out .= '<div class="list-group">';
                                     while($row = mysqli_fetch_array($sql)){
