@@ -1,7 +1,12 @@
 <?php $id = $_GET['getStudent'];
                                 $sql = mysqli_query($con, "SELECT * FROM student WHERE id_student = ${id}");
                                 $out = '';
-                                $out .= '<a href="edit.php?edit='.$id.'" class="btn btn-sm btn-warning my-2">Edit</a>';
+                                $out .= '
+                                <div class="btn-group">
+                                    <a href="edit.php?edit='.$id.'" class="btn btn-sm btn-warning my-2">Edit</a>
+                                    <a href="edit.php?delete='.$id.'" class="btn btn-sm btn-danger my-2">Delete</a>
+                                </div>
+                                ';
                                 if(mysqli_num_rows($sql) > 0){
                                     $out .= '<div class="list-group">';
                                     while($row = mysqli_fetch_array($sql)){
