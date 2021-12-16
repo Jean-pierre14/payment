@@ -24,8 +24,9 @@
                     </div>
                     <div class="col-md-8">
                         <?php if(isset($_GET['getStudent'])):?>
-                            <?php include_once './includes/GetStudent.php';?>
-
+                        <?php include_once './includes/GetStudent.php';?>
+                        <?php elseif($_GET['getStudent'] === 'Add'):?>
+                        <h3>Add</h3>
                         <?php else:?>
                         <div class="card card-body mt-2">
                             <h2>Student platform</h2>
