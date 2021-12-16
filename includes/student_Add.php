@@ -25,8 +25,6 @@
                     <div class="col-md-8">
                         <?php if(isset($_GET['getStudent'])):?>
                         <?php include_once './includes/GetStudent.php';?>
-                        <?php elseif($_GET['getStudent'] === 'Add'):?>
-                        <h3>Add</h3>
                         <?php else:?>
                         <div class="card card-body mt-2">
                             <h2>Student platform</h2>
@@ -42,6 +40,9 @@
 
 <script src="./js/jquery-3.4.0.min.js"></script>
 <script>
+document.getElementById('go-back').addEventListener('click', () => {
+    history.back();
+});
 $(document).ready(function() {
     Select()
 })

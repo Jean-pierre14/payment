@@ -3,8 +3,10 @@
                                 $out = '';
                                 $out .= '
                                 <div class="btn-group">
-                                    <a href="edit.php?edit='.$id.'" class="btn btn-sm btn-warning my-2">Edit</a>
-                                    <a href="edit.php?delete='.$id.'" class="btn btn-sm btn-danger my-2">Delete</a>
+                                    
+                                    <a href="javascript:void()" id="go-back" class="btn btn-sm btn-success my-2">Retour</a>
+                                    <a href="edit.php?edit='.$id.'" class="btn btn-sm btn-warning my-2">Modifier</a>
+                                    <a href="edit.php?delete='.$id.'" class="btn btn-sm btn-danger my-2">Efface</a>
                                 </div>
                                 ';
                                 if(mysqli_num_rows($sql) > 0){

@@ -96,14 +96,14 @@ if (!isset($_SESSION['username'])) {
                     </form>
                 </div>
                 <div class="card-footer">
-                    <a href="javascript:void(0)" onclick="functionBack()" class="btn btn-sm btn-danger">close</a>
+                    <a href="javascript:void(0)" id="go-back" class="btn btn-sm btn-danger">close</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-function functionBack() {
-
-}
+document.getElementById('go-back').addEventListener('click', () => {
+    history.back();
+});
 </script>
