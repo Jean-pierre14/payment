@@ -66,6 +66,11 @@ if (!isset($_SESSION['username'])) {
                                                         </select>
                                                     </div>
 
+                                                    <div class="col-md-12">
+                                                        <label for="annee">Annee scolaire <span class="badge badge-succss">'.$row['AnneeScolaire'].'</span></label>
+                                                        '.$AnneesScolaires.'
+                                                    </div>
+
                                                     <div class="form-group col-md-12">
                                                         <label for="email">E-mail des parents</label>
                                                         <input type="email" class="form-control" name="email" value="'.$row['email'].'" id="email" placeholder="Email des parents">
