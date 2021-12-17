@@ -35,13 +35,49 @@ if (!isset($_SESSION['username'])) {
                                             while($row = mysqli_fetch_array($sql)){
                                                 $out .= '
                                                 <div class="form-group">
-                                                    <label for="username" class="">Username</label>
+                                                    <label for="username" class="">Prenom</label>
                                                     <input type="text" class="form-control" placeholder="Username" name="username" value="'.$row['username'].'">
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="sname" class="">Second name</label>
+                                                    <label for="sname" class="">Nom</label>
                                                     <input type="text" class="form-control" placeholder="Second name" name="sname" value="'.$row['sname'].'">
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="sname" class="">Classe <span class="badge badge-success">'.$row['class'].'</span></label>
+                                                        <select class="form-control" name="class" id="class">
+                                                            <option value="">-- Selectionne --</option>
+                                                            <option value="P1">P1</option>
+                                                            <option value="P2">P2</option>
+                                                            <option value="P3">P3</option>
+                                                            <option value="P4">P4</option>
+                                                            <option value="P5">P5</option>
+                                                            <option value="P6">P6</option>
+                                                        </select>    
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label for="sex">Sexe <span class="badge badge-success">'.$row['sex'].'</span></label>
+                                                        <select name="sex" id="sex" class="form-control">
+                                                            <option>-- selectionne --</option>
+                                                            <option value="Male">Masculin</option>
+                                                            <option value="Female">Feminin</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <label for="annee">Annee scolaire <span class="badge badge-succss">'.$row['AnneeScolaire'].'</span></label>
+                                                        '.$AnneesScolaires.'
+                                                    </div>
+
+                                                    <div class="form-group col-md-12">
+                                                        <label for="email">E-mail des parents</label>
+                                                        <input type="email" class="form-control" name="email" value="'.$row['email'].'" id="email" placeholder="Email des parents">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button class="btn btn-warning btn-sm" type="button">Mettre a jour</button>
                                                 </div>
                                                 ';
                                             }
