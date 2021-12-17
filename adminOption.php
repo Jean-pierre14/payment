@@ -46,7 +46,7 @@ if (!isset($_SESSION['username'])) {
             <h2 class="text-center">
                 Sorry guy but you need bad things ...
             </h2>
-            <a href="adminOption.php" class="text-center btn btn-lg btn-block btn-primary">Back</a>
+            <a href="javascript:void()" id="go-back" class="text-center btn btn-lg btn-block btn-primary">Back</a>
         </div>
         <?php endif;?>
         <?php else:?>
@@ -93,3 +93,8 @@ if (!isset($_SESSION['username'])) {
 </div>
 </div>
 <?php include('./footer.php'); ?>
+<script>
+document.getElementById('go-back').addEventListener('click', () => {
+    history.back();
+});
+</script>

@@ -6,7 +6,7 @@
 <?php
 $AnneesScolaires = '';
 
-$SqlAnnee = mysqli_query($con, "SELECT * FROM AnneesScolaire ORDER BY id");
+$SqlAnnee = mysqli_query($con, "SELECT * FROM AnneesScolaire ORDER BY id LIMIT 7");
 
 if(@mysqli_num_rows($SqlAnnee) > 0){
     $AnneesScolaires .= '
