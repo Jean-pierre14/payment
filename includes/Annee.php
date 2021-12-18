@@ -35,9 +35,6 @@
         </div>
     </div>
     <div class="col-md-7">
-        <?php if(isset($_GET['action=Annee&year'])):?>
-        <h3>Get</h3>
-        <?php else:?>
         <div class="card card-body shadow-sm">
             <?php
             $out = '';
@@ -86,6 +83,5 @@
                 </div>
             </form>
         </div>
-        <?php endif;?>
     </div>
 </div>
