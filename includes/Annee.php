@@ -71,12 +71,12 @@
                 <div class="form-group">
                     <label for="dannee">Debut de l'annee</label>
                     <input type="number" max="<?= $maxAnnee;?>" min="<?= $minAnnee;?>" class="form-control" name="debut"
-                        placeholder="Debut de l'annee" value="<?= $debut;?>">
+                        placeholder="Debut de l'annee" value="<?= $debut;?>" required>
                 </div>
                 <div class="form-group">
                     <label for="fannee">Fin de l'annee</label>
                     <input type="number" class="form-control" max="<?= $maxAnnee;?>" min="<?= $minAnnee;?>" id="fannee"
-                        name="fin" placeholder="Fin de l'annee" value="<?= $fin;?>">
+                        name="fin" placeholder="Fin de l'annee" value="<?= $fin;?>" required>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-sm btn-success" name="ajouterAnnee" type="submit">Ajouter l'annee</button>
