@@ -5,6 +5,9 @@ $output = '';
 $errors = [];
 
 if (isset($_POST['action'])) {
+    if($_POST['action'] == 'mise_a_jour'){
+        print json_encode('success');
+    }
 
     if($_POST['action'] == 'select_student'){
         $SQL = mysqli_query($con, "SELECT * FROM student ORDER BY id DESC");

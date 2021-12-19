@@ -122,9 +122,44 @@ function EditEvent() {
         document.getElementById('error').innerHTML =
             '<p class="alert alert-danger">Certains de champs sont pas bien remplis</p>'
     } else {
-        fetch('./configuration/action.php')
-            .then()
-            .then()
+        $.ajax({
+            url: './configuration/action.php',
+            method: 'POST',
+            data: {
+                action: 'mise_a_jour',
+                username,
+                name,
+                email,
+                classe,
+                sex,
+                annee
+            },
+            success: function(data) {
+                if (data === 'success') {
+                    alert(data)
+                } else {
+                    $('#error').html('<p class="alert alert-danger">Il y a un erreur :( Reessayer!</p>')
+                }
+            }
+        })
+        fetch('./configuration/action.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    action: 'mise_a_jour',
+                    username,
+                    name,
+                    email,
+                    classe,
+                    sex,
+                    annee
+                })
+            })
+            .then(function(response) {
+                return response.text
+            })
+            .then(function(data) {
+                console.log(data)
+            })
             .catch(e => console.log(e))
     }
 
