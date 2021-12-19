@@ -64,7 +64,7 @@
                             <input type="text" name="coursN" id="coursN" placeholder="Cours Name" value="<?= $coursN;?>"
                                 class="form-control">
                         </div>
-                        
+
                         <div class="form-group col-md-12">
                             <div id="classess">
                                 <!-- Data comes from Ajax url -->
@@ -198,179 +198,204 @@
 <script src="./js/dist/Chart.bundle.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script>
-    let urls = './configuration/action.php'
-    function EventAddClass() {
-        let className = $('#classN').val();
-        let syear = $('#syear').val();
-        let eyear = $('#eyear').val();
-        let action = 'EventAddClass';
+let urls = './configuration/action.php'
 
-        if (!className || !syear || !eyear) {
-            alert('check all fields if there field')
-        } else {
-            // alert(className + + syear + + eyear)
-            $.ajax({
-                url: urls,
-                method: 'post',
-                data: { action, className, syear, eyear },
-                success: function (data) {
-                    // alert(data)
-                    if (data == 'success') {
-                        $('#msg').html('<p class="alert alert-success">Class added! </p>')
-                        let className = $('#classN').val('');
-                        let syear = $('#syear').val('');
-                        let eyear = $('#eyear').val('');
-                    } else {
-                        $('#msg').html('<p class="alert alert-danger">Your class didn\'t added! :(</p>')
-                    }
-                }
-            })
-        }
-    }
+function EventAddClass() {
+    let className = $('#classN').val();
+    let syear = $('#syear').val();
+    let eyear = $('#eyear').val();
+    let action = 'EventAddClass';
 
-    
-    function Hide(){
-        $('.msg').hide()
-    }
-    
-    function GetStudent() {
-        let Id = $('#getStudent').val();
-        let action = 'getStudent';
+    if (!className || !syear || !eyear) {
+        alert('check all fields if there field')
+    } else {
+        // alert(className + + syear + + eyear)
         $.ajax({
             url: urls,
-            method: 'POST',
-            data: { Id, action },
-            success: function (data) {
-                $('#resultGetstudent').html(data)
-            }
-        })
-    }
-    function GetClasses() {
-        // alert("Classes")
-        let action = 'getClasse'
-        $.ajax({
-            url: './configuration/action.php',
-            method: 'POST',
-            data: { action },
-            success: function (data) {
-                $('#allClass').html(data)
-            }
-        })
-        setTimeout('GetClasses()', 5000)
-    }
-    function classess() {
-        let action = 'classess'
-        $.ajax({
-            url: './configuration/action.php',
             method: 'post',
-            data: { action },
-            success: function (data) {
-                $('#classess').html(data)
+            data: {
+                action,
+                className,
+                syear,
+                eyear
+            },
+            success: function(data) {
+                // alert(data)
+                if (data == 'success') {
+                    $('#msg').html('<p class="alert alert-success">Class added! </p>')
+                    let className = $('#classN').val('');
+                    let syear = $('#syear').val('');
+                    let eyear = $('#eyear').val('');
+                } else {
+                    $('#msg').html('<p class="alert alert-danger">Your class didn\'t added! :(</p>')
+                }
             }
         })
     }
-    function adminResult(){
-        let action = 'adminResult'
-        $.ajax({
-            url: './configuration/action.php',
-            method: 'POST',
-            data: {action},
-            success: function(data){
-                $('#adminResult').html(data)
-            }
-        })
-    }
-    $(document).ready(function () {
-        GetClasses();
-        adminResult();
-        FetchAllStudent();
-        let Url = './configuration/action.php';
+}
 
-        
 
-        $('#EventAddClass').click(function () {
-            EventAddClass();
-        })
-        function Hide(){
-            $('.msg').delay(5000).hide('blind', 500)
+function Hide() {
+    $('.msg').hide()
+}
+
+function GetStudent() {
+    let Id = $('#getStudent').val();
+    let action = 'getStudent';
+    $.ajax({
+        url: urls,
+        method: 'POST',
+        data: {
+            Id,
+            action
+        },
+        success: function(data) {
+            $('#resultGetstudent').html(data)
         }
-        $('#EventAddCours').click(function() {
-            let coursName = $('#coursN').val();
-            let classId = $('#class').val();
-            let action = 'EventAddCours';
+    })
+}
 
-            // alert("Add")
+function GetClasses() {
+    // alert("Classes")
+    let action = 'getClasse'
+    $.ajax({
+        url: './configuration/action.php',
+        method: 'POST',
+        data: {
+            action
+        },
+        success: function(data) {
+            $('#allClass').html(data)
+        }
+    })
+    setTimeout('GetClasses()', 5000)
+}
 
-            if(!coursName || !classId){
-                $('#msg1').html('<p class="alert alert-warning">fields are not set</p>')
-            }else{
-                // onkeyup() on cours name field to check if the cours is not yet registered.
-                // insert data into the database or table.
-                $.ajax({
-                    url: './configuration/action.php',
-                    method: 'POST',
-                    data: {action, coursName, classId},
-                    success: function(data){
-                        if(data == 'success'){
-                            $('#msg1').html('<p class="alert alert-success">Data Regitered</p>')
-                            $('#msg1').delay(300).hide()
-                            
-                        }else{
-                            $('#msg1').html('<p class="alert alert-warning">' + data + '</p>')
-                            setTimeout(function(){
-                                $('.msg').hide({},300)
-                            }, 3000)
-                            $('#coursN').val('')
-                            $('#class').val('--select--')
-                        }
-                        // console.log(data)
+function classess() {
+    let action = 'classess'
+    $.ajax({
+        url: './configuration/action.php',
+        method: 'post',
+        data: {
+            action
+        },
+        success: function(data) {
+            $('#classess').html(data)
+        }
+    })
+}
+
+function adminResult() {
+    let action = 'adminResult'
+    $.ajax({
+        url: './configuration/action.php',
+        method: 'POST',
+        data: {
+            action
+        },
+        success: function(data) {
+            $('#adminResult').html(data)
+        }
+    })
+}
+$(document).ready(function() {
+    GetClasses();
+    adminResult();
+    FetchAllStudent();
+    let Url = './configuration/action.php';
+
+
+
+    $('#EventAddClass').click(function() {
+        EventAddClass();
+    })
+
+    function Hide() {
+        $('.msg').delay(5000).hide('blind', 500)
+    }
+    $('#EventAddCours').click(function() {
+        let coursName = $('#coursN').val();
+        let classId = $('#class').val();
+        let action = 'EventAddCours';
+
+        // alert("Add")
+
+        if (!coursName || !classId) {
+            $('#msg1').html('<p class="alert alert-warning">fields are not set</p>')
+        } else {
+            // onkeyup() on cours name field to check if the cours is not yet registered.
+            // insert data into the database or table.
+            $.ajax({
+                url: './configuration/action.php',
+                method: 'POST',
+                data: {
+                    action,
+                    coursName,
+                    classId
+                },
+                success: function(data) {
+                    if (data == 'success') {
+                        $('#msg1').html('<p class="alert alert-success">Data Regitered</p>')
+                        $('#msg1').delay(300).hide()
+
+                    } else {
+                        $('#msg1').html('<p class="alert alert-warning">' + data + '</p>')
+                        setTimeout(function() {
+                            $('.msg').hide({}, 300)
+                        }, 3000)
+                        $('#coursN').val('')
+                        $('#class').val('--select--')
                     }
-                })
-                // $('#msg1').html('')
-            }
-        })
-        GetStudent();
-        classess();
-        $('#search_txt').keyup(function () {
-            let txt = $(this).val();
-            if (txt != '') {
-                $.ajax({
-                    url: 'search.php',
-                    method: 'post',
-                    data: {
-                        search: txt
-                    },
-                    dataType: 'text',
-                    success: function (data) {
-                        $('#result').html(data);
-                        $('#normal-list').hide(300)
-                    }
-                });
-            } else {
-                $('#result').html('');
-                $('#normal-list').show(250)
-            }
-        });
-
-        $('#addStudent').click(() => {
-            alert('It\'s works');
-        });
-        allStudents();
+                    // console.log(data)
+                }
+            })
+            // $('#msg1').html('')
+        }
+    })
+    GetStudent();
+    classess();
+    $('#search_txt').keyup(function() {
+        let txt = $(this).val();
+        if (txt != '') {
+            $.ajax({
+                url: 'search.php',
+                method: 'post',
+                data: {
+                    search: txt
+                },
+                dataType: 'text',
+                success: function(data) {
+                    $('#result').html(data);
+                    $('#normal-list').hide(300)
+                }
+            });
+        } else {
+            $('#result').html('');
+            $('#normal-list').show(250)
+        }
     });
 
-    function allStudents() {
-        let action = 'allStudents';
+    $('#addStudent').click(() => {
+        alert('It\'s works');
+    });
+    allStudents();
+});
 
-        $.ajax({
-            url: './configuration/action.php',
-            method: 'post',
-            data: { action },
-            success: function (data) {
-                $('#allStudents').html(data)
-            }
-        })
-        setTimeout('allStudents()', 1000);
-    }
+function allStudents() {
+    let action = 'allStudents';
+
+    $.ajax({
+        url: './configuration/action.php',
+        method: 'post',
+        data: {
+            action
+        },
+        success: function(data) {
+            $('#allStudents').html(data)
+        }
+    })
+    setTimeout('allStudents()', 1000);
+}
 </script>
 </body>
 

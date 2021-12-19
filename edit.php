@@ -24,7 +24,7 @@ if (!isset($_SESSION['username'])) {
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="card card-body shadow-sm">
-                                    <form action="" method="post">
+                                    <form action="" method="post" autocomplete="off" id="editForm">
                                         <?php
                                         $id = $_GET['edit'];
                                         $sql = mysqli_query($con, "SELECT * FROM student WHERE id_student = ${id}");
@@ -34,20 +34,22 @@ if (!isset($_SESSION['username'])) {
                                         $out .= '<div class="list-group">';
                                             while($row = mysqli_fetch_array($sql)){
                                                 $out .= '
+                                                <div class="" id="error"></div>
                                                 <div class="form-group">
+                                                    <input type="hidden" class="form-control" id="UserId" value="'.$row['id_student'].'">
                                                     <label for="username" class="">Prenom</label>
-                                                    <input type="text" class="form-control" placeholder="Username" name="username" value="'.$row['username'].'">
+                                                    <input type="text" required class="form-control"  id="username" placeholder="Username" name="username" value="'.$row['username'].'">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="sname" class="">Nom</label>
-                                                    <input type="text" class="form-control" placeholder="Second name" name="sname" value="'.$row['sname'].'">
+                                                    <input type="text" required class="form-control" id="name" placeholder="Second name" name="sname" value="'.$row['sname'].'">
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="sname" class="">Classe <span class="badge badge-success">'.$row['class'].'</span></label>
-                                                        <select class="form-control" name="class" id="class">
+                                                        <select class="form-control" name="class" id="class" required>
                                                             <option value="">-- Selectionne --</option>
                                                             <option value="P1">P1</option>
                                                             <option value="P2">P2</option>
@@ -59,7 +61,7 @@ if (!isset($_SESSION['username'])) {
                                                     </div>
                                                     <div class="col-md-6 form-group">
                                                         <label for="sex">Sexe <span class="badge badge-success">'.$row['sex'].'</span></label>
-                                                        <select name="sex" id="sex" class="form-control">
+                                                        <select name="sex" id="sex" class="form-control" required>
                                                             <option>-- selectionne --</option>
                                                             <option value="Male">Masculin</option>
                                                             <option value="Female">Feminin</option>
@@ -73,11 +75,11 @@ if (!isset($_SESSION['username'])) {
 
                                                     <div class="form-group col-md-12">
                                                         <label for="email">E-mail des parents</label>
-                                                        <input type="email" class="form-control" name="email" value="'.$row['email'].'" id="email" placeholder="Email des parents">
+                                                        <input type="email" class="form-control" required name="email" value="'.$row['email'].'" id="email" placeholder="Email des parents">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button class="btn btn-warning btn-sm" type="button">Mettre a jour</button>
+                                                    <button class="btn btn-warning btn-sm" id="editBtn" type="button">Mettre a jour</button>
                                                 </div>
                                                 ';
                                             }
@@ -103,3 +105,46 @@ if (!isset($_SESSION['username'])) {
 </div>
 </div>
 <?php include('./footer.php'); ?>
+
+<script>
+$(document).ready(function() {
+    $('#editBtn').click(function() {
+        let username = $('#username').val(),
+            id = $('#userId').val(),
+            name = $('#name').val(),
+            email = $('#email').val(),
+            classe = $('#class').val(),
+            sex = $('#sex').val(),
+            annee = $('#annee').val()
+        if (!username || !name || !email || !classe || !sex || !annee) {
+            $('#error').html(
+                '<p class="alert alert-danger">Il y a quelle chose qui ne va pas bien!</p>')
+            // 1 corinther 7 une femme est lien a son mari
+        } else {
+            $.ajax({
+                url: './configuration/action.php',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    action: 'mise_a_jour',
+                    username,
+                    name,
+                    email,
+                    classe,
+                    sex,
+                    annee
+                },
+                success: function(data) {
+                    if (data === 'success') {
+                        alert(data)
+                    } else {
+                        $('#error').html(
+                            '<p class="alert alert-danger">Il y a un erreur :( Reessayer!</p>'
+                        )
+                    }
+                }
+            })
+        }
+    })
+})
+</script>
