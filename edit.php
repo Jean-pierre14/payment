@@ -142,25 +142,25 @@ function EditEvent() {
                 }
             }
         })
-        fetch('./configuration/action.php', {
-                method: 'POST',
-                body: JSON.stringify({
-                    action: 'mise_a_jour',
-                    username,
-                    name,
-                    email,
-                    classe,
-                    sex,
-                    annee
-                })
-            })
-            .then(function(response) {
-                return response.text
-            })
-            .then(function(data) {
-                console.log(data)
-            })
-            .catch(e => console.log(e))
+        // fetch('./configuration/action.php', {
+        //         method: 'POST',
+        //         body: JSON.stringify({
+        //             action: 'mise_a_jour',
+        //             username,
+        //             name,
+        //             email,
+        //             classe,
+        //             sex,
+        //             annee
+        //         })
+        //     })
+        //     .then(function(response) {
+        //         return response.text
+        //     })
+        //     .then(function(data) {
+        //         console.log(data)
+        //     })
+        //     .catch(e => console.log(e))
     }
 
 }
