@@ -5,7 +5,9 @@ $output = '';
 $errors = [];
 
 if (isset($_POST['action'])) {
+
     if($_POST['action'] == 'mise_a_jour'){
+        
         $id = mysqli_real_escape_string($con, htmlentities(trim($_POST['id'])));
         $username = mysqli_real_escape_string($con, htmlentities(trim($_POST['username'])));
         $name = mysqli_real_escape_string($con, htmlentities(trim($_POST['name'])));
@@ -17,7 +19,7 @@ if (isset($_POST['action'])) {
         if(empty($username) || empty($name) || empty($email) || empty($class) || empty($sex) || empty($annee)){
             $output = 'error';
         }else{
-            $sql = mysqli_query($con, "UPDATE student SET username = '${username}', sname= '${name}', class='${class}', email='${email}', sex='${sex}', annee='${annee} WHERE id_student = '${id}'");
+            $sql = mysqli_query($con, "UPDATE student SET username = '${username}', sname= '${name}', class='${class}', email='${email}', sex='${sex}', annee='${annee} WHERE id_student = $id");
             if($sql){
                 $output = 'success';
             }else{

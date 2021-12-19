@@ -127,6 +127,7 @@ $(document).ready(function() {
                 dataType: 'JSON',
                 data: {
                     action: 'mise_a_jour',
+                    id,
                     username,
                     name,
                     email,
@@ -136,7 +137,7 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                     if (data === 'success') {
-                        alert(data)
+                        $('#editForm').reset()
                     } else {
                         $('#error').html(
                             '<p class="alert alert-danger">Il y a un erreur :( Reessayer!</p>'
