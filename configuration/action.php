@@ -5,6 +5,9 @@ $output = '';
 $errors = [];
 
 if (isset($_POST['action'])) {
+    if($_POST['action'] == 'register_studentForm'){
+        print 'register_studentForm';
+    }
 
     if($_POST['action'] == 'mise_a_jour'){
         

@@ -17,12 +17,14 @@ if (!isset($_SESSION['username'])) {
             <div class="card my-5">
                 <div class="card-body">
                     <h3 class="text-center">Registration of new student</h3>
-                    <form autocomplete="off" action="" method="post">
+                    <form autocomplete="off" action="" method="post" id="register_studentForm">
                         <?php include "./error.php";?>
                         <div class="form-group">
                             <label for="username">Prenom</label>
                             <input type="text" name="username" value="<?= $stud_username; ?>" id="username"
                                 placeholder="Username" class="form-control">
+                                <input type="hidden" name="action" value="register_studentForm" id="action" placeholder="Username"
+                                    class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -92,7 +94,7 @@ if (!isset($_SESSION['username'])) {
                             <button type="submit" name="student_update" class="icon ui labeled button green"><i
                                     class="icon record"></i>UPDATE</button>
                             <?php else:?>
-                            <button type="submit" id="register_student" name="register"
+                            <button type="button" id="register_student" name="register"
                                 class="icon ui labeled button blue"><i class="icon save"></i>Register</button>
                             <?php endif;?>
                         </div>
@@ -105,8 +107,23 @@ if (!isset($_SESSION['username'])) {
         </div>
     </div>
 </div>
+<script src="./js/jquery-3.4.0.min.js"></script>
 <script>
 document.getElementById('go-back').addEventListener('click', () => {
     history.back();
 });
+
+$(document).ready(function() {
+    $('#register_student').click(function() {
+        $.ajax({
+            url: './configuration/action.php',
+            method: 'POST',
+            data: $('#register_studentForm').serialize(),
+            success: function(data){
+                alert('Good ajax')
+            }
+        })
+    })
+
+})
 </script>
