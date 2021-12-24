@@ -69,19 +69,31 @@ if (!isset($_SESSION['username'])) {
             <div class="my-2 row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header">
-                            <h3>Les eleves*</h3>
-                        </div>
+                        <?php
+                                $sql = "SELECT student_male.Male, student_female.Female FROM student_male INNER JOIN student_female ON student_male.id_male = student_female.id_female OR student_male.id_male != student_female.id_female";
+                                $run = mysqli_query($con, $sql);
+
+                                if(@mysqli_num_rows($run) > 0){
+                                    $dataRow = mysqli_fetch_all($run);
+                                    
+                                    $numMale = (int)$dataRow[0][0];
+                                    $numFemale = (int)$dataRow[0][1];
+
+                                    $array = array($numMale+$numFemale, $numMale, $numFemale);
+                                    // print json_encode($array);s
+                                }
+                            ?>
+                        <input type="hidden" value="<?= $numMale+$numFemale;?>" id="Total" class="form-control">
+                        <input type="hidden" value="<?= $numMale;?>" id="numMale" class="form-control">
+                        <input type="hidden" value="<?= $numFemale;?>" id="numFemale" class="form-control">
                         <div class="card-body">
-                            <canvas id="myChart"></canvas>
+                            <canvas id="myChart" width="400" height="200"></canvas>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header">
-                            <h3>Les enseignants</h3>
-                        </div>
+
                         <div class="card-body">
                             <canvas id="myChart2"></canvas>
                         </div>
@@ -128,39 +140,77 @@ if (!isset($_SESSION['username'])) {
 <?php include('./footer.php'); ?>
 
 <script>
-const cxt = document.getElementById('myChart').getContext('2d')
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+$(document).ready(function() {
+    StudentChart()
+    LectuerChart()
+})
+
+function LectuerChart() {
+    const ctx2 = document.getElementById('myChart2').getContext('2d')
+    const myChart2 = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['Total', 'Garcons', 'Filles'],
+            datasets: [{
+                label: '# Les eleves*',
+                data: [50, 23, 65],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
-});
+    });
+}
+
+function StudentChart() {
+    const Total = $('#Total').val()
+    const Male = $('#numMale').val()
+    const Female = $('#numFemale').val()
+    const Datas = [Total, Male, Female]
+    const ctx = document.getElementById('myChart').getContext('2d')
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Total', 'Garcons', 'Filles'],
+            datasets: [{
+                label: '# Les eleves*',
+                data: Datas,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
 </script>
