@@ -150,9 +150,9 @@ function LectuerChart() {
     const myChart2 = new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: ['Total', 'Garcons', 'Filles'],
+            labels: ['Total', 'Hommes', 'Femmes'],
             datasets: [{
-                label: '# Les eleves*',
+                label: '# Les enseignants',
                 data: [50, 23, 65],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
