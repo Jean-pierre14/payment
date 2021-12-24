@@ -17,10 +17,10 @@ if (!isset($_SESSION['username'])) {
             <div class="card my-5">
                 <div class="card-body">
                     <h3 class="text-center">Registration of new student</h3>
-                    <form autocomplete="off" action="" method="post" id="register_studentForm">
+                    <form autocomplete="off" action="" enctype="multipart/form-data" method="post" id="register_studentForm">
                         <?php include "./error.php";?>
                         <div class="form-group">
-                            <label for="username">Prenom</label>
+                            <label for="username">Prenom<span class="text-bod text-danger">*</span></label>
                             <input type="text" name="username" value="<?= $stud_username; ?>" id="username"
                                 placeholder="Username" class="form-control">
                                 <input type="hidden" name="action" value="register_studentForm" id="action" placeholder="Username"
@@ -28,14 +28,14 @@ if (!isset($_SESSION['username'])) {
                         </div>
 
                         <div class="form-group">
-                            <label for="sname">Nom</label>
+                            <label for="sname">Nom<span class="text-bod text-danger">*</span></label>
                             <input type="text" name="sname" value="<?= $stud_sname; ?>" id="sname" placeholder="Nom"
                                 class="form-control">
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="class">Classe </label>
+                                <label for="class">Classe <span class="text-bod text-danger">*</span></label>
 
                                 <div class="ui" id="classess">
                                     <select name="class" value="<?= $stud_class; ?>" id="class" class="form-control"
@@ -52,7 +52,7 @@ if (!isset($_SESSION['username'])) {
                             </div>
 
                             <div class="form-group col-md-8">
-                                <label for="depart">Annee scolaire</label>
+                                <label for="depart">Annee scolaire<span class="text-bod text-danger">*</span></label>
                                 <select name="AnneScolaire" value="<?= $stud_depart; ?>" id="AnneeScolaire"
                                     class="form-control" require>
                                     <option value="">-- select --</option>
@@ -67,7 +67,7 @@ if (!isset($_SESSION['username'])) {
                         <div class="form-row">
 
                             <div class="form-group col-md-3">
-                                <label for="sex">Sexe</label>
+                                <label for="sex">Sexe<span class="text-bod text-danger">*</span></label>
                                 <select name="sex" value="<?php print $stud_sex; ?>" id="sex" class="form-control"
                                     require>
                                     <option value="">-- select --</option>
@@ -79,14 +79,18 @@ if (!isset($_SESSION['username'])) {
                             <div class="form-group col-md-9">
 
                                 <?php if($email_edit == true):?>
-                                <label for="email">E-mail des parents</label>
+                                <label for="email">E-mail des parents<span class="text-bod text-danger">*</span></label>
                                 <input type="email" value="<?php print $stud_em; ?>" name="email" id="email"
                                     placeholder="Email" class="form-control" readonly>
                                 <?php else: ?>
-                                <label for="email">E-mail des parents</label>
+                                <label for="email">E-mail des parents <span class="text-bod text-danger">*</span></label>
                                 <input type="email" value="<?php print $stud_em; ?>" name="email" id="email"
                                     placeholder="Email" class="form-control">
                                 <?php endif;?>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="sex">Photo de l'eleve<span class="text-bod text-danger">*</span></label>
+                                <input type="file" name="image" id="image" placeholder="File" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
