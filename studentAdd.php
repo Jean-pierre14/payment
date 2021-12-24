@@ -124,7 +124,11 @@ $(document).ready(function() {
             method: 'POST',
             data: $('#register_studentForm').serialize(),
             success: function(data){
-                alert('Good ajax')
+                if(data !== 'error'){
+                    
+                }else{
+                    alert(data)
+                }
             }
         })
     })

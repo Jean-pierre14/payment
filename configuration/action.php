@@ -6,7 +6,38 @@ $errors = [];
 
 if (isset($_POST['action'])) {
     if($_POST['action'] == 'register_studentForm'){
-        print 'register_studentForm';
+
+        $username = mysqli_real_escape_string($con, htmlentities(trim($_POST['username'])));
+        $name = mysqli_real_escape_string($con, htmlentities(trim($_POST['name'])));
+        $email = mysqli_real_escape_string($con, htmlentities(trim($_POST['email'])));
+        $class = mysqli_real_escape_string($con, htmlentities(trim($_POST['classe'])));
+        $sex = mysqli_real_escape_string($con, htmlentities(trim($_POST['sex'])));
+        $annee = mysqli_real_escape_string($con, htmlentities(trim($_POST['annee'])));
+
+        if(empty($username) || empty($name) || empty($email) || empty($class) || empty($sex) || empty($annee)){
+            print 'error';
+        }else{
+            $sql = mysqli_query($con, "SELECT * FROM student");
+            if(@mysqli_num_rows($sql) > 0){
+                $row = mysqli_fetch_array($sql);
+                if($username == $row['username']){
+                    $output = 'Nom d\'utilisateur deja utiliser';
+                }else{
+                    if($username == $row['username'] && $class == $row['class']){
+                        $output = 'Deux personnes ne peuvent pas avoir le meme nom dans une meme classe';
+                    }else{
+                        $sql = mysqli_query($con, "INSERT INTO student(username, `name`, email, class, sex) VALUES('${username}', '${name}', '${email}', '${class}','${sex}')");
+                        if($sql){
+                            $output = 'success';
+                        }else{
+                            $output = 'Error database';
+                        }
+
+                    }
+                }
+            }
+        }
+        print $output;
     }
 
     if($_POST['action'] == 'mise_a_jour'){
