@@ -15,13 +15,6 @@ if (!isset($_SESSION['username'])) {
 </div>
 <div class="ui main">
     <div class="container-fluid m-0 ui">
-        <!-- <div class="ui iu menu inverted">
-            <a href="#" class="item"><i class="icon home"></i>Home</a>
-            <a href="#" class="item"><i class="icon user"></i>profile</a>
-            <a href="#" class="item"><i class="icon users"></i>Contacts</a>
-            <a href="#" class="item"><i class="icon help"></i>Help</a>
-        </div> -->
-
         <div class="container-fluid p-0">
             <div class="row">
                 <div class="col-md-4">
@@ -69,6 +62,28 @@ if (!isset($_SESSION['username'])) {
                             <div>
                                 <span><small>234500</small></span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-2 row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Les eleves*</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Les enseignants</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart2"></canvas>
                         </div>
                     </div>
                 </div>
