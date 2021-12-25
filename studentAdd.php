@@ -17,14 +17,15 @@ if (!isset($_SESSION['username'])) {
             <div class="card my-5">
                 <div class="card-body">
                     <h3 class="text-center">Registration of new student</h3>
-                    <form autocomplete="off" action="" enctype="multipart/form-data" method="post" id="register_studentForm">
+                    <form autocomplete="off" action="" enctype="multipart/form-data" method="post"
+                        id="register_studentForm">
                         <?php include "./error.php";?>
                         <div class="form-group">
                             <label for="username">Prenom<span class="text-bod text-danger">*</span></label>
                             <input type="text" name="username" value="<?= $stud_username; ?>" id="username"
                                 placeholder="Username" class="form-control">
-                                <input type="hidden" name="action" value="register_studentForm" id="action" placeholder="Username"
-                                    class="form-control">
+                            <input type="hidden" name="action" value="register_studentForm" id="action"
+                                placeholder="Username" class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -53,15 +54,7 @@ if (!isset($_SESSION['username'])) {
 
                             <div class="form-group col-md-8">
                                 <label for="depart">Annee scolaire<span class="text-bod text-danger">*</span></label>
-                                <select name="AnneScolaire" value="<?= $stud_depart; ?>" id="AnneeScolaire"
-                                    class="form-control" require>
-                                    <option value="">-- select --</option>
-                                    <option value="computer science">Computer Science</option>
-                                    <option value="Law">Law</option>
-                                    <option value="Finance">Finance</option>
-                                    <option value="Economy">Economy</option>
-                                    <option value="Accounting">Accounting</option>
-                                </select>
+                                <?php echo $AnneesScolaires;?>
                             </div>
                         </div>
                         <div class="form-row">
@@ -83,7 +76,8 @@ if (!isset($_SESSION['username'])) {
                                 <input type="email" value="<?php print $stud_em; ?>" name="email" id="email"
                                     placeholder="Email" class="form-control" readonly>
                                 <?php else: ?>
-                                <label for="email">E-mail des parents <span class="text-bod text-danger">*</span></label>
+                                <label for="email">E-mail des parents <span
+                                        class="text-bod text-danger">*</span></label>
                                 <input type="email" value="<?php print $stud_em; ?>" name="email" id="email"
                                     placeholder="Email" class="form-control">
                                 <?php endif;?>
@@ -123,11 +117,12 @@ $(document).ready(function() {
             url: './configuration/action.php',
             method: 'POST',
             data: $('#register_studentForm').serialize(),
-            success: function(data){
-                if(data !== 'error'){
-                    
-                }else{
-                    alert(data)
+            success: function(data) {
+                if (data === 'success') {
+                    // alert(data)
+                    $('#register_studentForm')[0].reset()
+                } else {
+                    $('#error').html(data)
                 }
             }
         })

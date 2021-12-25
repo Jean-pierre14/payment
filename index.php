@@ -150,7 +150,7 @@ function LectuerChart() {
     const myChart2 = new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: ['Total', 'Hommes', 'Femmes'],
+            labels: ['Hommes', 'Total', 'Femmes'],
             datasets: [{
                 label: '# Les enseignants',
                 data: [50, 23, 65],
@@ -182,12 +182,12 @@ function StudentChart() {
     const Total = $('#Total').val()
     const Male = $('#numMale').val()
     const Female = $('#numFemale').val()
-    const Datas = [Total, Male, Female]
+    const Datas = [Male, Total, Female]
     const ctx = document.getElementById('myChart').getContext('2d')
     const myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Total', 'Garcons', 'Filles'],
+            labels: ['Garcons', 'Total', 'Filles'],
             datasets: [{
                 label: '# Les eleves*',
                 data: Datas,
