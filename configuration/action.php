@@ -47,7 +47,7 @@ if (isset($_POST['action'])) {
                 $output = 'error';
             }
         }
-        print json_encode($output);
+        print $output;
     }
 
     if($_POST['action'] == 'select_student'){

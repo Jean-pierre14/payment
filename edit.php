@@ -124,7 +124,6 @@ $(document).ready(function() {
             $.ajax({
                 url: './configuration/action.php',
                 method: 'POST',
-                dataType: 'JSON',
                 data: {
                     action: 'mise_a_jour',
                     id,
@@ -137,6 +136,9 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                     if (data === 'success') {
+                        $('#error').html(
+                            '<p class="alert alert-success">Mise a jour reussi :)</p>'
+                        )
                         $('#editForm').reset()
                     } else {
                         $('#error').html(
