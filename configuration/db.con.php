@@ -3,10 +3,10 @@
 
 $con = mysqli_connect("localhost", "root", "", "payment") OR die("Could not connect to the DB");
 
-// if(!$con){
-//     $sql = "CREATE DATABASE IF NOT EXISTS payment USE";
-//     $run = mysqli_query($conEmpty, $sql);
-// }
+if(!$con){
+    $sql = "CREATE DATABASE IF NOT EXISTS payment USE";
+    $run = mysqli_query($conEmpty, $sql);
+}
 
 
 $SqlAnnee = mysqli_query($con, "SELECT * FROM AnneesScolaire ORDER BY id DESC LIMIT 4");
