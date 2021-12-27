@@ -37,15 +37,17 @@
 <script>
 const Results = document.querySelector('#Resutls')
 
-let xhr = new XMLHttpRequest()
-xhr.onload = () => {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-            let data = xhr.response
-            Results.innerHTML = data
+setInterval(() => {
+    let xhr = new XMLHttpRequest()
+    xhr.onload = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                let data = xhr.response
+                Results.innerHTML = data
+            }
         }
     }
-}
-xhr.open("GET", "./configuration/Lectures.php", true)
-xhr.send()
+    xhr.open("GET", "./configuration/Lecturers.php", true)
+    xhr.send()
+}, 10000)
 </script>
