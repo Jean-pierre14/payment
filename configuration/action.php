@@ -17,7 +17,7 @@ if (isset($_POST['action'])) {
         if(empty($username) || empty($name) || empty($email) || empty($class) || empty($sex) || empty($annee)){
             print 'error';
         }else{
-            $sql = mysqli_query($con, "INSERT INTO student(username, `sname`, email, class, sex) VALUES('$username', '$name', '$email', '$class','$sex')");
+            $sql = mysqli_query($con, "INSERT INTO student(username, `sname`, email, class, sex, AnneeScolaire) VALUES('$username', '$name', '$email', '$class','$sex', '$annee')");
             if($sql){
                 $output = 'success';
             }else{
@@ -47,7 +47,7 @@ if (isset($_POST['action'])) {
                 $output = 'error';
             }
         }
-        print json_encode($output);
+        print $output;
     }
 
     if($_POST['action'] == 'select_student'){
