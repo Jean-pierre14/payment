@@ -5,6 +5,9 @@ $output = '';
 $errors = [];
 
 if (isset($_POST['action'])) {
+    if($_POST['action'] == 'LecturerForm'){
+        echo "Cool";
+    }
     if($_POST['action'] == 'register_studentForm'){
 
         $username = mysqli_real_escape_string($con, htmlentities(trim($_POST['username'])));
