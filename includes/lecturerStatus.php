@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <h3 class="text-center white p-2 bg-info">Lecturer</h3>
+            <h3 class="text-center white p-2 bg-success">Lecturer</h3>
 
             <!-- error page -->
             <?php include("./error.php"); ?>
