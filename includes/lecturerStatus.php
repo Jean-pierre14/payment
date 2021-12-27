@@ -21,6 +21,7 @@
 
             <!-- include the total page -->
             <form action="" method="post" id="lecturerForm" enctype="multipart/form-data">
+                <div id="error"></div>
                 <div class="form-group">
                     <label for="name"><i class="icon user"></i>Name</label>
                     <input type="text" name="name" value="<?php print $name; ?>" placeholder="Lecturer name"
@@ -51,6 +52,12 @@
                     <div class="form-group col-md-8">
                         <label for="location"><i class="icon map"></i>Location</label>
                         <input type="text" name="location" value="<?php print $location; ?>" placeholder="location"
+                            class="form-control" id="location">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="email"><i class="icon map"></i>Email</label>
+                        <input required type="email" name="email" placeholder="Email<?php print $email;?>"
                             class="form-control" id="location">
                     </div>
 
@@ -97,7 +104,12 @@ BtnRegistration.onclick = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 let data = xhr.response
-                console.log("Good " + data)
+                let error = document.querySelector('#error')
+                if (data === 'success') {
+                    error.innerHTML = '<p class="alert alert-success">Registration success</p>'
+                } else {
+                    error.innerHTML = `<p class="alert alert-danger">${data}</p>`
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $email = '';
     include("./header.php");
     include("./includes/nav.php");
 ?>
