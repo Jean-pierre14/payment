@@ -20,11 +20,12 @@
             <?php include("./error.php"); ?>
 
             <!-- include the total page -->
-            <form action="" method="post">
+            <form action="" method="post" id="LecturerForm">
                 <div class="form-group">
                     <label for="name"><i class="icon user"></i>Name</label>
                     <input type="text" name="name" value="<?php print $name; ?>" placeholder="Lecturer name"
                         class="form-control" id="name">
+                    <input type="hidden" name="action" value="LecturerForm" id="action" class="form-control">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -60,10 +61,25 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="lectureRegister" class="labeled button submit ui blue icon"><i
+                    <button type="button" id="lectureRegister" class="labeled button submit ui blue icon"><i
                             class="icon save"></i>Register</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script src="./js/jquery-3.4.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // $('#lectureRegister').click(function() {
+    //     alert("Hello")
+    // })
+})
+
+const BtnRegistration = document.getElementById('lectureRegister')
+BtnRegistration.onclick = () => {
+    // alert("Good job") Test
+}
+</script>
