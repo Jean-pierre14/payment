@@ -7,9 +7,7 @@
 
     if(mysqli_num_rows($response) > 0){
         $output .= '
-        <div class="card card-body my-1">
-            <input type="search" placeholder="Search" name="search" class="form-control">
-        </div>
+        
         <table class="table m-0">
             <thead>
                 <tr>

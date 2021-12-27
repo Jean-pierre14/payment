@@ -1,8 +1,7 @@
 <div class="col-md-12">
     <?php include("./db.con.php");include("sql.php"); ?>
-
-    <div class="bg-success p-2">
-        <h3 class="item white text-center" align='center'>List of Lecturers</h3>
+    <div class="card card-body mb-1">
+        <input type="search" placeholder="Search" name="search" class="form-control">
     </div>
     <div id="Resutls">
         <table class="table m-0">
