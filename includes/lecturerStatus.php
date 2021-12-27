@@ -107,6 +107,7 @@ BtnRegistration.onclick = () => {
                 let error = document.querySelector('#error')
                 if (data === 'success') {
                     error.innerHTML = '<p class="alert alert-success">Registration success</p>'
+                    form.reset()
                 } else {
                     error.innerHTML = `<p class="alert alert-danger">${data}</p>`
                 }

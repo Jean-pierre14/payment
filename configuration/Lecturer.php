@@ -26,7 +26,7 @@
                     // Let explode image and get the last extension like jpg or png...
                     $img_explode = explode('.', $img_name);
                     $img_ext = end($img_explode);
-                    $extensions = ['jpeg', 'png', 'jpg'];
+                    $extensions = ['jpeg', 'png', 'jpg', 'JPG'];
                     if(in_array($img_ext, $extensions) === true){
                         $time = time();
                         $new_name = $time.$img_name;
@@ -35,7 +35,7 @@
                             $status = "Active now"; // Change the status to online 
                             $random_id = rand(time(), 1000000);
                             $sql2 = mysqli_query($con, "INSERT INTO lecturer (unique_id, `name`, sname, lname, email, cours, nationalite, profil, `location`, `status`) 
-                                                                    VALUES('{$random_id}', '{$name}', '{$sname}', '{$lname}', '{$email}', '{$cours}', '{$nationalite}', '{$new_name}', '{$location}', '{$status}')");
+                                                                    VALUES($random_id, '{$name}', '{$sname}', '{$lname}', '{$email}', '{$cours}', '{$nationalite}', '{$new_name}', '{$location}', '{$status}')");
                             if($sql2){
                                 print "success";
                             }else{

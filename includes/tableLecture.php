@@ -2,8 +2,9 @@
     <?php include("./db.con.php");include("sql.php"); ?>
 
     <div class="bg-success p-2">
-        <a href="" class="item white text-center" align='center'>List of Lecturers</a>
+        <a href="#" class="item white text-center" align='center'>List of Lecturers</a>
     </div>
+    <div id="Resutls"></div>
     <table class="table m-0">
         <thead>
             <tr>
@@ -33,3 +34,6 @@
     </table>
 
 </div>
+<script>
+
+</script>
