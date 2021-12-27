@@ -193,7 +193,7 @@
 <!-- <script src="./js/jquery-3.4.0.min.js"></script> -->
 <!-- <script src="./js/jqmodal.js"></script> -->
 <script src="./js/lightbox-plus-jquery.min.js"></script>
-<script src="./js/main.modal.js"></script>
+<!-- <script src="./js/main.modal.js"></script> -->
 <script src="./js/jquery-3.4.0.min.js"></script>
 <script src="./js/dist/Chart.bundle.js"></script>
 <script src="./js/bootstrap.min.js"></script>
