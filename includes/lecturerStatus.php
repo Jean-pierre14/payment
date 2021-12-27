@@ -20,7 +20,7 @@
             <?php include("./error.php"); ?>
 
             <!-- include the total page -->
-            <form action="" method="post" id="lecturerForm">
+            <form action="" method="post" id="lecturerForm" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name"><i class="icon user"></i>Name</label>
                     <input type="text" name="name" value="<?php print $name; ?>" placeholder="Lecturer name"
@@ -59,6 +59,10 @@
                         <input type="text" name="nationalite" value="<?php print $nationalite; ?>"
                             placeholder="nationalite" class="form-control" id="nationalite">
                     </div>
+                    <div class="form-group col-md-12">
+                        <label for="file"><i class="icon photo"></i>Photo de Profil</label>
+                        <input type="file" name="file" class="form-control" id="file">
+                    </div>
                 </div>
                 <div class="form-group">
                     <button type="button" id="lectureRegister" class="labeled button submit ui blue icon"><i
@@ -79,7 +83,7 @@ $(document).ready(function() {
 })
 
 const BtnRegistration = document.getElementById('lectureRegister')
-const form = document.getElementById('lecturerForm')
+const form = document.querySelector('#lecturerForm')
 
 // To preventDefault Event
 form.onsubmit = (e) => {
@@ -89,7 +93,6 @@ BtnRegistration.onclick = () => {
     // alert("Good job") Test
     // Start the XHR 
     let xhr = new XMLHttpRequest()
-    xhr.open('POST', './configuration/Lecturer.php', true)
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
@@ -98,8 +101,10 @@ BtnRegistration.onclick = () => {
             }
         }
     }
+
+    xhr.open('POST', './configuration/Lecturer.php', true)
     // Let us now send data to the backend side
-    let formData = new formData(form)
+    const formData = new FormData(form)
     xhr.send(formData)
 }
 </script>
