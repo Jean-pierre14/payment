@@ -20,7 +20,7 @@
             <?php include("./error.php"); ?>
 
             <!-- include the total page -->
-            <form action="" method="post" id="LecturerForm">
+            <form action="" method="post" id="lecturerForm">
                 <div class="form-group">
                     <label for="name"><i class="icon user"></i>Name</label>
                     <input type="text" name="name" value="<?php print $name; ?>" placeholder="Lecturer name"
@@ -79,19 +79,27 @@ $(document).ready(function() {
 })
 
 const BtnRegistration = document.getElementById('lectureRegister')
+const form = document.getElementById('lecturerForm')
+
+// To preventDefault Event
+form.onsubmit = (e) => {
+    e.preventDefault()
+}
 BtnRegistration.onclick = () => {
     // alert("Good job") Test
     // Start the XHR 
     let xhr = new XMLHttpRequest()
-    xhr.open('POST', './configuration/action.php', true)
+    xhr.open('POST', './configuration/Lecturer.php', true)
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 let data = xhr.response
-                alert("Good " + data)
+                console.log("Good " + data)
             }
         }
     }
-    xhr.send()
+    // Let us now send data to the backend side
+    let formData = new formData(form)
+    xhr.send(formData)
 }
 </script>
