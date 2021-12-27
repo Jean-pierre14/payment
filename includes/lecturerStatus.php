@@ -88,36 +88,4 @@ $(document).ready(function() {
     //     alert("Hello")
     // })
 })
-
-const BtnRegistration = document.getElementById('lectureRegister')
-const form = document.querySelector('#lecturerForm')
-
-// To preventDefault Event
-form.onsubmit = (e) => {
-    e.preventDefault()
-}
-BtnRegistration.onclick = () => {
-    // alert("Good job") Test
-    // Start the XHR 
-    let xhr = new XMLHttpRequest()
-    xhr.onload = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                let data = xhr.response
-                let error = document.querySelector('#error')
-                if (data === 'success') {
-                    error.innerHTML = '<p class="alert alert-success">Registration success</p>'
-                    form.reset()
-                } else {
-                    error.innerHTML = `<p class="alert alert-danger">${data}</p>`
-                }
-            }
-        }
-    }
-
-    xhr.open('POST', './configuration/Lecturer.php', true)
-    // Let us now send data to the backend side
-    const formData = new FormData(form)
-    xhr.send(formData)
-}
 </script>
