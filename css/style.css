@@ -216,6 +216,9 @@
   padding: 3px;
   border-radius: 4px;
 }
+.box {
+  border-radius: 0.4rem;
+}
 .box-main {
   /* background: url(../images/animal-blur-fur-horns-207029.jpg), rgba(0,0,0,0.9); */
   background-size: cover;
