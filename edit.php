@@ -31,7 +31,10 @@ if (!isset($_SESSION['username'])) {
                                         $out = '';
                                         if(@mysqli_num_rows($sql) > 0){
                                             
-                                        $out .= '<div class="list-group">';
+                                        $out .= '
+                                        <form id="editBtnForm" action="#" method="POST">
+                                        <div class="list-group">
+                                        ';
                                             while($row = mysqli_fetch_array($sql)){
                                                 $out .= '
                                                 <div class="" id="error"></div>
@@ -39,6 +42,7 @@ if (!isset($_SESSION['username'])) {
                                                     <input type="hidden" class="form-control" id="UserId" value="'.$row['id_student'].'">
                                                     <label for="username" class="">Prenom</label>
                                                     <input type="text" required class="form-control"  id="username" placeholder="Username" name="username" value="'.$row['username'].'">
+                                                    <input type="hidden" required class="form-control"  id="action" placeholder="action" name="action" value="editBtn">
                                                 </div>
 
                                                 <div class="form-group">
@@ -83,7 +87,9 @@ if (!isset($_SESSION['username'])) {
                                                 </div>
                                                 ';
                                             }
-                                        $out .= '</div>';
+                                        $out .= '</div>
+                                        </form>
+                                        ';
                                         }else{
                                             $out = '<p class="alert alert-danger">Mauvais Jeu :(</p>';
                                         }
