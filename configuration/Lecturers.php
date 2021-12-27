@@ -7,6 +7,9 @@
 
     if(mysqli_num_rows($response) > 0){
         $output .= '
+        <div class="card card-body my-1">
+            <input type="search" placeholder="Search" name="search" class="form-control">
+        </div>
         <table class="table m-0">
             <thead>
                 <tr>
@@ -15,6 +18,7 @@
                     <th> Last name </th>
                     <th> Cours </th>
                     <th> Location </th>
+                    <th></th>
                 </tr>
             </thead>
         </table>
@@ -23,15 +27,25 @@
         ';
         while($row = mysqli_fetch_array($response)){
             $output .= '
-            <a href="#" class="">
+            
                 <tr class="">
-                    <td class=""><img src="./images/Lecturer/'.$row['profil'].'" alt="image" class="ui ui-img avatart" width="30px" height="30px" style=""></td>
-                    <td class="">'.$row['name'].'</td>
-                    <td class="">'.$row['lname'].'</td>
-                    <td class="">'.$row['cours'].'</td>
-                    <td class="">'.$row['location'].'</td>  
+                    <a href="" class="">
+                        <td class="">
+                            <img src="./images/Lecturer/'.$row['profil'].'" alt="'.$row['name'].'" class="ui Img-Border avatart" width="30px" height="30px">
+                        </td>
+                        <td class="">'.$row['name'].'</td>
+                        <td class="">'.$row['lname'].'</td>
+                        <td class="">'.$row['cours'].'</td>
+                        <td class="">'.$row['location'].'</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-info Edit-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon edit"></i></button>
+                                <button class="btn btn-sm btn-success Edit-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon eye"></i></button>
+                                <button class="btn btn-sm btn-danger Edit-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon trash"></i></button>
+                            </div>
+                        </td>
+                    </a>  
                 </tr>
-            </a>
             ';
         }
         $output .= '
