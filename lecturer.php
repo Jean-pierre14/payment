@@ -1,5 +1,4 @@
 <?php
-    session_start();
     $email = '';
     include("./header.php");
     include("./includes/nav.php");
@@ -62,6 +61,16 @@ function Select() {
     }
     xhr.open("GET", "./configuration/Lecturers.php", true)
     xhr.send()
+}
+
+const EditLecture = document.querySelector('button.Edit-Lecturer'),
+    ViewLecture = document.querySelector('.View-Lecturer'),
+    DeleteLecture = document.querySelector('.Delete-Lecturer')
+
+// Events
+// Get 
+EditLecture.onclick = () => {
+    alert("Id is ")
 }
 </script>
 

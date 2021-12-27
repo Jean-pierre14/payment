@@ -15,7 +15,6 @@
                     <th> Name </th>
                     <th> Last name </th>
                     <th> Cours </th>
-                    <th> Location </th>
                     <th></th>
                 </tr>
             </thead>
@@ -34,12 +33,11 @@
                         <td class="">'.$row['name'].'</td>
                         <td class="">'.$row['lname'].'</td>
                         <td class="">'.$row['cours'].'</td>
-                        <td class="">'.$row['location'].'</td>
                         <td>
                             <div class="btn-group">
                                 <button class="btn btn-sm btn-info Edit-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon edit"></i></button>
-                                <button class="btn btn-sm btn-success Edit-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon eye"></i></button>
-                                <button class="btn btn-sm btn-danger Edit-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon trash"></i></button>
+                                <button class="btn btn-sm btn-success View-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon eye"></i></button>
+                                <button class="btn btn-sm btn-danger Delete-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon trash"></i></button>
                             </div>
                         </td>
                     </a>  
