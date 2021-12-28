@@ -69,18 +69,31 @@ function Select() {
 $(document).ready(function() {
     $(document).on("click", ".Edit-Lecturer", function() {
         let Id = $(this).attr('id')
-        let xhr = new XMLHttpRequest()
-        xhr.onload = () => {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    let data = xhr.response
-                    alert("ghjjk" + data)
-                }
+        let action = "GetLecturer"
+        $.ajax({
+            url: './configuration/action.php',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                action,
+                Id
+            },
+            success: function(data) {
+                alert(data)
             }
-        }
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-        xhr.open("POST", "./configuration/GetLecturer.php", true)
-        xhr.send(`Id=${Id}`)
+        })
+        // let xhr = new XMLHttpRequest()
+        // xhr.onload = () => {
+        //     if (xhr.readyState === XMLHttpRequest.DONE) {
+        //         if (xhr.status === 200) {
+        //             let data = xhr.response
+        //             alert("ghjjk" + data)
+        //         }
+        //     }
+        // }
+        // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+        // xhr.open("POST", "./configuration/GetLecturer.php", true)
+        // xhr.send(`Id=${Id}`)
     })
     // alert("Good job")
 })
