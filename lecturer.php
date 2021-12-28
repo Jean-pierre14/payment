@@ -67,7 +67,7 @@ function Select() {
 <?php include("./footer.php");?>
 <script>
 $(document).ready(function() {
-    $(document).on("click", ".Edit-Lecturer", function() {
+    $(document).on("click", "#Edit-Lecturer", function() {
         let Id = $(this).attr('id')
         let action = "GetLecturer"
         $.ajax({
