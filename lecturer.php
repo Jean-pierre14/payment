@@ -62,16 +62,26 @@ function Select() {
     xhr.open("GET", "./configuration/Lecturers.php", true)
     xhr.send()
 }
-
-const EditLecture = document.querySelector('button.Edit-Lecturer'),
-    ViewLecture = document.querySelector('.View-Lecturer'),
-    DeleteLecture = document.querySelector('.Delete-Lecturer')
-
-// Events
-// Get 
-EditLecture.onclick = () => {
-    alert("Id is ")
-}
 </script>
 
 <?php include("./footer.php");?>
+<script>
+$(document).ready(function() {
+    $(document).on("click", ".Edit-Lecturer", function() {
+        let Id = $(this).attr('id')
+        let xhr = new XMLHttpRequest()
+        xhr.onload = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response
+                    alert("ghjjk" + data)
+                }
+            }
+        }
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+        xhr.open("POST", "./configuration/GetLecturer.php", true)
+        xhr.send(`Id=${Id}`)
+    })
+    // alert("Good job")
+})
+</script>
