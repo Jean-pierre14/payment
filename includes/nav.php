@@ -57,13 +57,13 @@ include('./header.php');
     <div class="Right">
         <ul>
             <li>
-                <a href="index.php">Dashbord</a>
+                <a href="index">Dashbord</a>
             </li>
             <li>
-                <a href="profil.php">Profil</a>
+                <a href="profil">Profil</a>
             </li>
             <li>
-                <a href="loggout.php">Logout</a>
+                <a href="loggout">Logout</a>
             </li>
         </ul>
     </div>
