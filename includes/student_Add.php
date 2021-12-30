@@ -6,21 +6,16 @@
             <div class="container-fluid p-0">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card card-body mt-2">
+                        <div class="card card-body my-1">
                             <form action="" method="post">
                                 <input type="search" placeholder="Search..." class="my-2 form-control">
                             </form>
-                            <div class="list-group">
-                                <?php while($data = mysqli_fetch_array($run_student)): ?>
-
-                                <a class="list-group-item"
-                                    href="student.php?getStudent=<?php echo $data['id_student'];?>">
-                                    <?php echo $data['username'];?>
-                                </a>
-
-                                <?php endwhile;?>
-                            </div>
                         </div>
+
+                        <div class="card card-body px-0" id="results">
+                            <h3>Chargement...</h3>
+                        </div>
+
                     </div>
                     <div class="col-md-8">
                         <?php if(isset($_GET['getStudent'])):?>
@@ -45,26 +40,8 @@ document.getElementById('go-back').addEventListener('click', () => {
 });
 $(document).ready(function() {
     Select()
+    SelectAll()
 })
-
-function Select() {
-    let action = 'select_student'
-    $.ajax({
-        url: './configuration/action.php',
-        method: 'POST',
-        dataType: 'JSON',
-        data: {
-            action
-        },
-        success: function(data) {
-            if (data !== 'error') {
-                alert('This no internet')
-            } else {
-                $('#result').innerHTML = data
-            }
-        }
-    })
-}
 </script>
 <script>
 function CheckDelete() {

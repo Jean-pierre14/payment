@@ -16,33 +16,22 @@
 <?php include("./footer.php");?>
 
 <script>
-    $(document).ready(function(){
-        FetchAllStudent()
-        Fetch()
-    })
-    let url = 'http://localhost/payment/configuration/action.php'
-    function Fetch(){
-        action = 'fetch'
-        $.get(`${url}?action=${action}`, function(datas){
-            datas => datas.json().then(item=>{
-                console.log(item)
-            })
-        })
-    }
-    function FetchAllStudent(){
-        let action = 'fetch'
-        $.ajax({
-            url: './configuration/action.php',
-            method: 'get',
-            dataType: 'JSON',
-            data: {action},
-            success: function(data){
-                // render(data)
-                console.log(data)
+Fetch()
+const results = document.querySelector('#results')
+
+function Fetch() {
+
+    let xhr = new XMLHttpRequest()
+    xhr.onload = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                let data = xhr.response
+                // console.log("Data >> " + data) for testing
+                results.innerHTML = data
             }
-        })
         }
-        function render(data){
-            console.log("Cool "+data)
-        }
+    }
+    xhr.open("POST", "./configuration/action2.php", true)
+    xhr.send()
+}
 </script>

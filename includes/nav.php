@@ -47,7 +47,7 @@ include('./header.php');
 
 <nav class="navBar">
     <div class="Left">
-        <span>Bisimwa</span>
+        <a href="profil.php"><?= $_SESSION['username']?></a>
     </div>
     <div class="Center">
         <form action="" method="post">
