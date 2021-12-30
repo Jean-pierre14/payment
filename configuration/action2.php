@@ -1,8 +1,11 @@
 <?php
     include_once "./db.con.php";
     
-    $thisYear = '2021-2022';
-    $sql = mysqli_query($con, "SELECT * FROM student  WHERE AnneeScolaire = '$thisYear' ORDER BY id_student DESC LIMIT 12");
+    $ThisYear = date('Y');
+    $lastYear = $ThisYear - 1;
+    $NewYear = $ThisYear + 1;
+    // $thisYear = ;
+    $sql = mysqli_query($con, "SELECT * FROM student  WHERE AnneeScolaire BETWEEN '$lastYear' AND '$NewYear' ORDER BY id_student DESC LIMIT 12");
     if(@mysqli_num_rows($sql) > 0){
         $output .= '<div class="list-group list-group-flush">';
         while($row = mysqli_fetch_array($sql)){
