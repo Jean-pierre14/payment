@@ -34,4 +34,30 @@ function Fetch() {
     xhr.open("POST", "./configuration/action2.php", true)
     xhr.send()
 }
+
+const search = document.querySelector('#searchTextStudent')
+
+search.onkeyup = () => {
+    let txt = search.value
+    let text = txt.trim()
+
+    if (text !== '' || text !== undefined) {
+        results.innerHTML = ''
+        let xhr = new XMLHttpRequest()
+        xhr.onload = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response
+                    // console.log("Data >> " + data) for testing
+                    results.innerHTML = data
+                }
+            }
+        }
+        xhr.open("POST", "././configuration/action3.php", true)
+        xhr.setRequestHeader("Contnt-type", "application/x-www-form-urlencoded")
+        xhr.send("seach=" + text)
+    } else {
+        Fetch()
+    }
+}
 </script>

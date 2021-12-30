@@ -2,13 +2,14 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-11 p-0 pr-2">
-            <a href="studentAdd.php" class="mt-2 btn btn-sm btn-success">Add new student</a>
+            <a href="studentAdd.php" class="mt-2 btn btn-sm btn-success">Ajouter un eleve</a>
             <div class="container-fluid p-0">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card card-body my-1">
                             <form action="" method="post">
-                                <input type="search" placeholder="Search..." class="my-2 form-control">
+                                <input type="search" placeholder="Search..." id="searchTextStudent"
+                                    class="my-2 form-control">
                             </form>
                         </div>
 

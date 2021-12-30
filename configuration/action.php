@@ -5,7 +5,33 @@ $output = '';
 $errors = [];
 
 if (isset($_POST['action'])) {
+    if($_POST['action'] == 'LecturerForm'){
+        echo "Cool";
+    }
+    if($_POST['action'] == 'register_studentForm'){
+
+        $username = mysqli_real_escape_string($con, htmlentities(trim($_POST['username'])));
+        $name = mysqli_real_escape_string($con, htmlentities(trim($_POST['sname'])));
+        $email = mysqli_real_escape_string($con, htmlentities(trim($_POST['email'])));
+        $class = mysqli_real_escape_string($con, htmlentities(trim($_POST['class'])));
+        $sex = mysqli_real_escape_string($con, htmlentities(trim($_POST['sex'])));
+        $annee = mysqli_real_escape_string($con, htmlentities(trim($_POST['annee'])));
+
+        if(empty($username) || empty($name) || empty($email) || empty($class) || empty($sex) || empty($annee)){
+            print 'error';
+        }else{
+            $sql = mysqli_query($con, "INSERT INTO student(username, `sname`, email, class, sex, AnneeScolaire) VALUES('$username', '$name', '$email', '$class','$sex', '$annee')");
+            if($sql){
+                $output = 'success';
+            }else{
+                $output = 'error';
+            }
+        }
+        print $output;
+    }
+
     if($_POST['action'] == 'mise_a_jour'){
+        
         $id = mysqli_real_escape_string($con, htmlentities(trim($_POST['id'])));
         $username = mysqli_real_escape_string($con, htmlentities(trim($_POST['username'])));
         $name = mysqli_real_escape_string($con, htmlentities(trim($_POST['name'])));
@@ -17,14 +43,14 @@ if (isset($_POST['action'])) {
         if(empty($username) || empty($name) || empty($email) || empty($class) || empty($sex) || empty($annee)){
             $output = 'error';
         }else{
-            $sql = mysqli_query($con, "UPDATE student SET username = '${username}', sname= '${name}', class='${class}', email='${email}', sex='${sex}', annee='${annee} WHERE id_student = '${id}'");
+            $sql = mysqli_query($con, "UPDATE student SET username = '${username}', sname= '${name}', class='${class}', email='${email}', sex='${sex}', annee='${annee} WHERE id_student = $id");
             if($sql){
                 $output = 'success';
             }else{
                 $output = 'error';
             }
         }
-        print json_encode($output);
+        print $output;
     }
 
     if($_POST['action'] == 'select_student'){
