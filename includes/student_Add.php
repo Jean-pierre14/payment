@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-11 p-0 pr-2">
-            <a href="studentAdd.php" class="mt-2 btn btn-sm btn-success">Add new student</a>
+            <a href="studentAdd.php" class="mt-2 btn btn-sm btn-success">Ajouter un eleve</a>
             <div class="container-fluid p-0">
                 <div class="row">
                     <div class="col-md-4">
@@ -12,12 +12,10 @@
                             </form>
                             <div class="list-group">
                                 <?php while($data = mysqli_fetch_array($run_student)): ?>
-
                                 <a class="list-group-item"
                                     href="student.php?getStudent=<?php echo $data['id_student'];?>">
                                     <?php echo $data['username'];?>
                                 </a>
-
                                 <?php endwhile;?>
                             </div>
                         </div>

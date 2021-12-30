@@ -54,7 +54,7 @@ if (isset($_POST['action'])) {
     }
 
     if($_POST['action'] == 'select_student'){
-        $SQL = mysqli_query($con, "SELECT * FROM student ORDER BY id DESC");
+        $SQL = mysqli_query($con, "SELECT * FROM student ORDER BY username ASC");
         if(mysqli_num_rows($SQL) > 0){
 
             while($row = mysqli_fetch_array($sql)){

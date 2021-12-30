@@ -1,5 +1,5 @@
 <div class="container-fluid ui">
-    <h3 class="text-center"><i class="icon book"></i>Lecturers</h3>
+    <h3 class="text-center"><i class="icon book"></i>Enseignants</h3>
     <hr>
     <div class="row">
         <div class="col-md-8">
@@ -9,11 +9,9 @@
             </div>
         </div>
         <div class="col-md-4">
-            <h3 class="text-center white p-2 bg-success">Lecturer</h3>
-
+            <h3 class="text-center white p-2 bg-success">Enseignants</h3>
             <!-- error page -->
             <?php include("./error.php"); ?>
-
             <!-- include the total page -->
             <form action="" method="post" id="lecturerForm" enctype="multipart/form-data">
                 <div id="error"></div>

@@ -8,15 +8,13 @@ if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "You must log in first to view this page";
     header('location: login.php');
 }
-
 ?>
-
 <div class="container-fluid mt-5" style="margin-top: 50px">
     <div class="row justify-content-center">
         <div class="col-md-7 col-sm-10">
             <div class="card my-5">
                 <div class="card-body">
-                    <h3 class="text-center">Registration of new student</h3>
+                    <h3 class="text-center">Enregistre un nouveau eleve*</h3>
                     <form autocomplete="off" action="" enctype="multipart/form-data" method="post"
                         id="register_studentForm">
                         <?php include "./error.php";?>
