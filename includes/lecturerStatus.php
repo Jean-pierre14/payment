@@ -1,8 +1,3 @@
-<header class="ui menu inverted m-0 small header">
-    <a href="" class="item"><i class="icon dashboard active"></i>Dashboard</a>
-    <a href="" class="item"><i class="icon chat"></i>Message<span class="badge badge-secondary">12</span></a>
-</header>
-
 <div class="container-fluid ui">
     <h3 class="text-center"><i class="icon book"></i>Lecturers</h3>
     <hr>
