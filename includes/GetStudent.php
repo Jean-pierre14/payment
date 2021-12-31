@@ -1,47 +1,28 @@
-<?php $id = $_GET['getStudent'];
-                                $sql = mysqli_query($con, "SELECT * FROM student WHERE id_student = ${id}");
-                                $out = '';
-                                $out .= '
-                                <div class="btn-group">
-                                    
-                                    <a href="javascript:void()" id="go-back" class="btn btn-sm btn-success my-2">Retour</a>
-                                    <a href="edit.php?edit='.$id.'" class="btn btn-sm btn-warning my-2">Modifier</a>
-                                    <a href="edit.php?delete='.$id.'" class="btn btn-sm btn-danger my-2">Efface</a>
-                                </div>
-                                ';
-                                if(mysqli_num_rows($sql) > 0){
-                                    $out .= '<div class="list-group">';
-                                    while($row = mysqli_fetch_array($sql)){
-                                        $out .= '
-                                        <p class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span>Username:</span>
-                                            <span>'.$row['username'].'</span>
-                                        </p>
+<input type="hidden" value="<?= $_GET['getStudent']; ?>" id="GetStudentData" class="form-control">
+<div class="btn-group">
 
-                                        <p class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span>Fullname:</span>
-                                            <span>'.$row['sname'].'</span>
-                                        </p>
+    <a href="javascript:void()" id="go-back" class="btn btn-sm btn-success my-2">Retour</a>
+    <a href="edit.php?edit=<?= $_GET['getStudent']?>" class="btn btn-sm btn-warning my-2">Modifier</a>
+    <a href="edit.php?delete=<?= $_GET['getStudent']?>" class="btn btn-sm btn-danger my-2">Efface</a>
+</div>
+<div id="dataResult">
+    <h3>Chargement...</h3>
+</div>
+<script>
+const GetStudentData = document.querySelector('#GetStudentData').value,
+    dataResult = document.querySelector('#dataResult')
+let http = new XMLHttpRequest()
 
-                                        <p class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span>Class:</span>
-                                            <span>'.$row['class'].'</span>
-                                        </p>
-
-                                        <p class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span>Sexe:</span>
-                                            <span>'.$row['sex'].'</span>
-                                        </p>
-
-                                        <p class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span>Enregistre:</span>
-                                            <span>'.$row['created_at'].'</span>
-                                        </p>
-                                        ';
-                                    }
-                                    $out .= '</div>';
-                                }else{
-                                    $out = '<p  class="alert alert-danger">:( Mal jouer</p>';
-                                }
-                                print $out;
-                            ?>
+http.onload = () => {
+    if (http.readyState === XMLHttpRequest.DONE) {
+        if (http.status === 200) {
+            let data = http.response
+            // console.log("Data >> " + data) for testing
+            dataResult.innerHTML = data
+        }
+    }
+}
+http.open("POST", "./configuration/action3.php", true)
+http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+http.send("action='GetStudentData'&Id=" + GetStudentData)
+</script>
