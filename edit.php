@@ -37,70 +37,70 @@ if(!isset($_GET['edit'])){
                                         }else{
                                             $sql = mysqli_query($con, "SELECT * FROM student WHERE id_student = $id");
                                         
-                                        if(@mysqli_num_rows($sql) > 0){ 
-                                        $out .= '
-                                        <form id="editBtnForm" action="#" method="POST" enctype="multipart/form-data">
-                                        <div class="list-group">
-                                        ';
-                                            while($row = mysqli_fetch_array($sql)){
-                                                $out .= '
-                                                <div class="" id="error"></div>
-                                                <div class="form-group">
-                                                    <input type="hidden" class="form-control" id="UserId" value="'.$row['id_student'].'">
-                                                    <label for="username" class="">Prenom</label>
-                                                    <input type="text" required class="form-control"  id="username" placeholder="Username" name="username" value="'.$row['username'].'">
-                                                    <input type="hidden" required class="form-control"  id="action" placeholder="action" name="action" value="editBtn">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="sname" class="">Nom</label>
-                                                    <input type="text" required class="form-control" id="name" placeholder="Second name" name="sname" value="'.$row['sname'].'">
-                                                </div>
-
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="sname" class="">Classe <span class="badge badge-success">'.$row['class'].'</span></label>
-                                                        <select class="form-control" name="class" id="class" required>
-                                                            <option value="">-- Selectionne --</option>
-                                                            <option value="P1">P1</option>
-                                                            <option value="P2">P2</option>
-                                                            <option value="P3">P3</option>
-                                                            <option value="P4">P4</option>
-                                                            <option value="P5">P5</option>
-                                                            <option value="P6">P6</option>
-                                                        </select>    
-                                                    </div>
-                                                    <div class="col-md-6 form-group">
-                                                        <label for="sex">Sexe <span class="badge badge-success">'.$row['sex'].'</span></label>
-                                                        <select name="sex" id="sex" class="form-control" required>
-                                                            <option>-- selectionne --</option>
-                                                            <option value="Male">Masculin</option>
-                                                            <option value="Female">Feminin</option>
-                                                        </select>
+                                            if(@mysqli_num_rows($sql) > 0){ 
+                                            $out .= '
+                                            <form id="editBtnForm" action="#" method="POST" enctype="multipart/form-data">
+                                            <div class="list-group">
+                                            ';
+                                                while($row = mysqli_fetch_array($sql)){
+                                                    $out .= '
+                                                    <div class="" id="error"></div>
+                                                    <div class="form-group">
+                                                        <input type="hidden" class="form-control" name="id" id="UserId" value="'.$row['id_student'].'">
+                                                        <label for="username" class="">Prenom</label>
+                                                        <input type="text" required class="form-control"  id="username" placeholder="Username" name="username" value="'.$row['username'].'">
+                                                        <input type="hidden" required class="form-control"  id="action" placeholder="action" name="action" value="editBtn">
                                                     </div>
 
-                                                    <div class="col-md-12">
-                                                        <label for="annee">Annee scolaire <span class="badge badge-succss">'.$row['AnneeScolaire'].'</span></label>
-                                                        '.$AnneesScolaires.'
+                                                    <div class="form-group">
+                                                        <label for="sname" class="">Nom</label>
+                                                        <input type="text" required class="form-control" id="name" placeholder="Second name" name="sname" value="'.$row['sname'].'">
                                                     </div>
 
-                                                    <div class="form-group col-md-12">
-                                                        <label for="email">E-mail des parents</label>
-                                                        <input type="email" class="form-control" required name="email" value="'.$row['email'].'" id="email" placeholder="Email des parents">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="sname">Classe <span class="badge badge-success">'.$row['class'].'</span></label>
+                                                            <select class="form-control" name="class" id="class" required>
+                                                                <option value="">-- Selectionne --</option>
+                                                                <option value="P1">P1</option>
+                                                                <option value="P2">P2</option>
+                                                                <option value="P3">P3</option>
+                                                                <option value="P4">P4</option>
+                                                                <option value="P5">P5</option>
+                                                                <option value="P6">P6</option>
+                                                            </select>    
+                                                        </div>
+                                                        <div class="col-md-6 form-group">
+                                                            <label for="sex">Sexe <span class="badge badge-success">'.$row['sex'].'</span></label>
+                                                            <select name="sex" id="sex" class="form-control" required>
+                                                                <option>-- selectionne --</option>
+                                                                <option value="Male">Masculin</option>
+                                                                <option value="Female">Feminin</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <label for="annee">Annee scolaire <span class="badge badge-succss">'.$row['AnneeScolaire'].'</span></label>
+                                                            '.$AnneesScolaires.'
+                                                        </div>
+
+                                                        <div class="form-group col-md-12">
+                                                            <label for="email">E-mail des parents</label>
+                                                            <input type="email" class="form-control" required name="email" value="'.$row['email'].'" id="email" placeholder="Email des parents">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="file" class="">Profil</label>
+                                                            <input type="file" class="form-control" name="file" id="file">
+                                                        </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="file" class="">Profil</label>
-                                                        <input type="file" class="form-control" name="file" id="file">
+                                                        <button class="btn btn-warning btn-sm" value="'.$row['id_student'].'" id="editBtn" type="button">Mettre a jour</button>
                                                     </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button class="btn btn-warning btn-sm" value="'.$row['id_student'].'" id="editBtn" type="button">Mettre a jour</button>
-                                                </div>
-                                                ';
-                                            }
-                                        $out .= '</div>
-                                        </form>
-                                        ';
+                                                    ';
+                                                }
+                                            $out .= '</div>
+                                            </form>
+                                            ';
                                         }else{
                                             $out = '<p class="alert alert-danger">Mauvais Jeu :(</p>';
                                         }
@@ -147,7 +147,8 @@ http.send("action='GetStudentData'&Id=" + GetStudentData)
 </script>
 
 <script>
-const EditBtn = document.querySelector('#editBtn')
+const EditBtn = document.querySelector('#editBtn'),
+    form = document.querySelector('#editBtnForm')
 
 EditBtn.onclick = () => {
     let http = new XMLHttpRequest()
@@ -166,8 +167,9 @@ EditBtn.onclick = () => {
         }
     }
     http.open("POST", "./configuration/action3.php", true)
-    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-    http.send("action4='editStudent'&Id=" + Id)
+    // http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    let FormDatas = new formDataEdit(form)
+    http.send(FormDatas)
 }
 $(document).ready(function() {
     // $('#editBtn').click(function() {
