@@ -8,6 +8,10 @@ if (!isset($_SESSION['username'])) {
     header('location: login.php');
 }
 
+if(!isset($_GET['edit'])){
+    header("Location: student.php");
+}
+
 ?>
 
 <div class="side-bar ui bg-dark white">
@@ -26,9 +30,13 @@ if (!isset($_SESSION['username'])) {
                                 <div class="card card-body shadow-sm">
                                     <form action="" method="post" autocomplete="off" id="editForm">
                                         <?php
-                                        $id = $_GET['edit'];
-                                        $sql = mysqli_query($con, "SELECT * FROM student WHERE id_student = ${id}");
                                         $out = '';
+                                        $id = $_GET['edit'];
+                                        if(!$id){
+                                            print '<p class="alert alert-danger">Qu\'est-ce que voulez-vous faire?</p>';
+                                        }else{
+                                            $sql = mysqli_query($con, "SELECT * FROM student WHERE id_student = $id");
+                                        
                                         if(@mysqli_num_rows($sql) > 0){ 
                                         $out .= '
                                         <form id="editBtnForm" action="#" method="POST" enctype="multipart/form-data">
@@ -86,7 +94,7 @@ if (!isset($_SESSION['username'])) {
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button class="btn btn-warning btn-sm" id="editBtn" type="button">Mettre a jour</button>
+                                                    <button class="btn btn-warning btn-sm" value="'.$row['id_student'].'" id="editBtn" type="button">Mettre a jour</button>
                                                 </div>
                                                 ';
                                             }
@@ -95,6 +103,7 @@ if (!isset($_SESSION['username'])) {
                                         ';
                                         }else{
                                             $out = '<p class="alert alert-danger">Mauvais Jeu :(</p>';
+                                        }
                                         }
                                         print $out;
                                     ?>
@@ -138,47 +147,69 @@ http.send("action='GetStudentData'&Id=" + GetStudentData)
 </script>
 
 <script>
-$(document).ready(function() {
-    $('#editBtn').click(function() {
-        let username = $('#username').val(),
-            id = $('#userId').val(),
-            name = $('#name').val(),
-            email = $('#email').val(),
-            classe = $('#class').val(),
-            sex = $('#sex').val(),
-            annee = $('#annee').val()
-        if (!username || !name || !email || !classe || !sex || !annee) {
-            $('#error').html(
-                '<p class="alert alert-danger">Il y a quelle chose qui ne va pas bien!</p>')
-            // 1 corinther 7 une femme est lien a son mari
-        } else {
-            $.ajax({
-                url: './configuration/action.php',
-                method: 'POST',
-                data: {
-                    action: 'mise_a_jour',
-                    id,
-                    username,
-                    name,
-                    email,
-                    classe,
-                    sex,
-                    annee
-                },
-                success: function(data) {
-                    if (data === 'success') {
-                        $('#error').html(
-                            '<p class="alert alert-success">Mise a jour reussi :)</p>'
-                        )
-                        $('#editForm').reset()
-                    } else {
-                        $('#error').html(
-                            '<p class="alert alert-danger">Il y a un erreur :( Reessayer!</p>'
-                        )
-                    }
+const EditBtn = document.querySelector('#editBtn')
+
+EditBtn.onclick = () => {
+    let http = new XMLHttpRequest()
+    const Id = EditBtn.value
+    http.onload = () => {
+        if (http.readyState === XMLHttpRequest.DONE) {
+            if (http.status === 200) {
+                let data = http.response
+                // console.log("Data >> " + data) for testing
+                if (data === 'success') {
+                    location.href = `edit.php?edit=${Id}`
+                } else {
+                    document.querySelector('#error').innerHTML = '<p>Il y a un probleme*</p>'
                 }
-            })
+            }
         }
-    })
+    }
+    http.open("POST", "./configuration/action3.php", true)
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    http.send("action4='editStudent'&Id=" + Id)
+}
+$(document).ready(function() {
+    // $('#editBtn').click(function() {
+    //     let username = $('#username').val(),
+    //         id = $('#userId').val(),
+    //         name = $('#name').val(),
+    //         email = $('#email').val(),
+    //         classe = $('#class').val(),
+    //         sex = $('#sex').val(),
+    //         annee = $('#annee').val()
+    //     if (!username || !name || !email || !classe || !sex || !annee) {
+    //         $('#error').html(
+    //             '<p class="alert alert-danger">Il y a quelle chose qui ne va pas bien!</p>')
+    //         // 1 corinther 7 une femme est lien a son mari
+    //     } else {
+    //         $.ajax({
+    //             url: './configuration/action.php',
+    //             method: 'POST',
+    //             data: {
+    //                 action: 'mise_a_jour',
+    //                 id,
+    //                 username,
+    //                 name,
+    //                 email,
+    //                 classe,
+    //                 sex,
+    //                 annee
+    //             },
+    //             success: function(data) {
+    //                 if (data === 'success') {
+    //                     $('#error').html(
+    //                         '<p class="alert alert-success">Mise a jour reussi :)</p>'
+    //                     )
+    //                     $('#editForm').reset()
+    //                 } else {
+    //                     $('#error').html(
+    //                         '<p class="alert alert-danger">Il y a un erreur :( Reessayer!</p>'
+    //                     )
+    //                 }
+    //             }
+    //         })
+    //     }
+    // })
 })
 </script>

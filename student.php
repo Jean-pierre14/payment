@@ -1,4 +1,6 @@
-<?php include("./includes/nav.php"); ?>
+<?php include("./includes/nav.php"); 
+
+?>
 <div class="side-bar ui bg-dark white">
     <?php include("./includes/sideBar.php");?>
 </div>

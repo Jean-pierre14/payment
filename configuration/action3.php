@@ -22,7 +22,11 @@
      if(isset($_POST['action'])){
           $Id = mysqli_real_escape_string($con, htmlentities(trim($_POST['Id'])));
           $sql = mysqli_query($con, "SELECT * FROM student WHERE id_student = $Id");
-          if(@mysqli_num_rows($sql) == 1){
+
+          if(!$Id){
+               print '<p class="alert alert-danger">Qu\'est-ce que voulez-vous faire?</p>';
+          }else{
+               if(@mysqli_num_rows($sql) == 1){
                $row = mysqli_fetch_array($sql);
                if($row['profil'] == ''){
                     $imgFil = 'animal-blur-fur-horns-207029.jpg';
@@ -72,7 +76,7 @@
                $data .= '</div>';
 
                print '
-                    <div class="card">
+                    <div class="card shadow-sm">
                          <div class="card-header p-2">
                               <h3 class="text-center">'.$row['username'].' '.$row['sname'].'</h3>
                          </div>
@@ -96,5 +100,11 @@
                <p class="alert alert-danger">Merci d\'avoir essayer :(</p>
                ';
           }
+          }
+          
+     }
+
+     if(isset($_POST['action4'])){
+          print 'success';
      }
 ?>
