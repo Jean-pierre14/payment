@@ -171,47 +171,4 @@ EditBtn.onclick = () => {
     let FormDatas = new formDataEdit(form)
     http.send(FormDatas)
 }
-$(document).ready(function() {
-    // $('#editBtn').click(function() {
-    //     let username = $('#username').val(),
-    //         id = $('#userId').val(),
-    //         name = $('#name').val(),
-    //         email = $('#email').val(),
-    //         classe = $('#class').val(),
-    //         sex = $('#sex').val(),
-    //         annee = $('#annee').val()
-    //     if (!username || !name || !email || !classe || !sex || !annee) {
-    //         $('#error').html(
-    //             '<p class="alert alert-danger">Il y a quelle chose qui ne va pas bien!</p>')
-    //         // 1 corinther 7 une femme est lien a son mari
-    //     } else {
-    //         $.ajax({
-    //             url: './configuration/action.php',
-    //             method: 'POST',
-    //             data: {
-    //                 action: 'mise_a_jour',
-    //                 id,
-    //                 username,
-    //                 name,
-    //                 email,
-    //                 classe,
-    //                 sex,
-    //                 annee
-    //             },
-    //             success: function(data) {
-    //                 if (data === 'success') {
-    //                     $('#error').html(
-    //                         '<p class="alert alert-success">Mise a jour reussi :)</p>'
-    //                     )
-    //                     $('#editForm').reset()
-    //                 } else {
-    //                     $('#error').html(
-    //                         '<p class="alert alert-danger">Il y a un erreur :( Reessayer!</p>'
-    //                     )
-    //                 }
-    //             }
-    //         })
-    //     }
-    // })
-})
 </script>
