@@ -293,3 +293,17 @@
 .navBar .Right ul li a:hover {
   background: #ccc;
 }
+
+.img-cercle {
+  position: relative;
+  display: block;
+}
+.img-cercle img {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.363);
+  /* border: 3px solid green; */
+  object-fit: cover;
+}

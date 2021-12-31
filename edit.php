@@ -29,10 +29,9 @@ if (!isset($_SESSION['username'])) {
                                         $id = $_GET['edit'];
                                         $sql = mysqli_query($con, "SELECT * FROM student WHERE id_student = ${id}");
                                         $out = '';
-                                        if(@mysqli_num_rows($sql) > 0){
-                                            
+                                        if(@mysqli_num_rows($sql) > 0){ 
                                         $out .= '
-                                        <form id="editBtnForm" action="#" method="POST">
+                                        <form id="editBtnForm" action="#" method="POST" enctype="multipart/form-data">
                                         <div class="list-group">
                                         ';
                                             while($row = mysqli_fetch_array($sql)){
@@ -81,6 +80,10 @@ if (!isset($_SESSION['username'])) {
                                                         <label for="email">E-mail des parents</label>
                                                         <input type="email" class="form-control" required name="email" value="'.$row['email'].'" id="email" placeholder="Email des parents">
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="file" class="">Profil</label>
+                                                        <input type="file" class="form-control" name="file" id="file">
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <button class="btn btn-warning btn-sm" id="editBtn" type="button">Mettre a jour</button>
@@ -99,8 +102,11 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" value="<?= $_GET['edit']; ?>" id="editUser" class="form-control">
-                                <div id="dataResult"></div>
+                                <input type="hidden" value="<?= $_GET['edit']; ?>" id="GetStudentData"
+                                    class="form-control">
+                                <div id="dataResult">
+                                    <h3>Chargement...</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -111,6 +117,25 @@ if (!isset($_SESSION['username'])) {
 </div>
 </div>
 <?php include('./footer.php'); ?>
+
+<script>
+const GetStudentData = document.querySelector('#GetStudentData').value,
+    dataResult = document.querySelector('#dataResult')
+let http = new XMLHttpRequest()
+
+http.onload = () => {
+    if (http.readyState === XMLHttpRequest.DONE) {
+        if (http.status === 200) {
+            let data = http.response
+            // console.log("Data >> " + data) for testing
+            dataResult.innerHTML = data
+        }
+    }
+}
+http.open("POST", "./configuration/action3.php", true)
+http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+http.send("action='GetStudentData'&Id=" + GetStudentData)
+</script>
 
 <script>
 $(document).ready(function() {
