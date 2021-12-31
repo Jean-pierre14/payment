@@ -39,6 +39,7 @@ if(!isset($_GET['edit'])){
                                         
                                             if(@mysqli_num_rows($sql) > 0){ 
                                             $out .= '
+                                            <div id="error"></div>
                                             <form id="editBtnForm" action="#" method="POST" enctype="multipart/form-data">
                                             <div class="list-group">
                                             ';
@@ -104,7 +105,7 @@ if(!isset($_GET['edit'])){
                                         }else{
                                             $out = '<p class="alert alert-danger">Mauvais Jeu :(</p>';
                                         }
-                                        }
+                                    }
                                         print $out;
                                     ?>
                                     </form>
@@ -148,11 +149,10 @@ http.send("action='GetStudentData'&Id=" + GetStudentData)
 
 <script>
 const EditBtn = document.querySelector('#editBtn'),
-    form = document.querySelector('#editBtnForm')
+    Form = document.getElementById('editBtnForm')
 
 EditBtn.onclick = () => {
     let http = new XMLHttpRequest()
-    const Id = EditBtn.value
     http.onload = () => {
         if (http.readyState === XMLHttpRequest.DONE) {
             if (http.status === 200) {
@@ -161,14 +161,13 @@ EditBtn.onclick = () => {
                 if (data === 'success') {
                     location.href = `edit.php?edit=${Id}`
                 } else {
-                    document.querySelector('#error').innerHTML = '<p>Il y a un probleme*</p>'
+                    document.querySelector('#error').innerHTML = `<p>${data}</p>`
                 }
             }
         }
     }
-    http.open("POST", "./configuration/action3.php", true)
-    // http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-    let FormDatas = new formDataEdit(form)
-    http.send(FormDatas)
+    http.open("POST", "./configuration/editStudent.php", true)
+    let formData = new FormData(Form)
+    http.send(formData)
 }
 </script>
