@@ -36,7 +36,7 @@ search.onkeyup = () => {
         }
         xhr.open("POST", "././configuration/action3.php", true)
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-        xhr.send("seach=" + text)
+        xhr.send("search=" + text)
     } else {
         Fetch()
     }
