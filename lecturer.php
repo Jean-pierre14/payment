@@ -15,6 +15,7 @@
 
 <script>
 const BtnRegistration = document.getElementById('lectureRegister')
+
 const form = document.querySelector('#lecturerForm')
 
 // To preventDefault Event
