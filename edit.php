@@ -146,7 +146,6 @@ http.open("POST", "./configuration/action3.php", true)
 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 http.send("action='GetStudentData'&Id=" + GetStudentData)
 </script>
-
 <script>
 const EditBtn = document.querySelector('#editBtn'),
     Form = document.getElementById('editBtnForm')
