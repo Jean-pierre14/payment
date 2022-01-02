@@ -147,26 +147,40 @@ http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 http.send("action='GetStudentData'&Id=" + GetStudentData)
 </script>
 <script>
-const EditBtn = document.querySelector('#editBtn')
+$(document).ready(function(){
+    const EditBtn = document.querySelector('#editBtn')
 const form = document.querySelector('#editBtnForm')
 
 EditBtn.onclick = () => {
-    let http = new XMLHttpRequest()
-    http.onload = () => {
-        if (http.readyState === XMLHttpRequest.DONE) {
-            if (http.status === 200) {
-                let data = http.response
-                // console.log("Data >> " + data) for testing
-                if (data === 'success') {
-                    location.href = `edit.php?edit=${Id}`
-                } else {
-                    document.querySelector('#error').innerHTML = `<p>${data}</p>`
-                }
+    // let http = new XMLHttpRequest()
+    // http.onload = () => {
+    //     if (http.readyState === XMLHttpRequest.DONE) {
+    //         if (http.status === 200) {
+    //             let data = http.response
+    //             // console.log("Data >> " + data) for testing
+    //             if (data === 'success') {
+    //                 location.href = `edit.php?edit=${Id}`
+    //             } else {
+    //                 document.querySelector('#error').innerHTML = `<p>${data}</p>`
+    //             }
+    //         }
+    //     }
+    // }
+    // http.open("POST", "./configuration/editStudent.php", true)
+    // const formData = new FormData(form)
+    // http.send(formData)
+    $.ajax({
+        url: './configuration/editStudent.php',
+        method: 'POST',
+        data: $('#editBtnForm').serialized(),
+        success: function(data){
+            if(data === 'success'){
+                alert('Success')
+            }else{
+                alert('Error')
             }
         }
-    }
-    http.open("POST", "./configuration/editStudent.php", true)
-    const formData = new FormData(form)
-    http.send(formData)
+    })
 }
+})
 </script>
