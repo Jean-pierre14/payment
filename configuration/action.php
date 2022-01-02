@@ -20,12 +20,33 @@ if (isset($_POST['action'])) {
         if(empty($username) || empty($name) || empty($email) || empty($class) || empty($sex) || empty($annee)){
             print 'error';
         }else{
-            $sql = mysqli_query($con, "INSERT INTO student(username, `sname`, email, class, sex, AnneeScolaire) VALUES('$username', '$name', '$email', '$class','$sex', '$annee')");
-            if($sql){
-                $output = 'success';
+            if(isset($_FILES['file'])){
+                $img_name = $_FILES['file']['name']; // To get the name of the field
+                $img_type = $_FILES['file']['type']; // To get the type
+                $tmp_name = $_FILES['file']['tmp_name']; // To get the temporaly name
+
+                // Let explode image and get the last extension like jpg or png...
+                $img_explode = explode('.', $img_name);
+                $img_ext = end($img_explode);
+                $extensions = ['jpeg', 'png', 'jpg', 'JPG'];
+
+                if(in_array($img_ext, $extensions) === true){
+                    $time = time();
+                    $new_img_name = $time.$img_name;
+                    if(move_uploaded_file($tmp_name, "../images/Students/".$new_name)){
+                        $random_id = rand(time(), 1000000);
+                        $sql = mysqli_query($con, "INSERT INTO student(unique_id, username, `sname`, email, class, sex, AnneeScolaire, profil) VALUES('{$random_id}''$username', '$name', '$email', '$class','$sex', '$annee', '{$new_img_name}')");
+                        if($sql){
+                            $output = 'success';
+                        }else{
+                            $output = 'error';
+                        }
+                    }
+                }
             }else{
-                $output = 'error';
+                $output = '<p class="alert alert-danger">Selectionner une image :)</p>';
             }
+            
         }
         print $output;
     }
