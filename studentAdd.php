@@ -15,9 +15,10 @@ if (!isset($_SESSION['username'])) {
             <div class="card my-5">
                 <div class="card-body">
                     <h3 class="text-center">Enregistre un nouveau eleve*</h3>
+                    <div id="error"></div>
                     <form autocomplete="off" action="" enctype="multipart/form-data" method="post"
                         id="register_studentForm">
-                        <?php include "./error.php";?>
+                        <input type="hidden" value="register_studentForm" name="action"/>
                         <div class="form-group">
                             <label for="username">Prenom<span class="text-bod text-danger">*</span></label>
                             <input type="text" name="username" value="<?= $stud_username; ?>" id="username"
@@ -81,8 +82,8 @@ if (!isset($_SESSION['username'])) {
                                 <?php endif;?>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="sex">Photo de l'eleve<span class="text-bod text-danger">*</span></label>
-                                <input type="file" name="image" id="image" placeholder="File" class="form-control">
+                                <label for="file">Photo de l'eleve<span class="text-bod text-danger">*</span></label>
+                                <input type="file" name="file" id="file" placeholder="File" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -110,21 +111,38 @@ document.getElementById('go-back').addEventListener('click', () => {
 });
 
 $(document).ready(function() {
-    $('#register_student').click(function() {
-        $.ajax({
-            url: './configuration/action.php',
-            method: 'POST',
-            data: $('#register_studentForm').serialize(),
-            success: function(data) {
-                if (data === 'success') {
-                    // alert(data)
-                    $('#register_studentForm')[0].reset()
-                } else {
-                    $('#error').html(data)
-                }
-            }
-        })
-    })
-
+    // $('#register_student').click(function() {
+    //     $.ajax({
+    //         url: './configuration/action.php',
+    //         method: 'POST',
+    //         data: $('#register_studentForm').serialize(),
+    //         success: function(data) {
+    //             if (data === 'success') {
+    //                 // alert(data)
+    //                 $('#register_studentForm')[0].reset()
+    //             } else {
+    //                 $('#error').html(data)
+    //             }
+    //         }
+    //     })
+    // })
 })
+
+const BtnCreate = document.querySelector('#register_student')
+const reg = document.querySelector('#register_studentForm')
+BtnCreate.onclick = () =>{
+    let xhr = new XMLHttpRequest()
+    xhr.onload = () =>{
+        if(xhr.readyState === XMLHttpRequest.DONE){
+            if(xhr.status === 200){
+                let data = xhr.response
+                alert(data)
+            }
+        }
+    }
+    xhr.open("POST", "./configuration/action12.php", true)
+    const createData = new createData(reg)
+
+    xhr.send(create)
+}
 </script>
