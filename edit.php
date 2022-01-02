@@ -147,8 +147,8 @@ http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 http.send("action='GetStudentData'&Id=" + GetStudentData)
 </script>
 <script>
-const EditBtn = document.querySelector('#editBtn'),
-    Form = document.getElementById('editBtnForm')
+const EditBtn = document.querySelector('#editBtn')
+const form = document.querySelector('#editBtnForm')
 
 EditBtn.onclick = () => {
     let http = new XMLHttpRequest()
@@ -166,7 +166,7 @@ EditBtn.onclick = () => {
         }
     }
     http.open("POST", "./configuration/editStudent.php", true)
-    let formData = new FormData(Form)
+    const formData = new FormData(form)
     http.send(formData)
 }
 </script>
