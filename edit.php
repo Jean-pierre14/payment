@@ -40,7 +40,7 @@ if(!isset($_GET['edit'])){
                                             if(@mysqli_num_rows($sql) > 0){ 
                                             $out .= '
                                             <div id="error"></div>
-                                            <form id="editBtnForm" action="#" method="POST" enctype="multipart/form-data">
+                                            <form id="editBtnForm" action="./configuration/editStudent.php" method="POST" enctype="multipart/form-data">
                                             <div class="list-group">
                                             ';
                                                 while($row = mysqli_fetch_array($sql)){
@@ -81,7 +81,7 @@ if(!isset($_GET['edit'])){
                                                         </div>
 
                                                         <div class="col-md-12">
-                                                            <label for="annee">Annee scolaire <span class="badge badge-succss">'.$row['AnneeScolaire'].'</span></label>
+                                                            <label for="annee">Annee scolaire <span class="badge badge-success">'.$row['AnneeScolaire'].'</span></label>
                                                             '.$AnneesScolaires.'
                                                         </div>
 
@@ -95,7 +95,7 @@ if(!isset($_GET['edit'])){
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <button class="btn btn-warning btn-sm" value="'.$row['id_student'].'" id="editBtn" type="button">Mettre a jour</button>
+                                                        <button class="btn btn-warning btn-sm" value="'.$row['id_student'].'" id="editBtn" type="submit">Mettre a jour</button>
                                                     </div>
                                                     ';
                                                 }
@@ -151,36 +151,36 @@ $(document).ready(function(){
     const EditBtn = document.querySelector('#editBtn')
 const form = document.querySelector('#editBtnForm')
 
-EditBtn.onclick = () => {
-    // let http = new XMLHttpRequest()
-    // http.onload = () => {
-    //     if (http.readyState === XMLHttpRequest.DONE) {
-    //         if (http.status === 200) {
-    //             let data = http.response
-    //             // console.log("Data >> " + data) for testing
-    //             if (data === 'success') {
-    //                 location.href = `edit.php?edit=${Id}`
-    //             } else {
-    //                 document.querySelector('#error').innerHTML = `<p>${data}</p>`
-    //             }
-    //         }
-    //     }
-    // }
-    // http.open("POST", "./configuration/editStudent.php", true)
-    // const formData = new FormData(form)
-    // http.send(formData)
-    $.ajax({
-        url: './configuration/editStudent.php',
-        method: 'POST',
-        data: $('#editBtnForm').serialized(),
-        success: function(data){
-            if(data === 'success'){
-                alert('Success')
-            }else{
-                alert('Error')
-            }
-        }
-    })
-}
-})
+// EditBtn.onclick = () => {
+//     // let http = new XMLHttpRequest()
+//     // http.onload = () => {
+//     //     if (http.readyState === XMLHttpRequest.DONE) {
+//     //         if (http.status === 200) {
+//     //             let data = http.response
+//     //             // console.log("Data >> " + data) for testing
+//     //             if (data === 'success') {
+//     //                 location.href = `edit.php?edit=${Id}`
+//     //             } else {
+//     //                 document.querySelector('#error').innerHTML = `<p>${data}</p>`
+//     //             }
+//     //         }
+//     //     }
+//     // }
+//     // http.open("POST", "./configuration/editStudent.php", true)
+//     // const formData = new FormData(form)
+//     // http.send(formData)
+//     $.ajax({
+//         url: './configuration/editStudent.php',
+//         method: 'POST',
+//         data: $('#editBtnForm').serialized(),
+//         success: function(data){
+//             if(data === 'success'){
+//                 alert('Success')
+//             }else{
+//                 alert('Error')
+//             }
+//         }
+//     })
+// }
+// })
 </script>
