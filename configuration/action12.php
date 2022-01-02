@@ -26,9 +26,9 @@
                 $time = time();
                 $new_img_name = $time.$img_name;
                 
-                if(move_uploaded_file($tmp_name, "../images/Students/".$new_name)){
+                if(move_uploaded_file($tmp_name, "../images/Students/".$new_img_name)){
                     $random_id = rand(time(), 1000000);
-                    $sql = mysqli_query($con, "INSERT INTO student(unique_id, username, `sname`, email, class, sex, AnneeScolaire, profil) VALUES('{$random_id}''$username', '$name', '$email', '$class','$sex', '$annee', '{$new_img_name}')");
+                    $sql = mysqli_query($con, "INSERT INTO student(unique_id, username, `sname`, email, class, sex, AnneeScolaire, profil) VALUES('{$random_id}','$username', '$name', '$email', '$class','$sex', '$annee', '{$new_img_name}')");
                     if($sql){
                         $output = 'success';
                     }else{

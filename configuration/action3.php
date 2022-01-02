@@ -29,9 +29,9 @@
                if(@mysqli_num_rows($sql) == 1){
                $row = mysqli_fetch_array($sql);
                if($row['profil'] == ''){
-                    $imgFil = 'animal-blur-fur-horns-207029.jpg';
+                    $imgFil = './images/animal-blur-fur-horns-207029.jpg';
                }else{
-                    $imgFil = $row['profil'];
+                    $imgFil = './images/Students/'.$row['profil'];
                }
                $data = '';
 
@@ -84,7 +84,7 @@
                               <div class="row">
                                    <div class="col-md-4 col-sm-4">
                                         <div class="img-cercle">
-                                             <img src="./images/'.$imgFil.'" alt="'.$row['username'].'" class="img-fluid">
+                                             <img src="'.$imgFil.'" alt="'.$row['username'].'" class="img-fluid">
                                         </div>
                                    </div>
                                    <div class="col-md-8 col-sm-8">

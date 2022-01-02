@@ -110,39 +110,27 @@ document.getElementById('go-back').addEventListener('click', () => {
     history.back();
 });
 
-$(document).ready(function() {
-    // $('#register_student').click(function() {
-    //     $.ajax({
-    //         url: './configuration/action.php',
-    //         method: 'POST',
-    //         data: $('#register_studentForm').serialize(),
-    //         success: function(data) {
-    //             if (data === 'success') {
-    //                 // alert(data)
-    //                 $('#register_studentForm')[0].reset()
-    //             } else {
-    //                 $('#error').html(data)
-    //             }
-    //         }
-    //     })
-    // })
-})
 
 const BtnCreate = document.querySelector('#register_student')
-const reg = document.querySelector('#register_studentForm')
+const reg = document.getElementById('register_studentForm'),
+    error = document.querySelector('#error')
+
 BtnCreate.onclick = () =>{
     let xhr = new XMLHttpRequest()
     xhr.onload = () =>{
         if(xhr.readyState === XMLHttpRequest.DONE){
             if(xhr.status === 200){
                 let data = xhr.response
-                alert(data)
+                if(data !== 'success'){
+                    error.innerHTML = data
+                }else{
+                    location.href= "student.php"
+                }
             }
         }
     }
     xhr.open("POST", "./configuration/action12.php", true)
-    const createData = new createData(reg)
-
-    xhr.send(create)
+    const formData = new FormData(reg)
+    xhr.send(formData)
 }
 </script>
