@@ -187,13 +187,14 @@ function LectuerChart() {
         type: 'line',
         data: {
             labels: ['Hommes', 'Total', 'Femmes'],
-            datasets: [{
-                label: '# Les enseignants',
-                data: [50, 23, 65],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
+            datasets: [
+                {
+                    label: '# Les enseignants',
+                    data: [50, 23, 65],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -201,7 +202,23 @@ function LectuerChart() {
                     'rgba(255, 206, 86, 1)'
                 ],
                 borderWidth: 1
-            }]
+            },
+            {
+                    label: '# Les enseignants',
+                    data: [23, 33, 50],
+                    backgroundColor: [
+                        'rgba(255, 9, 132, .56)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, .2)',
+                    'rgba(255, 206, 86, .2)'
+                ],
+                borderWidth: 1
+            },
+            ]
         },
 
         options: {
@@ -218,33 +235,36 @@ function StudentChart() {
     const Total = $('#Total').val()
     const Male = $('#numMale').val()
     const Female = $('#numFemale').val()
-    const Datas = [Male, Total, Female]
+    const Datas = [Male, Female]
     const ctx = document.getElementById('myChart').getContext('2d')
     const myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'pie',
         data: {
-            labels: ['Garcons', 'Total', 'Filles'],
+            labels: ['Garcons', 'Filles'],
             datasets: [{
                 label: '# Les eleves*',
                 data: Datas,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
                 ],
                 borderWidth: 1
             }]
         },
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+            responsive: true,
+            plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Pie Chart'
+            }
             }
         }
     });
