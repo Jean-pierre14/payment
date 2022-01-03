@@ -9,67 +9,7 @@ if (!isset($_SESSION['username'])) {
 
 ?>
 
-<div class="side-bar ui bg-dark white">
-    <?php include("./includes/sideBar.php"); ?>
-    <?php include("./header.php"); ?>
-</div>
-<div class="ui main">
-    <div class="container-fluid m-0 ui">
-        <div class="container-fluid p-0">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="box bg-white p-4 shadow-sm">
-                        <h2> <i class="fa fa-users"></i> Students</h2>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <div class="btn-group">
-                                    <a href="#add" class="btn btn-sm btn-info">Add new</a>
-                                    <a href="#add" class="btn btn-sm btn-success">View</a>
-                                </div>
-                            </div>
-                            <div>
-                                <span><small>234500</small></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="box bg-white p-4 shadow-sm">
-                        <h2> <i class="fa fa-users"></i> Males</h2>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <div class="btn-group">
-                                    <a href="#add" class="btn btn-sm btn-info">Add new</a>
-                                    <a href="#add" class="btn btn-sm btn-success">View</a>
-                                </div>
-                            </div>
-                            <div>
-                                <span><small>234500</small></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="box bg-white p-4 shadow-sm">
-                        <h2> <i class="fa fa-users"></i> Females</h2>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <div class="btn-group">
-                                    <a href="#add" class="btn btn-sm btn-info">Add new</a>
-                                    <a href="#add" class="btn btn-sm btn-success">View</a>
-                                </div>
-                            </div>
-                            <div>
-                                <span><small>234500</small></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="my-2 row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <?php
+<?php
                                 $sql = "SELECT student_male.Male, student_female.Female FROM student_male INNER JOIN student_female ON student_male.id_male = student_female.id_female OR student_male.id_male != student_female.id_female";
                                 $run = mysqli_query($con, $sql);
 
@@ -83,6 +23,70 @@ if (!isset($_SESSION['username'])) {
                                     // print json_encode($array);s
                                 }
                             ?>
+
+<div class="side-bar ui bg-dark white">
+    <?php include("./includes/sideBar.php"); ?>
+    <?php include("./header.php"); ?>
+</div>
+<div class="ui main">
+    <div class="container-fluid m-0 ui">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box bg-white p-4 shadow-sm">
+                        <h2> <i class="fa fa-users"></i> Eleves*</h2>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="btn-group">
+                                    <a href="#add" class="btn btn-sm btn-info">Ajouter</a>
+                                    <a href="#add" class="btn btn-sm btn-success">Voir</a>
+                                </div>
+                            </div>
+                            <div>
+                                <h4><?= $numMale+$numFemale?></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box bg-white p-4 shadow-sm">
+                        <h2> <i class="fa fa-users"></i> Garcons*</h2>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="btn-group">
+                                    
+                                </div>
+                            </div>
+                            <div>
+                                <h4><?= $numMale;?></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box bg-white p-4 shadow-sm">
+                        <h2> <i class="fa fa-users"></i> Filles</h2>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="btn-group">
+                                    
+                                </div>
+                            </div>
+                            <div>
+                                <h4>
+                                    
+                                    <?= $numFemale;?>
+                                    
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-2 row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        
                         <input type="hidden" value="<?= $numMale+$numFemale;?>" id="Total" class="form-control">
                         <input type="hidden" value="<?= $numMale;?>" id="numMale" class="form-control">
                         <input type="hidden" value="<?= $numFemale;?>" id="numFemale" class="form-control">
