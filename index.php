@@ -207,7 +207,7 @@ function LectuerChart() {
                     label: '# Les enseignants',
                     data: [23, 33, 50],
                     backgroundColor: [
-                        'rgba(255, 9, 132, .56)',
+                        'rgba(0, 0, 1, .56)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)'
                 ],
