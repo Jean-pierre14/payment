@@ -16,13 +16,6 @@ if (!isset($_SESSION['username'])) {
 </div>
 <div class="ui main">
     <div class="container-fluid m-0 ui">
-        <!-- 
-        <div class="ui iu menu inverted">
-            <a href="#" class="item"><i class="icon home"></i>Home</a>
-            <a href="#" class="item"><i class="icon user"></i>profile</a>
-            <a href="#" class="item"><i class="icon users"></i>Contacts</a>
-            <a href="#" class="item"><i class="icon help"></i>Help</a>
-        </div> -->
 
         <div class="row ui">
 
