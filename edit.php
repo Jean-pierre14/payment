@@ -29,6 +29,75 @@ if(!isset($_GET['edit'])){
                             <div class="col-md-4">
                                 <div class="card card-body shadow-sm">
                                     <?php
+                                        $errors = [];
+                                        if(isset($_POST['editBtn'])){
+
+                                            $username = mysqli_real_escape_string($con, htmlentities(trim($_POST['username'])));
+                                            $id = mysqli_real_escape_string($con, htmlentities(trim($_POST['id'])));
+                                            $sname = mysqli_real_escape_string($con, htmlentities(trim($_POST['sname'])));
+                                            $email = mysqli_real_escape_string($con, htmlentities(trim($_POST['email'])));
+                                            $class = mysqli_real_escape_string($con, htmlentities(trim($_POST['class'])));
+                                            $sex = mysqli_real_escape_string($con, htmlentities(trim($_POST['sex'])));
+                                            $annee = mysqli_real_escape_string($con, htmlentities(trim($_POST['annee'])));
+
+                                            if(!$username || !$sname || !$email || !$class || !$sex || !$annee){
+
+                                                array_push($errors, "Les champs de saisis sont vides");
+
+                                            }else{
+                                                if(count($errors) > 0){
+                                                    include_once "./error.php";
+                                                }else{
+                                                    if(isset($_FILES['file'])){
+                                                        $img_name = $_FILES['file']['name'];
+                                                        $img_type = $_FILES['file']['type']; // To get the type
+                                                        $tmp_name = $_FILES['file']['tmp_name'];
+
+                                                        $img_explode = explode('.', $img_name);
+                                                        $img_ext = end($img_explode);
+                                                        $extensions = ['jpeg', 'png', 'jpg', 'JPG'];
+
+                                                        if(in_array($img_ext, $extensions) === true){
+                                                            $time = time();
+                                                            $new_img_name = $time.$img_name;
+
+                                                            if(move_uploaded_file($tmp_name, "./images/Students/".$new_img_name)){
+                                                                $random_id = rand(time(), 1000000);
+                                                                
+                                                                $sql = mysqli_query($con, "UPDATE student SET username = '$username', sname= '$sname', email = '$email', class = '$class', sex = '$sex', AnneeScolaire = '$annee', profil = '$new_img_name' WHERE id_student = $id");
+                                                                if($sql){
+                                                            ?>
+                                    <script>
+                                    let id = document.getElementById('UserId').value
+                                    location.href = `student.php?getStudent=${id}`
+                                    </script>
+                                    <?php
+                                                        }else{
+                                                            print '<p class="alert alert-danger">Error 404</p>';
+                                                        }
+
+                                                            }
+                                                        }
+                                                    }else{
+                                                        $sql = mysqli_query($con, "UPDATE student SET username = '$username', sname= '$sname', email = '$email', class= '$class', sex = '$sex', AnneeScolaire = '$annee' WHERE id_student = $id");
+                                                        if($sql){
+                                                            ?>
+                                    <script>
+                                    let id = document.getElementById('UserId').value
+                                    location.href = `student.php?getStudent=${id}`
+                                    </script>
+                                    <?php
+                                                        }else{
+                                                            print '<p class="alert alert-danger">Error 404</p>';
+                                                        }
+                                                    }
+                                                    
+                                                }
+                                                
+                                            }
+                                        }
+                                    ?>
+                                    <?php
                                         $out = '';
                                         $id = $_GET['edit'];
                                         if(!$id){
@@ -39,7 +108,7 @@ if(!isset($_GET['edit'])){
                                             if(@mysqli_num_rows($sql) > 0){ 
                                             $out .= '
                                             <div id="error"></div>
-                                            <form id="editBtnForm" action="./configuration/editStudent.php" method="POST" enctype="multipart/form-data">
+                                            <form id="editBtnForm" action="" method="POST" enctype="multipart/form-data">
                                             <div class="list-group">
                                             ';
                                                 while($row = mysqli_fetch_array($sql)){
