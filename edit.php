@@ -28,8 +28,7 @@ if(!isset($_GET['edit'])){
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="card card-body shadow-sm">
-                                    <form action="" method="post" autocomplete="off" id="editForm">
-                                        <?php
+                                    <?php
                                         $out = '';
                                         $id = $_GET['edit'];
                                         if(!$id){
@@ -95,7 +94,7 @@ if(!isset($_GET['edit'])){
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <button class="btn btn-warning btn-sm" value="'.$row['id_student'].'" id="editBtn" type="submit">Mettre a jour</button>
+                                                        <button class="btn btn-warning btn-sm" value="'.$row['id_student'].'" name="editBtn" id="editBtn" type="submit">Mettre a jour</button>
                                                     </div>
                                                     ';
                                                 }
@@ -108,7 +107,7 @@ if(!isset($_GET['edit'])){
                                     }
                                         print $out;
                                     ?>
-                                    </form>
+
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -147,9 +146,9 @@ http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 http.send("action='GetStudentData'&Id=" + GetStudentData)
 </script>
 <script>
-$(document).ready(function(){
-    const EditBtn = document.querySelector('#editBtn')
-const form = document.querySelector('#editBtnForm')
+// $(document).ready(function() {
+//             const EditBtn = document.querySelector('#editBtn')
+//             const form = document.querySelector('#editBtnForm')
 
 // EditBtn.onclick = () => {
 //     // let http = new XMLHttpRequest()

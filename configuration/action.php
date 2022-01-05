@@ -52,7 +52,7 @@ if (isset($_POST['action'])) {
         if (@mysqli_num_rows($query) > 0) {
             $output .= '<ul lass="list-group shadow-sm">';
 
-            while ($row = mysqli_fetch_assoc($sql)) {
+            while ($row = mysqli_fetch_assoc($query)) {
                 $output .= '
                     <li class="list-group-item list-group-success list-group-item-action">
                         <a href="?cours=' . $row['cours_id'] . '">' . $row['cours_name'] . '</a>
