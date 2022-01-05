@@ -48,49 +48,42 @@ if(!isset($_GET['edit'])){
                                                 if(count($errors) > 0){
                                                     include_once "./error.php";
                                                 }else{
-                                                    if(isset($_FILES['file'])){
-                                                        $img_name = $_FILES['file']['name'];
-                                                        $img_type = $_FILES['file']['type']; // To get the type
-                                                        $tmp_name = $_FILES['file']['tmp_name'];
-
-                                                        $img_explode = explode('.', $img_name);
-                                                        $img_ext = end($img_explode);
-                                                        $extensions = ['jpeg', 'png', 'jpg', 'JPG'];
-
-                                                        if(in_array($img_ext, $extensions) === true){
-                                                            $time = time();
-                                                            $new_img_name = $time.$img_name;
-
-                                                            if(move_uploaded_file($tmp_name, "./images/Students/".$new_img_name)){
-                                                                $random_id = rand(time(), 1000000);
-                                                                
-                                                                $sql = mysqli_query($con, "UPDATE student SET username = '$username', sname= '$sname', email = '$email', class = '$class', sex = '$sex', AnneeScolaire = '$annee', profil = '$new_img_name' WHERE id_student = $id");
-                                                                if($sql){
-                                                            ?>
-                                    <script>
-                                    let id = document.getElementById('UserId').value
-                                    location.href = `student.php?getStudent=${id}`
-                                    </script>
-                                    <?php
-                                                        }else{
-                                                            print '<p class="alert alert-danger">Error 404</p>';
-                                                        }
-
-                                                            }
-                                                        }
-                                                    }else{
-                                                        $sql = mysqli_query($con, "UPDATE student SET username = '$username', sname= '$sname', email = '$email', class= '$class', sex = '$sex', AnneeScolaire = '$annee' WHERE id_student = $id");
-                                                        if($sql){
-                                                            ?>
-                                    <script>
-                                    let id = document.getElementById('UserId').value
-                                    location.href = `student.php?getStudent=${id}`
-                                    </script>
-                                    <?php
-                                                        }else{
-                                                            print '<p class="alert alert-danger">Error 404</p>';
-                                                        }
+                                                    $emailSql = mysqli_query($con, "SELECT email FROM student WHERE email = '$email' AND id_student != $id");
+                                                    if(mysqli_num_rows($emailSql) > 0){
+                                                        print '<p class="alert alert-warning">Ce email est deja* attribue donc il a plusieurs enfants?</p>';
+                                                        
                                                     }
+                                                    $sql = mysqli_query($con, "UPDATE student SET username = '$username', sname= '$sname', email = '$email', class= '$class', sex = '$sex', AnneeScolaire = '$annee' WHERE id_student = $id");
+                                                        if($sql){
+                                                            if(isset($_FILES['file'])){
+                                                                $img_name = $_FILES['file']['name'];
+                                                                $img_type = $_FILES['file']['type']; // To get the type
+                                                                $tmp_name = $_FILES['file']['tmp_name'];
+
+                                                                $img_explode = explode('.', $img_name);
+                                                                $img_ext = end($img_explode);
+                                                                $extensions = ['jpeg', 'png', 'jpg', 'JPG'];
+
+                                                                if(in_array($img_ext, $extensions) === true){
+                                                                    $time = time();
+                                                                    $new_img_name = $time.$img_name;
+
+                                                                    if(move_uploaded_file($tmp_name, "./images/Students/".$new_img_name)){
+                                                                        $random_id = rand(time(), 1000000);
+                                                                        
+                                                                        $sql2 = mysqli_query($con, "UPDATE student SET profil = '$new_img_name' WHERE id_student = $id");
+                                                                        
+                                                                        if($sql2){
+                                                                            
+                                                                        }
+
+                                                                    }
+                                                                }
+                                                                print '<p class="alert alert-success">Mise a jour reussi</p>';
+                                                            }
+                                                        }else{
+                                                            print '<p class="alert alert-danger">Sql error</p>';
+                                                        }
                                                     
                                                 }
                                                 
