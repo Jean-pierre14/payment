@@ -38,8 +38,8 @@ if (!isset($_SESSION['username'])) {
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div class="btn-group">
-                                    <a href="#add" class="btn btn-sm btn-info">Ajouter</a>
-                                    <a href="#add" class="btn btn-sm btn-success">Voir</a>
+                                    <a href="studentAdd.php" class="btn btn-sm btn-info">Ajouter</a>
+                                    <a href="student.php" class="btn btn-sm btn-success">Voir</a>
                                 </div>
                             </div>
                             <div>
@@ -54,7 +54,8 @@ if (!isset($_SESSION['username'])) {
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div class="btn-group">
-                                    
+                                    <a href="studentAdd.php" class="btn btn-sm btn-info">Ajouter</a>
+                                    <a href="student.php" class="btn btn-sm btn-success">Voir</a>
                                 </div>
                             </div>
                             <div>
@@ -69,14 +70,15 @@ if (!isset($_SESSION['username'])) {
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div class="btn-group">
-                                    
+                                    <a href="studentAdd.php" class="btn btn-sm btn-info">Ajouter</a>
+                                    <a href="student.php" class="btn btn-sm btn-success">Voir</a>
                                 </div>
                             </div>
                             <div>
                                 <h4>
-                                    
+
                                     <?= $numFemale;?>
-                                    
+
                                 </h4>
                             </div>
                         </div>
@@ -86,7 +88,7 @@ if (!isset($_SESSION['username'])) {
             <div class="my-2 row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
-                        
+
                         <input type="hidden" value="<?= $numMale+$numFemale;?>" id="Total" class="form-control">
                         <input type="hidden" value="<?= $numMale;?>" id="numMale" class="form-control">
                         <input type="hidden" value="<?= $numFemale;?>" id="numFemale" class="form-control">
@@ -187,37 +189,36 @@ function LectuerChart() {
         type: 'line',
         data: {
             labels: ['Hommes', 'Total', 'Femmes'],
-            datasets: [
-                {
+            datasets: [{
                     label: '# Les enseignants',
                     data: [50, 23, 65],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 206, 86, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderWidth: 1
-            },
-            {
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                },
+                {
                     label: '# Les enseignants',
                     data: [23, 33, 50],
                     backgroundColor: [
                         'rgba(0, 0, 1, .56)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, .2)',
-                    'rgba(255, 206, 86, .2)'
-                ],
-                borderWidth: 1
-            },
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, .2)',
+                        'rgba(255, 206, 86, .2)'
+                    ],
+                    borderWidth: 1
+                },
             ]
         },
 
@@ -258,13 +259,13 @@ function StudentChart() {
         options: {
             responsive: true,
             plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Chart.js Pie Chart'
-            }
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Pie Chart'
+                }
             }
         }
     });
