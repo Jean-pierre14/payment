@@ -4,6 +4,7 @@
     <a href="javascript:void()" id="go-back" class="btn btn-sm btn-success my-2">Retour</a>
     <a href="edit.php?edit=<?= $_GET['getStudent']?>" class="btn btn-sm btn-warning my-2">Modifier</a>
     <a href="edit.php?delete=<?= $_GET['getStudent']?>" class="btn btn-sm btn-danger my-2">Efface</a>
+
 </div>
 <div id="dataResult">
     <h3>Chargement...</h3>
