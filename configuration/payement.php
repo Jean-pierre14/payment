@@ -15,5 +15,4 @@
         $output = '<p class="alert alert-warning">Nous n\'avons pas d\'eleve* enregistre dans notre systeme</p>';
     }
     print $output;
-
 ?>
