@@ -29,6 +29,21 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
             <div class="col-md-8">
+                <?php if(isset($_GET['get'])):?>
+                <input type="hidden" id="id" name="id_student" value="<?= $_GET['get']?>" class="form-control">
+                <div class="row">
+                    <div class="col-md-4">
+                        <form action="" method="post">
+                            <h3>Form</h3>
+                        </form>
+                    </div>
+                    <div class="col-md-8">
+                        <div id="dataStudent">
+                            <p>Chargement...</p>
+                        </div>
+                    </div>
+                </div>
+                <?php else:?>
                 <div class="card card-body">
                     <p>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe nobis et harum. Voluptatem non
@@ -50,6 +65,7 @@ if (!isset($_SESSION['username'])) {
                         numquam?
                     </p>
                 </div>
+                <?php endif;?>
             </div>
         </div>
     </div>
@@ -61,7 +77,31 @@ const results = document.getElementById('results')
 window.onload = () => {
 
     FetchAll()
+    Datastudent()
 }
+const dataStudent = document.getElementById('dataStudent')
+
+function Datastudent() {
+    let id = document.getElementById('id'),
+        Id = id.value
+
+
+    let xhr = new XMLHttpRequest()
+    xhr.onload = () => {
+
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                let data = xhr.response
+                dataStudent.innerHTML = data
+            }
+        }
+
+    }
+    xhr.open("POST", "./configuration/action3.php", true)
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xhr.send("Action=dataStudent&Id=" + Id)
+}
+
 const search = document.querySelector('#searchText')
 search.onkeyup = () => {
     let txt = search.value,
@@ -108,3 +148,13 @@ function FetchAll() {
 
 
 <?php include('./footer.php'); ?>
+
+<script>
+$(document).ready(function() {
+
+    $(document).on("click", ".reduire", function() {
+        $('#studentCard').hide(500)
+    })
+
+})
+</script>
