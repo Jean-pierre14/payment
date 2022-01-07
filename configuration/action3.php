@@ -135,13 +135,10 @@
           $Id = mysqli_real_escape_string($con, htmlentities(trim($_POST['Id'])));
           // $sql = mysqli_query($con, "SELECT * FROM student FULL OUTER JOIN py ON student.id_student = py.id_pay WHERE py.unique_id = $Id");
           $sql = mysqli_query($con, "SELECT * FROM py WHERE unique_id = $Id ");
-          
-          if(mysqli_num_rows($sql) > 0){
-               $sql2 = mysqli_query($con, "SELECT * FROM student WHERE unique_id = $Id");
-               if(@mysqli_num_rows($sql) == 1){
-                    $data = mysqli_fetch_array($sql2);
-
-                    $output .= '
+          $sql2 = mysqli_query($con, "SELECT * FROM student WHERE unique_id = $Id");
+               $data = mysqli_fetch_array($sql2);
+                    $card = '';
+                    $card = '
                     <div class="my-2 card shadow-sm" id="studentCard">
                          <div class="card-header p-1">
                               <h4 class="">'.$data['username'].' '.$data['sname'].'</h4>
@@ -175,6 +172,10 @@
                               </div>
                          </div>
                     </div>';
+          if(mysqli_num_rows($sql) > 0){
+               
+               if(@mysqli_num_rows($sql) == 1){
+                    $output .= $card;
                     $output .= '<table class="table">';
                     while($row = mysqli_fetch_array($sql)){
                          $output .= '
@@ -182,11 +183,18 @@
                               <td>'.$row['mount'].'</td>
                               <td>'.$row['bank'].'</td>
                               <td>'.$row['created_at'].'</td>
+                              <td>
+                                   <div class="btn-group">
+                                        <a href="#edit" class="btn btn-sm btn-info"><i class="ui icon edit"></i></a>
+                                        <a href="#edit" class="btn btn-sm btn-danger"><i class="ui icon trash"></i></a>
+                                   </div>
+                              </td>
                          </tr>';
                     }
                     $output .= '</table>';
                }else{
-                    $output = '<p class="alert alert-danger">Les information que vous venez d\'entre sont incorrectes</p>';
+                    $output .= $card;
+                    $output .= '<p class="alert alert-danger">Les information que vous venez d\'entre sont incorrectes</p>';
                }
           }else{
                $output = '<p class="alert alert-warning">Cet eleve* n\'a jamais payer! :(</p>';
