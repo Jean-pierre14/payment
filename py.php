@@ -17,7 +17,7 @@ if (!isset($_SESSION['username'])) {
 <div class="ui main">
     <div class="container-fluid">
         <div class="ui row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card card-body">
                     <form action="" autocomplete="off" method="post">
                         <input type="search" name="search" id="searchText" placeholder="Recherche..."
@@ -28,14 +28,40 @@ if (!isset($_SESSION['username'])) {
                     <p>Chargment... <img src="./images/loader.gif" width="32px" height="32px" alt="loading..."></p>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <?php if(isset($_GET['get'])):?>
                 <input type="hidden" id="id" name="id_student" value="<?= $_GET['get']?>" class="form-control">
                 <div class="row">
                     <div class="col-md-4">
-                        <form action="" method="post">
-                            <h3>Form</h3>
-                        </form>
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <h4>Ajouter payement</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="error"></div>
+                                <form action="" id="FormData" method="post">
+                                    <div class="form-group">
+                                        <input type="hidden" name="unique_id" id="unique_id" value="<?= $_GET['get'];?>"
+                                            class="form-control">
+                                        <label for="mount">Montant</label>
+                                        <input type="number" name="mount" id="mount" placeholder="Montant"
+                                            class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bank">Banque</label>
+                                        <select name="bank" id="bank" class="form-control">
+                                            <option value="">-- seectionner --</option>
+                                            <option value="Bank of Kigali">Bank of Kigali</option>
+                                            <option value="Unguka Bank">Unguka Bank</option>
+                                            <option value="Irembo">Irembos</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" id="pyBtn" class="btn btn-sm btn-success"></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-8">
                         <div id="dataStudent">
@@ -78,6 +104,45 @@ window.onload = () => {
 
     FetchAll()
     Datastudent()
+    const pyBtn = document.getElementById('pyBtn'),
+        form = document.getElementById('FormData'),
+        error = document.getElementById('error')
+
+    pyBtn.textContent = 'Enregistre'
+
+    pyBtn.onclick = () => {
+
+        const mount = document.getElementById('mount').value
+        const id = document.getElementById('unique_id').value
+        let bank = document.getElementById('bank').value
+
+        let mountTrim = mount.trim()
+        if (!mountTrim || !id || !bank) {
+            console.log('Remplissez tout champs svp :) &&&&&&&&&&&&&&&&&&&')
+            error.innerHTML = '<p class="alert alert-danger">Remplissez tout champs svp :)</p>'
+        } else {
+            error.innerHTML = '<p>Chargement...</p>'
+            let xhr = new XMLHttpRequest()
+            xhr.onload = () => {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        let data = xhr.response
+                        console.log(data)
+
+                        if (data !== 'error') {
+                            location.href = `py.php?get=${id}`
+                        } else {
+                            error.innerHTML = '<p class="Verifier si tout vos donnees* sont la*"></p>'
+                        }
+                    }
+                }
+            }
+            xhr.open("POST", "./configuration/enregistrement.php", true)
+            // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            let formData = new FormData(form)
+            xhr.send(formData)
+        }
+    }
 }
 const dataStudent = document.getElementById('dataStudent')
 

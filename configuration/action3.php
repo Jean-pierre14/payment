@@ -130,54 +130,62 @@
 
 
      if(isset($_POST['Action'])){
-
+          $card = '';
           
           $Id = mysqli_real_escape_string($con, htmlentities(trim($_POST['Id'])));
           // $sql = mysqli_query($con, "SELECT * FROM student FULL OUTER JOIN py ON student.id_student = py.id_pay WHERE py.unique_id = $Id");
-          $sql = mysqli_query($con, "SELECT * FROM py WHERE unique_id = $Id ");
+          $sql = mysqli_query($con, "SELECT mount, id_pay, bank, unique_id, created_at FROM py WHERE unique_id = $Id ");
           $sql2 = mysqli_query($con, "SELECT * FROM student WHERE unique_id = $Id");
-               $data = mysqli_fetch_array($sql2);
-                    $card = '';
-                    $card = '
-                    <div class="my-2 card shadow-sm" id="studentCard">
-                         <div class="card-header p-1">
-                              <h4 class="">'.$data['username'].' '.$data['sname'].'</h4>
-                              <button type="button" class="reduire btn btn-sm btn-danger">Reduire</button>
-                         </div>
-                         <div class="card-body">
-                              <div class="row">
-                                   <div class="col-md-5">
-                                        <div class="img-cercle">
-                                             <img src="./images/Students/'.$data['profil'].'" alt="'.$data['username'].'" class="img-fluid">
-                                        </div>
-                                   </div>
-                                   <div class="col-md-7">
-                                        <p class="">
-                                             <span class="">Nom: </span>
-                                             <span class="">'.$data['sname'].'</span>
-                                        </p>
-                                        <p class="">
-                                             <span class="">Annee* scolaire: </span>
-                                             <span class="">'.$data['AnneeScolaire'].'</span>
-                                        </p>
-                                        <p class="">
-                                             <span class="">Class: </span>
-                                             <span class="">'.$data['class'].'</span>
-                                        </p>
-                                        <p class="">
-                                             <span class="">Genre: </span>
-                                             <span class="">'.$data['sex'].'</span>
-                                        </p>
-                                   </div>
+
+          if(@mysqli_num_rows($sql2) == 1){
+          $data = mysqli_fetch_array($sql2);
+          $card = '';
+          $card = '
+          <div class="mb-2 card shadow-sm" id="studentCard">
+               <div class="card-header p-1">
+                    <h4 class="">'.$data['username'].' '.$data['sname'].'</h4>
+                    <button type="button" class="reduire btn btn-sm btn-danger">Reduire</button>
+               </div>
+               <div class="card-body">
+                    <div class="row">
+                         <div class="col-md-5">
+                              <div class="img-cercle">
+                                   <img src="./images/Students/'.$data['profil'].'" alt="'.$data['username'].'" class="img-fluid">
                               </div>
                          </div>
-                    </div>';
+                         <div class="col-md-7">
+                              <p class="">
+                                   <span class="">Nom: </span>
+                                   <span class="">'.$data['sname'].'</span>
+                              </p>
+                              <p class="">
+                                   <span class="">Annee* scolaire: </span>
+                                   <span class="">'.$data['AnneeScolaire'].'</span>
+                              </p>
+                              <p class="">
+                                   <span class="">Class: </span>
+                                   <span class="">'.$data['class'].'</span>
+                              </p>
+                              <p class="">
+                                   <span class="">Genre: </span>
+                                   <span class="">'.$data['sex'].'</span>
+                              </p>
+                         </div>
+                    </div>
+               </div>
+          </div>';
+     }else{
+          $output .= $card;
+          $output .= '<p class="alert alert-danger">Les information que vous venez d\'entre sont incorrectes</p>';
+     }    
           if(mysqli_num_rows($sql) > 0){
-               
-               if(@mysqli_num_rows($sql) == 1){
-                    $output .= $card;
-                    $output .= '<table class="table">';
+                $output .= $card;
+                    $output .= '<table class="table">
+                    <tbody>
+                    ';
+                    $i = 0;
                     while($row = mysqli_fetch_array($sql)){
+                         
                          $output .= '
                          <tr>     
                               <td>'.$row['mount'].'</td>
@@ -190,17 +198,19 @@
                                    </div>
                               </td>
                          </tr>';
+                         $i += $row['mount'];
                     }
-                    $output .= '</table>';
-               }else{
-                    $output .= $card;
-                    $output .= '<p class="alert alert-danger">Les information que vous venez d\'entre sont incorrectes</p>';
-               }
+                    $output .= '
+                    <tr>
+                         <td><span class="badge badge-success">'.$i.'</span></td>
+                         <td>montant a payer</td>
+                    </tr>
+                    </tbody>
+                    </table>';
+               
           }else{
                $output = '<p class="alert alert-warning">Cet eleve* n\'a jamais payer! :(</p>';
           }
-
-
           print $output;
      }
 ?>
