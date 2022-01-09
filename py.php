@@ -106,6 +106,8 @@ window.onload = () => {
 
     FetchAll()
     Datastudent()
+
+
     const pyBtn = document.getElementById('pyBtn'),
         form = document.getElementById('FormData'),
         error = document.getElementById('error')
@@ -146,6 +148,8 @@ window.onload = () => {
         }
     }
 }
+
+
 const dataStudent = document.getElementById('dataStudent')
 
 function Datastudent() {
@@ -221,6 +225,10 @@ $(document).ready(function() {
 
     $(document).on("click", ".reduire", function() {
         $('#studentCard').hide(500)
+    })
+
+    $('document').on("click", "#edit", function() {
+        alert("Edit")
     })
 
 })
