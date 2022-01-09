@@ -39,27 +39,29 @@ if (!isset($_SESSION['username'])) {
                             </div>
                             <div class="card-body">
                                 <div id="error"></div>
-                                <form action="" id="FormData" method="post">
-                                    <div class="form-group">
-                                        <input type="hidden" name="unique_id" id="unique_id" value="<?= $_GET['get'];?>"
-                                            class="form-control">
-                                        <label for="mount">Montant</label>
-                                        <input type="number" name="mount" id="mount" placeholder="Montant"
-                                            class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="bank">Banque</label>
-                                        <select name="bank" id="bank" class="form-control">
-                                            <option value="">-- seectionner --</option>
-                                            <option value="Bank of Kigali">Bank of Kigali</option>
-                                            <option value="Unguka Bank">Unguka Bank</option>
-                                            <option value="Irembo">Irembos</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="button" id="pyBtn" class="btn btn-sm btn-success"></button>
-                                    </div>
-                                </form>
+                                <div id="editPy">
+                                    <form action="" id="FormData" method="post">
+                                        <div class="form-group">
+                                            <input type="hidden" name="unique_id" id="unique_id"
+                                                value="<?= $_GET['get'];?>" class="form-control">
+                                            <label for="mount">Montant</label>
+                                            <input type="number" name="mount" id="mount" placeholder="Montant"
+                                                class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bank">Banque</label>
+                                            <select name="bank" id="bank" class="form-control">
+                                                <option value="">-- seectionner --</option>
+                                                <option value="Bank of Kigali">Bank of Kigali</option>
+                                                <option value="Unguka Bank">Unguka Bank</option>
+                                                <option value="Irembo">Irembos</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" id="pyBtn" class="btn btn-sm btn-success"></button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

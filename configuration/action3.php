@@ -193,8 +193,12 @@
                               <td>'.$row['created_at'].'</td>
                               <td>
                                    <div class="btn-group">
-                                        <a href="#edit" class="btn btn-sm btn-info"><i class="ui icon edit"></i></a>
-                                        <a href="#edit" class="btn btn-sm btn-danger"><i class="ui icon trash"></i></a>
+                                        <button id="edit" type="button" class="btn btn-sm btn-info">
+                                             <i class="ui icon edit"></i>
+                                        </button>
+                                        <button id="delete" type="button" class="btn btn-sm btn-danger">
+                                             <i class="ui icon trash"></i>
+                                        </button>
                                    </div>
                               </td>
                          </tr>';
