@@ -193,7 +193,7 @@
                               <td>'.$row['created_at'].'</td>
                               <td>
                                    <div class="btn-group">
-                                        <button id="edit" type="button" class="btn btn-sm btn-info">
+                                        <button id="'.$row['unique_id'].'" type="button" class="edit btn btn-sm btn-info">
                                              <i class="ui icon edit"></i>
                                         </button>
                                         <button id="delete" type="button" class="btn btn-sm btn-danger">

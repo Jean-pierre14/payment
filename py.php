@@ -227,8 +227,9 @@ $(document).ready(function() {
         $('#studentCard').hide(500)
     })
 
-    $('document').on("click", "#edit", function() {
-        alert("Edit")
+    $('document').on("click", ".edit", function() {
+        let id = $(".edit").attr('id')
+        alert(id)
     })
 
 })
