@@ -1,5 +1,8 @@
 <div class="container-fluid ui">
-    <h3 class="text-center"><i class="icon book"></i>Enseignants</h3>
+    <h3 class="text-center">
+        <i class="icon book"></i>
+        Enseignants
+    </h3>
     <hr>
     <div class="row">
         <div class="col-md-8">
