@@ -1,7 +1,9 @@
 <div class="col-md-12">
     <?php include("./db.con.php");include("sql.php"); ?>
     <div class="card card-body mb-1">
-        <input type="search" placeholder="Search" name="search" class="form-control">
+        <form action="#" method="post" autocomplete="off">
+            <input type="search" placeholder="Search" id="search" name="search" class="form-control">
+        </form>
     </div>
     <div id="Resutls">
         <table class="table m-0">
@@ -33,5 +35,20 @@
         </table>
 
     </div>
-
 </div>
+
+<script>
+const results = document.getElementById('results')
+
+let xhr = new XMLHttpRequest()
+xhr.onload = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+            let data = xhr.response
+            console.log(data)
+        }
+    }
+}
+xhr.open("POST", "./actions/searchLecture.php", true)
+xhr.send()
+</script>
