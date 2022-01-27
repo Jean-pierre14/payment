@@ -12,6 +12,7 @@
                     $sql = mysqli_query($con, "SELECT * FROM student");
 
                     if(@mysqli_num_rows($sql) > 0){
+                        $output = '';
                         $output .= '<ul class="list-group">';
                         while($row = mysqli_fetch_array($sql)){
                             $output .= '<li class="list-group-item">'.$row['username'].'</li>';
@@ -19,7 +20,11 @@
                         $output .= '</ul>';
 
                     }else{
-                        $output = '<p>There is no data</p>';
+                        $output = '
+                        <div>
+                            <p class="alert alert-danger">Nous ne trouvons pas les information consernant vos eleves*</p>
+                            <a href="studentAdd.php" class="btn btn-link">Ajouter un eleve*</a>
+                        ';
                     }
                     return $output;
                 }
