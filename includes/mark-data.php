@@ -2,7 +2,11 @@
     <h2 class="bg-success p-2 text-center text-white border-2">Marksheet</h2>
     <div class="row">
         <div class="col-md-3 skicky-top">
-            <h3>List</h3>
+            <div class="card card-body my-2">
+                <form action="#" class="form" autocomplete="off">
+                    <input type="search" name="search" id="search" placeholder="Chercher..." class="form-control">
+                </form>
+            </div>
             <?php
                 $output = '';
                 function Fetch(){
