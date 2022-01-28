@@ -19,7 +19,9 @@
                         $output = '';
                         $output .= '<ul class="list-group">';
                         while($row = mysqli_fetch_array($sql)){
-                            $output .= '<li class="list-group-item">'.$row['username'].'</li>';
+                            $output .= '<li class="list-group-item" id="'.$row['unique_id'].'">
+                                <a href="marks.php?get='.$row['unique_id'].'" class="">'.$row['username'].'</a>
+                            </li>';
                         }
                         $output .= '</ul>';
 
@@ -37,7 +39,54 @@
             <!-- Ajax datas -->
         </div>
         <div class="col-md-9">
-            <h3>Marks</h3>
+            <?php if(isset($_GET['get'])):?>
+            <?php
+                    function Get(){
+                        global $con;
+                        $id = $_GET['get'];
+                        $datasGet = '';
+
+                        $sql = mysqli_query($con, "SELECT * FROM student WHERE unique_id = $id");
+                        
+                        if(@mysqli_num_rows($sql) == 1){
+                            $row = mysqli_fetch_array($sql);
+                            $datasGet = '
+                                <div class="card card-body shadow-sm my-2">
+                                    <h3 class="text-center">'.$row['username'].'</h3>
+                                    <table class="table table-striped">
+                                        <thead class="">
+                                            <tr class="">
+                                                <th class="">Username</th>
+                                                <th class="">Username</th>
+                                                <th class="">Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="">
+                                            <tr class="">
+                                                <td class="">data</td>
+                                                <td class="">data</td>
+                                                <td class="">data</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            ';
+                        }else{
+                            $datasGet = '
+                            <div class="alert alert-danger">
+                                <h3>Vous avez bien essayer mais ca ne marche pas avec nous :)</h3>
+                                <a href="marks.php" class="btn btn-link">Retour</a>
+                            </div>';
+                        }
+
+                        return $datasGet;
+                    }
+                    echo Get();
+                    
+                    ?>
+            <?php else:?>
+            <h3>Normal</h3>
+            <?php endif;?>
         </div>
     </div>
 </div>
