@@ -19,7 +19,7 @@ if(isset($_POST['login'])){
 
         $password = md5($password);
 
-        $query = "SELECT * FROM admin WHERE username='$username' AND pass='$password'";
+        $query = "SELECT * FROM admin WHERE username = '$username' AND password = '$password'";
         $result = mysqli_query($con, $query);
 
         if(mysqli_num_rows($result)){
