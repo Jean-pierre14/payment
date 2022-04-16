@@ -1,13 +1,17 @@
-*{
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     position: relative;
     margin: 0;
     padding: 0;
 }
-.body{
+
+.body {
     position: absolute;
     top: 0;
     left: 250px;
@@ -16,41 +20,46 @@ body{
     background: #ccc;
     transition: 3s;
 }
-.sidemenu{
+
+.sidemenu {
     position: fixed;
     top: 0;
     left: 0;
     width: 250px;
     height: 100%;
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0, 0, 0, 0.25);
     transition: 2s;
 }
-.sidemenu label{
+
+.sidemenu label {
     float: right;
     margin: 10px;
     font-size: 20px;
 }
-body input[type=checkbox]{
+
+body input[type=checkbox] {
     appearance: none;
     visibility: hidden;
 }
 
-#switch:checked ~ .sidemenu{
+#switch:checked~.sidemenu {
     width: 50px;
 }
-#switch:checked ~ .body{
+
+#switch:checked~.body {
     transform: scale(1.2);
     margin: 5% auto;
     width: 70%;
 }
 
-.box{
+.box {
     position: relative;
     width: 100%;
     padding: 10px;
     border-radius: 10px;
     background-color: #fff;
 }
+
 input {
     border: none;
     background: none;
@@ -61,6 +70,7 @@ input {
     border: 1px solid rgb(97, 97, 97);
     transition: all ease 0.9s;
 }
-input:focus{
+
+input:focus {
     width: 100%;
 }
