@@ -5,6 +5,7 @@
             <input type="search" placeholder="Search" id="search" name="search" class="form-control">
         </form>
     </div>
+    <div class="card card-body shadow-sm">
     <div id="Resutls">
         <table class="table m-0">
             <thead>
@@ -34,6 +35,7 @@
             </tbody>
         </table>
 
+    </div>
     </div>
 </div>
 

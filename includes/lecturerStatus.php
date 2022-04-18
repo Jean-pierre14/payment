@@ -12,6 +12,7 @@
             </div>
         </div>
         <div class="col-md-4">
+            <div class="card card-body shadow-sm">
             <h3 class="text-center white p-2 bg-success">Enseignants</h3>
             <!-- error page -->
             <?php include("./error.php"); ?>
@@ -72,6 +73,7 @@
                             class="icon save"></i>Register</button>
                 </div>
             </form>
+            </div>
         </div>
     </div>
 </div>
