@@ -41,16 +41,5 @@
 
 <script>
 const results = document.getElementById('results')
-
-let xhr = new XMLHttpRequest()
-xhr.onload = () => {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-            let data = xhr.response
-            resutls.innerHTML = data
-        }
-    }
-}
-xhr.open("POST", "./actions/searchLecture.php", true)
-xhr.send()
+ 
 </script>

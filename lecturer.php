@@ -63,6 +63,29 @@ function Select() {
     xhr.open("GET", "./configuration/Lecturers.php", true)
     xhr.send()
 }
+
+
+const text = document.querySelector('#search')
+
+text.onkeyup = ()=>{
+    txt = this.value
+    if(!txt === ''){
+        let xhr = new XMLHttpRequest()
+        xhr.onload = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response
+                    resutls.innerHTML = data
+                }
+            }
+        }
+        xhr.open("POST", "./actions/searchLecture.php", true)
+        xhr.send()
+    }else{
+
+    }
+}
+
 </script>
 
 <?php include("./footer.php");?>

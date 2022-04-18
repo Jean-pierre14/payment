@@ -15,10 +15,11 @@
                     <th> Name </th>
                     <th> Last name </th>
                     <th> Cours </th>
-                    <th></th>
+                    <th> Actions </th>
                 </tr>
             </thead>
         </table>
+        <div  style="overflow-y: auto; height: 300px;">
         <table class="table table-striped">
             <tbody>
         ';
@@ -47,6 +48,7 @@
         $output .= '
             </tbody>
         </table>
+        </div>
         ';
     }else{
         $output = '<p class="alert alert-danger">Il n\'y a aucun enseignant</p>';
