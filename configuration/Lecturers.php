@@ -1,4 +1,4 @@
-<?php //php_check_syntax()
+<?php // php_check_syntax();
     $output = '';
     include_once "db.con.php";
 

@@ -65,24 +65,30 @@ function Select() {
 }
 
 
-const text = document.querySelector('#search')
+const text = document.querySelector('#search_lecturer')
 
 text.onkeyup = ()=>{
-    txt = this.value
-    if(!txt === ''){
+    text = search.value
+    let txt = text.trim();
+    alert(txt)
+
+    if (txt !== '') {
+        results.innerHTML = ''
         let xhr = new XMLHttpRequest()
         xhr.onload = () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     let data = xhr.response
-                    resutls.innerHTML = data
+                    // console.log("Data >> " + data) for testing
+                    results.innerHTML = data
                 }
             }
         }
-        xhr.open("POST", "./actions/searchLecture.php", true)
-        xhr.send()
-    }else{
-
+        xhr.open("POST", "./actions/searchLecturer.php", true)
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        xhr.send("search=" + text)
+    } else {
+        Select()
     }
 }
 

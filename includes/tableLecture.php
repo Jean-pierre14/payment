@@ -2,7 +2,7 @@
     <?php include("./db.con.php");include("sql.php"); ?>
     <div class="card card-body mb-1">
         <form action="#" method="post" autocomplete="off">
-            <input type="search" placeholder="Search" id="search" name="search" class="form-control">
+            <input type="search" placeholder="Search" id="search_lecturer" class="form-control">
         </form>
     </div>
     <div class="card card-body shadow-sm">
@@ -40,6 +40,31 @@
 </div>
 
 <script>
-const results = document.getElementById('results')
+const results = document.getElementById('results'),
+    search = document.querySelector('#search_lecturer');
+
+search.onkeyup = () =>{
+    let text = search.value,
+        txt = text.trim()
+
+    if (txt !== '') {
+    results.innerHTML = ''
+        let xhr = new XMLHttpRequest()
+        xhr.onload = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response
+                    // console.log("Data >> " + data) for testing
+                    results.innerHTML = data
+                }
+            }
+        }
+        xhr.open("POST", "./actions/searchLecturer.php", true)
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        xhr.send("search=" + text)
+    } else {
+        Select()
+    }
+}
  
 </script>
