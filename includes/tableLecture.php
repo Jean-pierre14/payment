@@ -40,31 +40,13 @@
 </div>
 
 <script>
-const results = document.getElementById('results'),
-    search = document.querySelector('#search_lecturer');
+const results = document.getElementById('results');
+var search = document.querySelector('#search_lecturer');
 
 search.onkeyup = () =>{
     let text = search.value,
         txt = text.trim()
-
-    if (txt !== '') {
-    results.innerHTML = ''
-        let xhr = new XMLHttpRequest()
-        xhr.onload = () => {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    let data = xhr.response
-                    // console.log("Data >> " + data) for testing
-                    results.innerHTML = data
-                }
-            }
-        }
-        xhr.open("POST", "./actions/searchLecturer.php", true)
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-        xhr.send("search=" + text)
-    } else {
-        Select()
-    }
+    alert("Hello " + txt)
 }
  
 </script>
