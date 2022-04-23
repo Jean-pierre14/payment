@@ -8,6 +8,7 @@
         
         if(@mysqli_num_rows($sql) > 0){
              $output .= '
+             <div style="overflow-y: auto; height: 300px;">
              <table class="table m-0">
                 <thead>
                     <tr>
@@ -40,7 +41,7 @@
                 </tr>
                   ';
              }
-             $output .= '</table>';
+             $output .= '</table></div>';
         }else{
              $output = '<p class="alert alert-danger mx-2">'.$text.' n\'est pas trouver</p>';
         }

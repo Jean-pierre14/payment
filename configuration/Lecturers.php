@@ -26,7 +26,7 @@
         while($row = mysqli_fetch_array($response)){
             $output .= '
             
-                <tr class="">
+                <tr class=""  title="'.$row['name'].'">
                     <a href="" class="">
                         <td class="">
                             <img src="./images/Lecturer/'.$row['profil'].'" alt="'.$row['name'].'" class="ui Img-Border avatart" width="30px" height="30px">

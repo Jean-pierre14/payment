@@ -24,6 +24,7 @@ const form = document.querySelector('#lecturerForm')
 form.onsubmit = (e) => {
     e.preventDefault()
 }
+
 BtnRegistration.onclick = () => {
     // alert("Good job") Test
     // Start the XHR 
@@ -36,12 +37,13 @@ BtnRegistration.onclick = () => {
                 if (data === 'success') {
                     error.innerHTML = '<p class="alert alert-success">Registration success</p>'
                     form.reset()
-                    Select()
+                    document.querySelector('#Results').innerHTML = ''
                 } else {
                     error.innerHTML = `<p class="alert alert-danger">${data}</p>`
                 }
             }
         }
+        Select()
     }
 
     xhr.open('POST', './configuration/Lecturer.php', true)
@@ -49,7 +51,9 @@ BtnRegistration.onclick = () => {
     const formData = new FormData(form)
     xhr.send(formData)
 }
+
 const Results = document.querySelector('#Resutls')
+
 Select()
 
 function Select() {
@@ -104,9 +108,6 @@ searchEvent.onkeyup = () => {
     }
 }
 
-
-
-
 </script>
 
 <?php include("./footer.php");?> 
@@ -128,19 +129,15 @@ searchEvent.onkeyup = () => {
                             alert(data)
                         }
                     })
-                    // let xhr = new XMLHttpRequest()
-                    // xhr.onload = () => {
-                    //     if (xhr.readyState === XMLHttpRequest.DONE) {
-                    //         if (xhr.status === 200) {
-                    //             let data = xhr.response
-                    //             alert("ghjjk" + data)
-                    //         }
-                    //     }
-                    // }
-                    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-                    // xhr.open("POST", "./configuration/GetLecturer.php", true)
-                    // xhr.send(`Id=${Id}`)
-            })
-            // alert("Good job")
+        })
+
+        $(document).on("click", ".View-Lecturer", function(){
+            // alert("Clicked")
+            let Id = $(this).attr('id')
+
+            alert('Hello user: ' + Id)
+
+
+        })
     }) 
 </script>
