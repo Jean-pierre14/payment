@@ -79,11 +79,3 @@
 </div>
 
 <script src="./js/jquery-3.4.0.min.js"></script>
-
-<script>
-$(document).ready(function() {
-    // $('#lectureRegister').click(function() {
-    //     alert("Hello")
-    // })
-})
-</script>

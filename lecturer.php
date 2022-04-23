@@ -3,18 +3,20 @@
     include("./header.php");
     include("./includes/nav.php");
 ?>
-<div class="side-bar ui bg-dark white" style="top:0">
-    <?php include("./includes/sideBar.php");?>
+<div class = "side-bar ui bg-dark white"
+style = "top:0" >
+    <?php include("./includes/sideBar.php");?> 
 </div>
 
-<div class="ui main">
+<div class="ui main" >
     <!-- Lecturers pages lecturerStatus -->
     <?php include("./includes/lecturerStatus.php") ?>
     <!-- End pages lecturerStatus -->
+    
 </div>
 
 <script>
-const BtnRegistration = document.getElementById('lectureRegister')
+    const BtnRegistration = document.getElementById('lectureRegister')
 
 const form = document.querySelector('#lecturerForm')
 
@@ -43,7 +45,7 @@ BtnRegistration.onclick = () => {
     }
 
     xhr.open('POST', './configuration/Lecturer.php', true)
-    // Let us now send data to the backend side
+        // Let us now send data to the backend side
     const formData = new FormData(form)
     xhr.send(formData)
 }
@@ -64,42 +66,81 @@ function Select() {
     xhr.send()
 }
 
+var searchEvent = document.getElementById('search_lecturer');
+
+// const results = document.querySelector('#Results')
+
+searchEvent.onkeyup = () => {
+    let txt = searchEvent.value
+    let text = txt.trim()
+
+
+    // console.log(text)
+
+    if (text !== '') {
+
+        document.querySelector('#Resutls').innerHTML = ''
+
+        let xhr = new XMLHttpRequest()
+
+        xhr.onload = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response
+                    document.querySelector('#searchElements').innerHTML = data
+                }
+            }
+        }
+
+        xhr.open("POST", "./actions/searchLecture.php")
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        xhr.send("search=" + text)
+
+
+    } else {
+        document.querySelector('#searchElements').innerHTML = ''
+        Select()
+
+    }
+}
+
 
 
 
 </script>
 
-<?php include("./footer.php");?>
+<?php include("./footer.php");?> 
+
 <script>
-$(document).ready(function() {
-    $(document).on("click", ".Edit-Lecturer", function() {
-        let Id = $(this).attr('id')
-        let action = "GetLecturer"
-        $.ajax({
-            url: './configuration/action.php',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                action,
-                Id
-            },
-            success: function(data) {
-                alert(data)
-            }
-        })
-        // let xhr = new XMLHttpRequest()
-        // xhr.onload = () => {
-        //     if (xhr.readyState === XMLHttpRequest.DONE) {
-        //         if (xhr.status === 200) {
-        //             let data = xhr.response
-        //             alert("ghjjk" + data)
-        //         }
-        //     }
-        // }
-        // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-        // xhr.open("POST", "./configuration/GetLecturer.php", true)
-        // xhr.send(`Id=${Id}`)
-    })
-    // alert("Good job")
-})
+    $(document).ready(function() {
+        $(document).on("click", ".Edit-Lecturer", function() {
+                let Id = $(this).attr('id')
+                let action = "GetLecturer"
+                $.ajax({
+                        url: './configuration/action.php',
+                        method: 'POST',
+                        dataType: 'JSON',
+                        data: {
+                            action,
+                            Id
+                        },
+                        success: function(data) {
+                            alert(data)
+                        }
+                    })
+                    // let xhr = new XMLHttpRequest()
+                    // xhr.onload = () => {
+                    //     if (xhr.readyState === XMLHttpRequest.DONE) {
+                    //         if (xhr.status === 200) {
+                    //             let data = xhr.response
+                    //             alert("ghjjk" + data)
+                    //         }
+                    //     }
+                    // }
+                    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+                    // xhr.open("POST", "./configuration/GetLecturer.php", true)
+                    // xhr.send(`Id=${Id}`)
+            })
+            // alert("Good job")
+    }) 
 </script>

@@ -6,6 +6,7 @@
         </form>
     </div>
     <div class="card card-body shadow-sm">
+    <div id="searchElements"></div>
     <div id="Resutls">
         <table class="table m-0">
             <thead>
