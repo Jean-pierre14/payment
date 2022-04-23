@@ -38,15 +38,3 @@
     </div>
     </div>
 </div>
-
-<script>
-const results = document.getElementById('results');
-var search = document.querySelector('#search_lecturer');
-
-search.onkeyup = () =>{
-    let text = search.value,
-        txt = text.trim()
-    alert("Hello " + txt)
-}
- 
-</script>
