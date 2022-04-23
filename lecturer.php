@@ -16,9 +16,8 @@ style = "top:0" >
 </div>
 
 <script>
-    const BtnRegistration = document.getElementById('lectureRegister')
-
-const form = document.querySelector('#lecturerForm')
+    const BtnRegistration = document.getElementById('lectureRegister'),
+        form = document.querySelector('#lecturerForm')
 
 // To preventDefault Event
 form.onsubmit = (e) => {
