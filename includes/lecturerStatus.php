@@ -31,8 +31,6 @@
                         <input type="text" name="sname" value="<?php print $sname; ?>" placeholder="second name"
                             class="form-control" id="sname">
                     </div>
-
-
                     <div class="form-group col-md-6">
                         <label for="lname"><i class="icon user"></i>Last Name</label>
                         <input type="text" name="lname" value="<?php print $lname; ?>" placeholder="Last name"

@@ -15,6 +15,13 @@ style = "top:0" >
     
 </div>
 
+<div class="modalBoxLecturer">
+    <div class="modalL" id="modalL">
+        <!-- Data -->
+        <p>Chargement...</p>
+    </div>
+</div>
+
 <script>
     const BtnRegistration = document.getElementById('lectureRegister'),
         form = document.querySelector('#lecturerForm')
@@ -113,6 +120,10 @@ searchEvent.onkeyup = () => {
 
 <script>
     $(document).ready(function() {
+        $(document).on('click', '.CloseEvent', function(){
+            $('.modalBoxLecturer').hide(250)
+            Select()
+        })
         $(document).on("click", ".Edit-Lecturer", function() {
                 let Id = $(this).attr('id')
                 let action = "GetLecturer"
@@ -131,12 +142,25 @@ searchEvent.onkeyup = () => {
         })
 
         $(document).on("click", ".View-Lecturer", function(){
-            // alert("Clicked")
+            
             let Id = $(this).attr('id')
+            let EventL = 'viewLecturer'
 
-            alert('Hello user: ' + Id)
+            // alert('Hello user: ' + Id)
 
+            $('.modalBoxLecturer').show(500)
+
+            $.ajax({
+                    url: './actions/actions.php',
+                    method: 'POST',
+                    data: {Id, EventL},
+                    success: function(data) {
+                        // console.log(Id, EventL)
+                        $('#modalL').html(data)
+                    }
+                })
 
         })
     }) 
+
 </script>

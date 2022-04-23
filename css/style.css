@@ -354,3 +354,22 @@
 .Img-Border {
     border-radius: 50%;
 }
+
+.modalBoxLecturer {
+    position: absolute;
+    z-index: 999;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modalBoxLecturer .modalL {
+    width: 50%;
+    margin: 2rem auto;
+    border-radius: .4rem;
+    overflow: hidden;
+    background-color: #fff;
+}
