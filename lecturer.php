@@ -161,6 +161,14 @@ searchEvent.onkeyup = () => {
                 })
 
         })
+
+        // Edit Lecturer
+        $(document).on("click", ".Edit-Lecturer", function(){
+            let Id = $(this).attr('id')
+            // alert('Id Edit ' +Id)
+
+            $('#form').hide(200)
+        })
     }) 
 
 </script>

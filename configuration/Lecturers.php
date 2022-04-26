@@ -36,7 +36,7 @@
                         <td class="">'.$row['cours'].'</td>
                         <td>
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-info" type="button" id="Edit-Lecturer"><i class="icon edit"></i></button>
+                                <button class="btn btn-sm btn-info Edit-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon edit"></i></button>
                                 <button class="btn btn-sm btn-success View-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon eye"></i></button>
                                 <button class="btn btn-sm btn-danger Delete-Lecturer" type="button" id="'.$row['unique_id'].'"><i class="icon trash"></i></button>
                             </div>
