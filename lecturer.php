@@ -176,9 +176,9 @@ searchEvent.onkeyup = () => {
                     data: {Id, action},
                     beforeSend: function(){
                         $('#form').show(100)
-                        $('#form').html('<p class="text-center">Chargement...</p>')
+                        $('#form').html('<p class="text-center alert alert-success">Chargement...</p>')
                     },
-                    // dataType: 'html',
+                    dataType: 'html',
                     success: function(data) {
                         $('#form').show(100)
                         // console.log(Id, EventL)
