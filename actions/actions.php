@@ -122,7 +122,9 @@
                     </div>
                 </form>
                     </div>
-                </div>';
+                </div>
+                <button type="button" class="btn btn-primary btn-sm Back">Ajouter</button>
+                ';
             }else{
                 $ouput = '<p class="alert alert-danger">Vous avez essayer quand meme:)</p>';
             }
