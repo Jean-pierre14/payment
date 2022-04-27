@@ -47,4 +47,11 @@
         }
     }
 
+    if(isset($_POST['action'])){
+        if($_POST['action'] == 'Edit-Lecturer'){
+            sleep(2);
+            print "<p>Hello PHP</p>";
+        }
+    }
+
 ?>

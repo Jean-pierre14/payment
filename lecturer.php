@@ -166,8 +166,25 @@ searchEvent.onkeyup = () => {
         $(document).on("click", ".Edit-Lecturer", function(){
             let Id = $(this).attr('id')
             // alert('Id Edit ' +Id)
+            let action = 'Edit-Lecturer'
 
             $('#form').hide(200)
+            
+            $.ajax({
+                    url: './actions/actions.php',
+                    method: 'POST',
+                    data: {Id, action},
+                    beforeSend: function(){
+                        $('#form').show(100)
+                        $('#form').html('<p class="text-center">Chargement...</p>')
+                    },
+                    // dataType: 'html',
+                    success: function(data) {
+                        $('#form').show(100)
+                        // console.log(Id, EventL)
+                        $('#form').html(data)
+                    }
+                })
         })
     }) 
 
