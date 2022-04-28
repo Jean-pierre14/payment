@@ -250,6 +250,9 @@ searchEvent.onkeyup = () => {
                     </form>
             `)
         })
+        $(document).on("click", "#lectureRegister", function(){
+            BtnRegistration();
+        })
     }) 
 
 </script>
