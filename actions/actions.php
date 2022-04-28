@@ -49,7 +49,7 @@
 
     if(isset($_POST['action'])){
         if($_POST['action'] == 'Edit-Lecturer'){
-            sleep(2);
+            sleep(1);
 
             $id = mysqli_real_escape_string($con, trim(htmlentities($_POST['Id'])));
 
@@ -123,7 +123,7 @@
                 </form>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary btn-sm Back">Ajouter</button>
+                <a href="lecturer.php" class="btn btn-primary btn-sm Back">Ajouter</a>
                 ';
             }else{
                 $ouput = '<p class="alert alert-danger">Vous avez essayer quand meme:)</p>';
