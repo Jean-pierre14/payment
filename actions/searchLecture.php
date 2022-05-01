@@ -2,9 +2,10 @@
     include_once "../configuration/db.con.php";
 
     if(isset($_POST['search'])){
+        
         $text = mysqli_real_escape_string($con, htmlentities(trim($_POST['search'])));
         
-        $sql = mysqli_query($con, "SELECT * FROM lecturer  WHERE `name` LIKE '%{$text}%' OR `sname` LIKE '%{$text}%' OR `lname` LIKE '%{$text}%' OR `email` LIKE '%{$text}%' OR sname LIKE '%{$text}%' OR `cours` LIKE '%{$text}%' OR `location` LIKE '%{$text}%' OR `nationalite` LIKE '%{$text}%' OR `adm_at` LIKE '%{$text}%' LIMIT 15");
+        $sql = mysqli_query($con, "SELECT * FROM lecturer WHERE(`name` LIKE '%{$text}%' OR `sname` LIKE '%{$text}%' OR `lname` LIKE '%{$text}%' OR `email` LIKE '%{$text}%' OR sname LIKE '%{$text}%' OR `cours` LIKE '%{$text}%' OR `location` LIKE '%{$text}%' OR `nationalite` LIKE '%{$text}%' OR `adm_at` LIKE '%{$text}%') ORDER BY `name` ASC  LIMIT 15");
         
         if(@mysqli_num_rows($sql) > 0){
              $output .= '

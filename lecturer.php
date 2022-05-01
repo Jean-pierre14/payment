@@ -186,6 +186,12 @@ searchEvent.onkeyup = () => {
                     }
                 })
         })
+        // Delete Lecturer
+        $(document).on("click", ".Delete-Lecturer", function(){
+            let Id = $(this).attr('id')
+            alert('Id Delete ' +Id)
+            let action = 'Delete-Lecturer'
+        })
     }) 
 
 </script>
