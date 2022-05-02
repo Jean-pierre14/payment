@@ -49,6 +49,7 @@
 
     if(isset($_POST['action'])){
         if($_POST['action'] == 'Edit-Lecturer'){
+
             sleep(1);
 
             $id = mysqli_real_escape_string($con, trim(htmlentities($_POST['Id'])));
@@ -126,9 +127,24 @@
                 <a href="lecturer.php" class="btn btn-primary btn-sm Back">Ajouter</a>
                 ';
             }else{
-                $ouput = '<p class="alert alert-danger">Vous avez essayer quand meme:)</p>';
+                $ouput = '<p class="alert alert-danger">Vous avez essayer quand meme:)</p>
+                <a href="lecturer.php" class="btn my-2 btn-primary btn-sm Back">Ajouter</a>
+                ';
             }
             print $ouput;
+        }
+
+        // Delete-Lecturer
+        if($_POST['action'] == 'Delete-Lecturer'){
+            $id = mysqli_real_escape_string($con, trim(htmlentities($_POST['Id'])));
+
+            $sql = mysqli_query($con, "DELETE FROM lecturer WHERE unique_id = $id");
+
+            if($sql){
+                print 'success';
+            }else{
+                print 'error';
+            }
         }
     }
 

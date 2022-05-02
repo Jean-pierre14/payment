@@ -63,7 +63,11 @@ const Results = document.querySelector('#Resutls')
 Select()
 
 function Select() {
+
+    Results.innerHTML = '<p class="alert alert-success">Chargment...</p>'
+    
     let xhr = new XMLHttpRequest()
+    
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
@@ -72,8 +76,11 @@ function Select() {
             }
         }
     }
+    
     xhr.open("GET", "./configuration/Lecturers.php", true)
+    
     xhr.send()
+
 }
 
 var searchEvent = document.getElementById('search_lecturer');
@@ -81,6 +88,7 @@ var searchEvent = document.getElementById('search_lecturer');
 // const results = document.querySelector('#Results')
 
 searchEvent.onkeyup = () => {
+
     let txt = searchEvent.value
     let text = txt.trim()
 
@@ -110,7 +118,6 @@ searchEvent.onkeyup = () => {
     } else {
         document.querySelector('#searchElements').innerHTML = ''
         Select()
-
     }
 }
 
@@ -122,24 +129,8 @@ searchEvent.onkeyup = () => {
     $(document).ready(function() {
         $(document).on('click', '.CloseEvent', function(){
             $('.modalBoxLecturer').hide(250)
-            Select()
         })
-        $(document).on("click", ".Edit-Lecturer", function() {
-                let Id = $(this).attr('id')
-                let action = "GetLecturer"
-                $.ajax({
-                        url: './configuration/action.php',
-                        method: 'POST',
-                        dataType: 'JSON',
-                        data: {
-                            action,
-                            Id
-                        },
-                        success: function(data) {
-                            alert(data)
-                        }
-                    })
-        })
+        
 
         $(document).on("click", ".View-Lecturer", function(){
             
@@ -189,8 +180,21 @@ searchEvent.onkeyup = () => {
         // Delete Lecturer
         $(document).on("click", ".Delete-Lecturer", function(){
             let Id = $(this).attr('id')
-            alert('Id Delete ' +Id)
+            // alert('Id Delete ' +Id)
             let action = 'Delete-Lecturer'
+
+            $.ajax({
+                    url: './actions/actions.php',
+                    method: 'POST',
+                    data: {Id, action},
+                    success: function(data) {
+                        if(data === 'success'){
+                            Select();
+                        }else{
+                            alert("Data failed to be deleted")
+                        }
+                    }
+                })
         })
     }) 
 
