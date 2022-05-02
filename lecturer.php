@@ -49,13 +49,14 @@ BtnRegistration.onclick = () => {
                 }
             }
         }
-        Select()
+
     }
 
     xhr.open('POST', './configuration/Lecturer.php', true)
         // Let us now send data to the backend side
     const formData = new FormData(form)
     xhr.send(formData)
+    Select()
 }
 
 const Results = document.querySelector('#Resutls')
