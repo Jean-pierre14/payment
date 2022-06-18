@@ -32,20 +32,33 @@
             </div>
         </div>
     </div>
+    
 </div>
 
 <script src="./js/jquery-3.4.0.min.js"></script>
+
 <script>
+
 document.getElementById('go-back').addEventListener('click', () => {
+
     history.back();
+
 });
+
 $(document).ready(function() {
+
     Select()
+
     SelectAll()
+
 })
+
 </script>
 <script>
+    
 function CheckDelete() {
+
     confirm('Do you want to delete?')
+
 }
 </script>
