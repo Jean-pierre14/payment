@@ -10,19 +10,27 @@ if (!isset($_SESSION['username'])) {
 ?>
 
 <?php
-                                $sql = "SELECT student_male.Male, student_female.Female FROM student_male INNER JOIN student_female ON student_male.id_male = student_female.id_female OR student_male.id_male != student_female.id_female";
-                                $run = mysqli_query($con, $sql);
+    $sql = "SELECT student_male.Male, student_female.Female FROM student_male INNER JOIN student_female ON student_male.id_male = student_female.id_female OR student_male.id_male != student_female.id_female";
+    $run = mysqli_query($con, $sql);
 
-                                if(@mysqli_num_rows($run) > 0){
-                                    $dataRow = mysqli_fetch_all($run);
-                                    
-                                    $numMale = (int)$dataRow[0][0];
-                                    $numFemale = (int)$dataRow[0][1];
+    if(@mysqli_num_rows($run) > 0){
+        $dataRow = mysqli_fetch_all($run);
+        
+        $numMale = (int)$dataRow[0][0];
+        $numFemale = (int)$dataRow[0][1];
 
-                                    $array = array($numMale+$numFemale, $numMale, $numFemale);
-                                    // print json_encode($array);s
-                                }
-                            ?>
+        $array = array($numMale+$numFemale, $numMale, $numFemale);
+        // print json_encode($array);s
+    }
+
+    
+
+    
+
+    
+    
+
+?>
 
 <div class="side-bar ui bg-dark white">
     <?php include("./includes/sideBar.php"); ?>
@@ -99,6 +107,10 @@ if (!isset($_SESSION['username'])) {
                 </div>
                 <div class="col-md-6">
                     <div class="card">
+                        
+                        <input type="hidden" name="Lsum" id="Lsum" class="form-control">
+                        <input type="hidden" name="LsumM" id="LsumM"class="form-control">
+                        <input type="hidden" name="LsumF" id="LsumF" class="form-control">
 
                         <div class="card-body">
                             <canvas id="myChart2"></canvas>
@@ -179,46 +191,95 @@ if (!isset($_SESSION['username'])) {
 
 <script>
 $(document).ready(function() {
-    StudentChart()
-    LectuerChart()
-})
+    
+    StudentChart();
+    
+    LectuerChart();
+    
+    main();
+
+});
+
+function Lsum(){
+    let action = 'Lsum';
+    $.ajax({
+        url: './actions/actions.php',
+        method: 'POST',
+        data: {action},
+        success: function(data){
+            $('#Lsum').val(data)
+        }
+    })
+}
+
+function LsumM(){
+    let action = 'LsumM';
+    $.ajax({
+        url: './actions/actions.php',
+        method: 'POST',
+        data: {action},
+        success: function(data){
+            $('#LsumM').val(data)
+        }
+    })
+}
+
+function LsumF(){
+
+    let action = 'LsumF';
+    
+    $.ajax({
+        url: './actions/actions.php',
+        method: 'POST',
+        data: {action},
+        success: function(data){
+            $('#LsumF').val(data)
+        }
+    });
+
+}
+
+
+
+function main(){
+    
+    Lsum();
+
+    LsumM();
+
+    LsumF();
+    
+
+    setTimeout(() => {
+        main()
+    }, 300);
+
+}
 
 function LectuerChart() {
-    const ctx2 = document.getElementById('myChart2').getContext('2d')
-    const myChart2 = new Chart(ctx2, {
-        type: 'line',
+    
+    const LM = $('#LsumM').val(),
+        LF = $('#LsumF').val(),
+        Datas = [LM, LF],
+        ctx2 = document.getElementById('myChart2').getContext('2d'),
+        myChart2 = new Chart(ctx2, {
+        type: 'pie',
         data: {
-            labels: ['Hommes', 'Total', 'Femmes'],
+            labels: ['Hommes', 'Femmes'],
             datasets: [{
-                    label: '# Les enseignants',
-                    data: [50, 23, 65],
+                    label: 'Les enseignants',
+                    data: Datas,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
+                        'rgba(255, 19, 132, 0.2)',
+                        'rgba(52, 162, 235, 0.2)'
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
+                        'rgba(54, 16, 235, 1)'
                     ],
                     borderWidth: 1
                 },
-                {
-                    label: '# Les enseignants',
-                    data: [23, 33, 50],
-                    backgroundColor: [
-                        'rgba(0, 0, 1, .56)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, .2)',
-                        'rgba(255, 206, 86, .2)'
-                    ],
-                    borderWidth: 1
-                },
+                
             ]
         },
 
@@ -230,6 +291,7 @@ function LectuerChart() {
             }
         }
     });
+    alert(LM)
 }
 
 function StudentChart() {

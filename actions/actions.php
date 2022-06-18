@@ -146,6 +146,35 @@
                 print 'error';
             }
         }
+
+        // Chart Lecturers
+        if($_POST['action'] == 'Lsum'){
+
+            $sql = mysqli_query($con, "SELECT COUNT(id) AS SumL FROM lecturer");
+            
+            $row = mysqli_fetch_array($sql);
+
+            print $row['SumL'];
+        }
+
+        // Chart Lecturers Male
+        if($_POST['action'] == 'LsumM'){
+
+            $sql = mysqli_query($con, "SELECT COUNT(id) AS SumL FROM lecturer WHERE sex = 'Male'");
+            
+            $row = mysqli_fetch_array($sql);
+
+            print $row['SumL'];
+        }
+        // Chart Lecturers Female
+        if($_POST['action'] == 'LsumF'){
+
+            $sql = mysqli_query($con, "SELECT COUNT(id) AS SumL FROM lecturer WHERE sex = 'Female'");
+            
+            $row = mysqli_fetch_array($sql);
+
+            print $row['SumL'];
+        }
     }
 
 ?>
