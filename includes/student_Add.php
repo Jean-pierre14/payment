@@ -18,21 +18,27 @@
                         </div>
 
                     </div>
+                    
                     <div class="col-md-8">
+                        
                         <?php if(isset($_GET['getStudent'])):?>
-                        <?php include_once './includes/GetStudent.php';?>
+                        
+                            <?php include_once './includes/GetStudent.php';?>
+                        
                         <?php else:?>
-                        <div class="card card-body mt-2">
+                        
+                            <div class="card card-body mt-2">
                             <h2>Student platform</h2>
                             <img src="./images/undraw_Domain_names_re_0uun.png" alt="" class="img-fluid">
                         </div>
+
                         <?php endif;?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
 </div>
 
 <script src="./js/jquery-3.4.0.min.js"></script>

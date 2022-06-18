@@ -233,41 +233,42 @@ function LectuerChart() {
 }
 
 function StudentChart() {
-    const Total = $('#Total').val()
-    const Male = $('#numMale').val()
-    const Female = $('#numFemale').val()
-    const Datas = [Male, Female]
-    const ctx = document.getElementById('myChart').getContext('2d')
-    const myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Garcons', 'Filles'],
-            datasets: [{
-                label: '# Les eleves*',
-                data: Datas,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Chart.js Pie Chart'
+    const Total = $('#Total').val(),
+        Male = $('#numMale').val(),
+        Female = $('#numFemale').val(),
+        Datas = [Male, Female],
+        ctx = document.getElementById('myChart').getContext('2d'),
+        myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Garcons', 'Filles'],
+                datasets: [{
+                    label: '# Les eleves*',
+                    data: Datas,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Pie Chart'
+                    }
                 }
             }
-        }
     });
 }
+
 </script>
