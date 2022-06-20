@@ -23,6 +23,20 @@ if (!isset($_SESSION['username'])) {
         // print json_encode($array);s
     }
 
+    $resultChart = mysqli_query($con, "SELECT * FROM lecturer_male INNER JOIN lecturer_female ON lecturer_male.id_male = lecturer_female.id_female OR lecturer_male.id_male != lecturer_female.id_female");
+
+    if(@mysqli_num_rows($resultChart) > 0){
+        $dataRow3 = mysqli_fetch_all($resultChart);
+
+        $LsumM = (int)$dataRow[0][0];
+        $LsumF = (int)$dataRow[0][1];
+        $Lsum = $LsumM + $LsumF;
+
+        $array2 = array($LsumM, $Lsum, $LsumF);
+    }
+
+    
+
 ?>
 
 <div class="side-bar ui bg-dark white">
@@ -39,6 +53,7 @@ if (!isset($_SESSION['username'])) {
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div class="btn-group">
+                                    
                                     <a href="studentAdd.php" class="btn btn-sm btn-info">Ajouter</a>
                                     <a href="student.php" class="btn btn-sm btn-success">Voir</a>
                                 </div>
@@ -101,9 +116,9 @@ if (!isset($_SESSION['username'])) {
                 <div class="col-md-6">
                     <div class="card">
                         
-                        <input type="hidden" name="Lsum" id="Lsum" class="form-control">
-                        <input type="hidden" name="LsumM" id="LsumM"class="form-control">
-                        <input type="hidden" name="LsumF" id="LsumF" class="form-control">
+                        <input type="hidden" name="Lsum" value="<?= $Lsum;?>" id="Lsum" class="form-control">
+                        <input type="hidden" name="LsumM" id="LsumM" value="<?= $LsumM;?>" class="form-control">
+                        <input type="hidden" name="LsumF" id="LsumF" value="<?= $LsumF;?>" class="form-control">
 
                         <div class="card-body">
                             <canvas id="myChart2"></canvas>
@@ -123,7 +138,23 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div>
                             <div>
-                                <span class="badge badge-success"><small>234500</small></span>
+                                <h4 class="badge badge-success"><small><?= $LsumM?></small></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box bg-white p-4 shadow-sm">
+                        <h2> <i class="fa fa-users"></i> Enseignantes</h2>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="btn-group">
+                                    <a href="#add" class="btn btn-sm btn-info">Add new</a>
+                                    <a href="#add" class="btn btn-sm btn-success">View</a>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="badge badge-success"><small><?= $LsumF;?></small></h4>
                             </div>
                         </div>
                     </div>
@@ -134,48 +165,18 @@ if (!isset($_SESSION['username'])) {
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div class="btn-group">
-                                    <a href="#add" class="btn btn-sm btn-info">Add new</a>
-                                    <a href="#add" class="btn btn-sm btn-success">View</a>
+                                    <a href="#add" class="btn btn-sm btn-info">Ajouter</a>
+                                    <a href="#add" class="btn btn-sm btn-success">Voir</a>
                                 </div>
                             </div>
                             <div>
-                                <span class="badge badge-success"><small>234500</small></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="box bg-white p-4 shadow-sm">
-                        <h2> <i class="fa fa-users"></i> Enseignants</h2>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <div class="btn-group">
-                                    <a href="#add" class="btn btn-sm btn-info">Add new</a>
-                                    <a href="#add" class="btn btn-sm btn-success">View</a>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="badge badge-success"><small>234500</small></span>
+                                <h4 class="badge badge-success"><small><?= $LsumM+$LsumF;?></small></h4>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="my-2 bg-secondary p-2">
-                <div class="row justify-content-center">
-                    <div class="col-md-5">
-                        <div class="card card-body">
-                            <h3>Chartjs</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="card card-body">
-                            <h3>Chartjs</h3>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>
@@ -233,7 +234,6 @@ function LsumF(){
 }
 
 
-
 function main(){
     
     Lsum();
@@ -251,40 +251,54 @@ function main(){
 
 function LectuerChart() {
     
-    const LM = $('#LsumM').val(),
-        LF = $('#LsumF').val(),
-        Datas = [LM, LF],
-        ctx2 = document.getElementById('myChart2').getContext('2d'),
+    const LM = $('#LsumM').val();
+    
+    const LF = $('#LsumF').val();
+    
+    const Tt = LM + LF;
+
+    let Array = [LM, Tt, LF];
+
+    const Datas2 = Array;
+    
+    const Labels = ['Hommes', 'Total', 'Femmes'];
+
+
+    const ctx2 = document.getElementById('myChart2').getContext('2d'),
         myChart2 = new Chart(ctx2, {
-        type: 'pie',
-        data: {
-            labels: ['Hommes', 'Femmes'],
-            datasets: [{
-                    label: 'Les enseignants',
-                    data: Datas,
+            type: 'pie',
+            data: {
+                labels: Labels,
+                datasets: [{
+                    label: '# Les enseignants',
+                    data: Datas2,
                     backgroundColor: [
-                        'rgba(255, 19, 132, 0.2)',
-                        'rgba(52, 162, 235, 0.2)'
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(23, 234, 235,1)'
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
-                        'rgba(54, 16, 235, 1)'
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(23, 234, 235,.3)'
                     ],
                     borderWidth: 1
-                },
-                
-            ]
-        },
-
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Pie Chart'
+                    }
                 }
             }
-        }
     });
-    alert(LM)
+        
 }
 
 function StudentChart() {
