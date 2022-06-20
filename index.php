@@ -23,13 +23,6 @@ if (!isset($_SESSION['username'])) {
         // print json_encode($array);s
     }
 
-    
-
-    
-
-    
-    
-
 ?>
 
 <div class="side-bar ui bg-dark white">
