@@ -116,7 +116,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="col-md-6">
                     <div class="card">
                         
-                        <input type="hidden" name="Lsum" value="<?= $Lsum;?>" id="Lsum" class="form-control">
+                        <input type="hidden" name="Lsum" id="Lsum" value="<?= $Lsum;?>" class="form-control">
                         <input type="hidden" name="LsumM" id="LsumM" value="<?= $LsumM;?>" class="form-control">
                         <input type="hidden" name="LsumF" id="LsumF" value="<?= $LsumF;?>" class="form-control">
 
