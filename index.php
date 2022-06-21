@@ -102,19 +102,23 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
             <div class="my-2 row justify-content-center">
+                
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card shadow-sm">
 
                         <input type="hidden" value="<?= $numMale+$numFemale;?>" id="Total" class="form-control">
                         <input type="hidden" value="<?= $numMale;?>" id="numMale" class="form-control">
                         <input type="hidden" value="<?= $numFemale;?>" id="numFemale" class="form-control">
+                        
                         <div class="card-body">
                             <canvas id="myChart" width="400" height="200"></canvas>
                         </div>
+                        
                     </div>
                 </div>
+
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card shadow-sm">
                         
                         <input type="hidden" name="Lsum" id="Lsum" value="<?= $Lsum;?>" class="form-control">
                         <input type="hidden" name="LsumM" id="LsumM" value="<?= $LsumM;?>" class="form-control">
@@ -122,6 +126,27 @@ if (!isset($_SESSION['username'])) {
 
                         <div class="card-body">
                             <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-2 row justify-content-center">
+                
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+
+                        <div class="card-body">
+                            <canvas id="myChart3" width="400" height="200"></canvas>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        
+                        <div class="card-body">
+                            <canvas id="myChart4"></canvas>
                         </div>
                     </div>
                 </div>
@@ -272,6 +297,75 @@ function LectuerChart() {
                 datasets: [{
                     label: '# Les enseignants',
                     data: Datas2,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(23, 234, 235,1)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(23, 234, 235,.3)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Pie Chart'
+                    }
+                }
+            }
+    });
+
+    const ctx3 = document.getElementById('myChart3').getContext('2d'),
+        myChart3 = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: Labels,
+                datasets: [{
+                    label: '# Les enseignants',
+                    data: [34, 20, 19],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(23, 234, 235,1)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(23, 234, 235,.3)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Pie Chart'
+                    }
+                }
+            }
+    });
+    const ctx4 = document.getElementById('myChart4').getContext('2d'),
+        myChart4 = new Chart(ctx4, {
+            type: 'line',
+            data: {
+                labels: Labels,
+                datasets: [{
+                    label: '# Les enseignants',
+                    data: [10, 8, 14],
                     backgroundColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
