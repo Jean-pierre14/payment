@@ -1,19 +1,64 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     position: relative;
     width: 100%;
+    font-family: Arial, Helvetica, sans-serif !important;
     background: linear-gradient(90deg, rgb(58, 139, 167), rgb(24, 48, 92));
 }
-.container{
+
+.container {
     position: relative;
     width: 30%;
-    margin: 10px auto;
+    margin: 20px auto;
 }
-.form{
+
+.box-content {
+    position: relative;
+    background: #fff;
+    background-color: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.7));
+    backdrop-filter: blur(40px);
+    border-radius: .4rem;
+}
+
+.list {
+    margin: 1.5rem 0;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: .4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.btn {
+    background: none;
+    outline: none;
+    border: none;
+    border-radius: .4rem;
+    cursor: pointer;
+    padding: 8px;
+    display: inline-block;
+}
+
+.edit {
+    background-color: green;
+}
+
+.delete {
+    background-color: red;
+}
+
+.wrapper {
+    padding: 10px;
+}
+
+.form {
     width: 100%;
     display: block;
     position: relative;
@@ -22,10 +67,17 @@ body{
     border-radius: 10px;
     background-color: #fff;
 }
-.form label, input{
+
+.form label {
+    margin: 10px auto;
+}
+
+.form label,
+input {
     display: block;
 }
-.form input{
+
+.form input {
     padding: 10px;
     width: 100%;
     margin: 5px 0;
@@ -33,9 +85,12 @@ body{
     border: 1px solid #111;
     border-radius: 0.2rem;
 }
-.button{
+
+.button {
     padding: 10px;
+    margin: 1rem 0;
     border: none !important;
+    border-radius: .4rem;
     outline: none !important;
     background-color: coral;
 }
