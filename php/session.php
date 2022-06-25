@@ -6,5 +6,5 @@
     $_SESSION['username'] = $username;
 
     if(isset($_SESSION['username'])):
-        header(`Location: index.php'. md5($auth).'?'.$username.'`)
+        header(`Location: index.php'. md5($auth).'?'.$username.'`);
     endif;
