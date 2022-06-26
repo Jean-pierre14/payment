@@ -34,6 +34,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: center;
+    align-items: center;
 }
 
 .btn {

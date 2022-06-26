@@ -18,7 +18,7 @@
                 
                 <p id="Last_id" class="list">
                     <span>Username</span>
-                    <span>Username</span>
+                    <span>Full name</span>
                     <span>
                         <button type="button" id="id" class="btn edit">Edit</button>
                         <button type="button" id="id" class="btn delete">Delete</button>
@@ -33,14 +33,26 @@
             <form action="" method="post" autocomplete="off">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="Username">
+                
                 <label for="fullname">Fullname</label>
                 <input type="text" name="fullname" id="fullname" placeholder="Fullname">
+                
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" placeholder="Email@grace.cd">
+                
                 <button class="button" type="submit">Register</button>
             </form>
         </div>
     </div>
+
+    <script>
+        fetch('./_data.json.php?action="Student"')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(e => console.log(e))
+    </script>
 </body>
 
 </html>
