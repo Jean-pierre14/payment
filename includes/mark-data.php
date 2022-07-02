@@ -13,7 +13,6 @@
                             <span>Item</span>
                             <span class="badge badge-success">2021-2022</span>
                         </li>
-                        <li class="list-group-item list-group-success list-group-item-action">item</li>
                     </ul>
                 </div>
                 
