@@ -1,5 +1,7 @@
 <?php
 
+header("Content-Type:", "application/json");
+
 include './configuration/db.con.php';
 
 $action = '';
