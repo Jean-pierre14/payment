@@ -16,12 +16,9 @@ $classN = '';
     <link rel="stylesheet" href="./css/semantic/semantic.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/lightbox.min.css">
+    
+    <link rel="shortcut icon" href="./images//img1.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/placeholder-loading@0.3.0/dist/css/placeholder-loading.min.css">
-    <style>
-        body{
-            background-color: #ccc;
-        }
-    </style>
 </head>
 
 <body class="bg-light">
