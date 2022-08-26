@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 include_once('./configuration/db.con.php');
 include_once('./includes/sql.php');
@@ -46,7 +45,7 @@ include('./header.php');
     ?>
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <a class="navbar-brand" href="#"><?= $_SESSION['username'];?></a>
+  <a class="navbar-brand" href="profil.php"><?= $_SESSION['username'];?></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
