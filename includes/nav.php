@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include('./configuration/db.con.php');
-include('./includes/sql.php');
+include_once('./configuration/db.con.php');
+include_once('./includes/sql.php');
 
 if(!isset($_SESSION['username'])){
 
@@ -45,26 +45,22 @@ include('./header.php');
         $sname = $row['sname'];
     ?>
 
-<nav class="navBar">
-    <div class="Left">
-        <a href="profil.php"><?= $_SESSION['username']?></a>
-    </div>
-    <div class="Center">
-        <form action="" method="post">
-            <input type="search" name="search" id="search" placeholder="Search..." class="form-control">
-        </form>
-    </div>
-    <div class="Right">
-        <ul>
-            <li>
-                <a href="index.php">Dashbord</a>
-            </li>
-            <li>
-                <a href="profil.php">Profil</a>
-            </li>
-            <li>
-                <a href="loggout.php">Logout</a>
-            </li>
-        </ul>
-    </div>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" href="#"><?= $_SESSION['username'];?></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Dashbord</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="profil.php">Profil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="loggout.php">Logout</a>
+      </li>    
+    </ul>
+  </div>  
 </nav>

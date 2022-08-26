@@ -1,11 +1,4 @@
-<!-- <h3 class="text-center">Menu</h3> -->
 
-
-
-    <!-- <div class="switch">
-        <label for="switch"><i class="icon list"></i></label>
-        <input type="checkbox" id="switch">
-    </div> -->
 
     <ul class="nav nav-pills list-group">
         <li class="d-flex justify-content-between align-items-center">

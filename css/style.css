@@ -41,6 +41,8 @@
 
 .side-bar {
     position: fixed;
+    top: 50px;
+    left: 0;
     overflow: hidden;
 }
 

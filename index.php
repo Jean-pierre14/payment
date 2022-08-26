@@ -34,15 +34,12 @@ if (!isset($_SESSION['username'])) {
 
         $array2 = array($LsumM, $Lsum, $LsumF);
     }
-
-    
-
 ?>
 
-<div class="side-bar ui bg-dark white">
-    <?php include("./includes/sideBar.php"); ?>
-    <?php include("./header.php"); ?>
+<div class="side-bar">
+    <?php include_once("./includes/sideBar.php"); ?>
 </div>
+
 <div class="ui main">
     <div class="container-fluid m-0 ui">
         <div class="container-fluid p-0">

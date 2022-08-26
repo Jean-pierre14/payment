@@ -26,7 +26,6 @@ if(isset($_POST['login'])){
             // To add if the ser connected into the database as is connected
             $connected = mysqli_query($con, "UPDATE admin SET `status` = 'Online' WHERE email = ${$email}");
             $_SESSION['username'] = $username;
-            $_SESSION['success'] = "Logged in successfuly";
             header('location: index.php');
         }else {
             array_push($error, "Wrong username/password combination. please try again!!!");
