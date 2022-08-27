@@ -57,17 +57,62 @@
 
 <script src="./js/jquery-3.4.0.min.js"></script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         // jsonData()
-        selectFetch()
+        SelectStudent()
         r()
+
+        function SelectStudent() {
+            let action = 'student'
+            $.ajax({
+                url: './_data.json.php',
+                type: 'GET',
+                data: {
+                    action
+                },
+                dataType: 'JSON',
+                success: function(data) {
+                    console.log(data)
+                    if (data.length > 0) {
+                        console.log(data.length)
+                        let output = ''
+                        data.forEach((student) => {
+                            output += `
+                        <tbody>
+                        <tr>
+                            <td>${data.username}</td>
+                            <td>${data.sname}</td>
+                            <td>${data.class}</td>
+                            <td>${data.sex}</td>
+                            <td>
+                                <div class="btn-group btn-sm">
+                                    <a href="" class="btn btn-info">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                    </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    `
+                            $('#students').html(output)
+                        })
+                    } else {
+                        console.log("there is data into your data jquery")
+                    }
+
+                },
+                error: function(data) {}
+            })
+        }
     })
+
     function r() {
         $.ajax({
             url: './_data.json.php',
             method: 'POST',
-            data: { action: 'r' },
-            success: function (data) {
+            data: {
+                action: 'r'
+            },
+            success: function(data) {
                 $('#r').html(data)
             }
         })
@@ -98,45 +143,6 @@
     //         }
     //     })
     // }
-    function SelectStudent() {
-        let action = 'student'
-        $.ajax({
-            url: './_data.json.php',
-            type: 'POST',
-            data: { action },
-            dataType: 'JSON',
-            success: function (data) {
-                console.log(data)
-                if (data.length > 0) {
-                    console.log(data.length)
-                    let output = ''
-                    data.forEach((student) => {
-                        output += `
-                        <tbody>
-                        <tr>
-                            <td>${data.username}</td>
-                            <td>${data.sname}</td>
-                            <td>${data.class}</td>
-                            <td>${data.sex}</td>
-                            <td>
-                                <div class="btn-group btn-sm">
-                                    <a href="" class="btn btn-info">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
-                                    </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    `
-                        $('#students').html(output)
-                    })
-                } else {
-                    console.log("there is data into your data jquery")
-                }
-
-            },
-            error: function (data) { }
-        })
-    }
 </script>
 
 </html>

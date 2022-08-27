@@ -9,10 +9,10 @@
                 <div class="card my-3">
                     <div class="card-body">
                         <h2 class="text-center display-5">Welcome to your profil <?= $_SESSION['username'];?></h2>
-                        <ul class="list-group list-group-flush my-2">
+                        <ul class="list-group list-group-flush my-2" id="profil-data">
                             <li class="list-group-item py-4 list-group-item-action d-flex justify-content-between align-items-center">
                                 Username:
-                                <span class="badge badge-primary badge-pill">12</span>
+                                <span>Username here...</span>
                             </li>
                             <li class="list-group-item py-4 list-group-item-action d-flex justify-content-between align-items-center">
                                 Email:
@@ -36,6 +36,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const Profil = () => {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = () =>{
+                if(xhr.status === XMLHttpRequest.DONE){
+                    if()
+                }
+            }
+            xhr.open()
+            xhr.send()
+
+        }
+    </script>
     
 </body>
 </html>
