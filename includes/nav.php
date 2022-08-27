@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include_once('./configuration/db.con.php');
 include_once('./includes/sql.php');
 

@@ -1,4 +1,4 @@
-<?php session_start();?>
+
 <?php include('./header.php');?>
 
 <?php include("./includes/nav.php");?>
@@ -20,14 +20,17 @@
                             </li>
                             <li class="list-group-item py-4 list-group-item-action d-flex justify-content-between align-items-center">
                                 Password
-                                <span class="badge badge-primary badge-pill">12</span>
+                                <span class="badge badge-primary badge-pill">1232</span>
                             </li>
                             <li class="list-group-item py-4 list-group-item-action d-flex justify-content-between align-items-center">
                                 Bio
                                 <span class="badge badge-primary badge-pill">12</span>
                             </li>
-                            
                         </ul>
+                        <div class="text-center mt-3 btn-group">
+                            <a href="profil.php?get=edit" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="profil.php?get=edit" class="btn btn-danger btn-sm">Delete Account</a>
+                        </div>
                     </div>
                 </div>
             </div>

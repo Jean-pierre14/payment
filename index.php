@@ -1,4 +1,5 @@
 <?php $get_std = false;
+
 include("./includes/nav.php");
 include("./db.con.php"); ?>
 <?php
