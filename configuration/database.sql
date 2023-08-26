@@ -1,11 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Apr 09, 2021 at 11:50 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
 
 SET SQL_MODE
 = "NO_AUTO_VALUE_ON_ZERO";
@@ -13,21 +5,6 @@ START TRANSACTION;
 SET time_zone
 = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `payment`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
 
 CREATE TABLE `admin`
 (
@@ -42,58 +19,41 @@ CREATE TABLE `admin`
   `pass` varchar
 (255) NOT NULL,
   `status` varchar
-(12) NOT NULL
+(12) NOT NULL,PRIMARY KEY (`id_admin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ALTER TABLE `admin` CHANGE `id_admin` `id_admin` INT(11) NOT NULL AUTO_INCREMENT;
 
---
--- Dumping data for table `admin`
---
 
-INSERT INTO `admin` (`
-id_admin`,
-`username
-`, `sname`, `email`, `pass`, `status`) VALUES
-(1, 'Grace', 'BISIMWA', 'gracebisimwa@cbg.net', '482358cf89478ce74fbd445f20a428fb', ''),
-(2, 'Diane', 'Uwase', 'Diane@cbg.net', '81dc9bdb52d04dc20036dbd8313ed055', ''),
-(3, 'Benjamin', 'mungo', 'ben@gm.com', '81dc9bdb52d04dc20036dbd8313ed055', ''),
-(4, 'Fadhili', 'Fadhil', 'fadhila@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '');
 
--- --------------------------------------------------------
+INSERT INTO `admin` (
+`username`, `sname`, `email`, `pass`, `status`) VALUES
+('Grace', 'BISIMWA', 'gracebisimwa@cbg.net', '482358cf89478ce74fbd445f20a428fb', ''),
+('Diane', 'Uwase', 'Diane@cbg.net', '81dc9bdb52d04dc20036dbd8313ed055', ''),
+('Benjamin', 'mungo', 'ben@gm.com', '81dc9bdb52d04dc20036dbd8313ed055', ''),
+('Fadhili', 'Fadhil', 'fadhila@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '');
 
---
--- Table structure for table `class_tb`
---
+
 
 CREATE TABLE `class_tb`
-(
-  `class_id` int
-(11) NOT NULL,
-  `class_name` varchar
-(50) NOT NULL,
-  `start_year` int
-(11) NOT NULL,
-  `end_year` int
-(11) NOT NULL,
-  `class_created_at` int
-(11) NOT NULL
+(`class_id` int(11) NOT NULL,
+  `class_name` varchar(50) NOT NULL,
+  `start_year` int(11) NOT NULL,
+  `end_year` int(11) NOT NULL,
+  `class_created_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='this table is for class, we need it to be dynamic';
 
---
--- Dumping data for table `class_tb`
---
+ALTER TABLE `class_tb` CHANGE `class_id` `class_id` INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`class_id`);
 
-INSERT INTO `class_tb` (`
-class_id`,
-`class_name
-`, `start_year`, `end_year`, `class_created_at`) VALUES
-(1, 'Primary 0', 20210308, 20210309, 0),
-(2, 'Primary 1', 0, 0, 0),
-(3, 'Primary 2', 0, 0, 0),
-(4, 'Primary 3', 2020, 2021, 0),
-(5, 'Year 1', 2020, 2021, 0),
-(6, 'Primary 4', 2020, 2021, 0),
-(7, 'Primary 5', 2020, 2021, 0),
-(8, 'Primary 6', 2020, 2021, 0);
+INSERT INTO `class_tb` (
+`class_name`, `start_year`, `end_year`, `class_created_at`) VALUES
+('Primary 0', 20210308, 20210309, 0),
+('Primary 1', 0, 0, 0),
+('Primary 2', 0, 0, 0),
+('Primary 3', 2020, 2021, 0),
+('Year 1', 2020, 2021, 0),
+('Primary 4', 2020, 2021, 0),
+('Primary 5', 2020, 2021, 0),
+('Primary 6', 2020, 2021, 0);
 
 -- --------------------------------------------------------
 
@@ -103,36 +63,22 @@ class_id`,
 
 CREATE TABLE `employees`
 (
-  `id` int
-(11) NOT NULL,
-  `name` varchar
-(50) NOT NULL,
-  `sname` varchar
-(50) NOT NULL,
-  `lname` varchar
-(30) NOT NULL,
-  `location` varchar
-(100) NOT NULL,
-  `task` varchar
-(255) NOT NULL,
-  `adm_at` datetime NOT NULL DEFAULT current_timestamp
-()
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `sname` varchar(50) NOT NULL,
+  `lname` varchar(30) NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `task` varchar(255) NOT NULL,
+  `adm_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `lecturer`
---
+ALTER TABLE `employees` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Auto_increment Id', add PRIMARY KEY (`id`);
 
 CREATE TABLE `lecturer`
 (
-  `id` int
-(11) NOT NULL,
-  `name` varchar
-(50) NOT NULL,
-  `sname` varchar
-(50) NOT NULL,
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `sname` varchar(50) NOT NULL,
   `lname` varchar
 (30) NOT NULL,
   `cours` varchar
@@ -146,6 +92,8 @@ CREATE TABLE `lecturer`
   `status` int
 (11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `lecturer` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);
 
 -- --------------------------------------------------------
 
@@ -167,6 +115,8 @@ CREATE TABLE `payement_std`
   `id_pay` int
 (11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `payement_std` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);
 
 -- --------------------------------------------------------
 
