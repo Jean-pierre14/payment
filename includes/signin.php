@@ -19,13 +19,23 @@ if(isset($_POST['login'])){
 
         $password = md5($password);
 
-        $query = "SELECT * FROM admin WHERE username = '$username' AND password = '$password'";
+        $query = "SELECT * FROM admin WHERE username = '$username' AND pass = '$password'";
         $result = mysqli_query($con, $query);
 
-        if(mysqli_num_rows($result)){
+        if(mysqli_num_rows($result) == 1){
             // To add if the ser connected into the database as is connected
-            $connected = mysqli_query($con, "UPDATE admin SET `status` = 'Online' WHERE email = ${$email}");
-            $_SESSION['username'] = $username;
+            // session_start();
+            
+            $data = @mysqli_fetch_assoc($result);
+
+            $_SESSION['username'] = $data['username'];
+            $_SESSION['email'] = $data['email'];
+            $_SESSION['status'] = $data['status'];
+            $_SESSION['id_admin'] = $data['id_admin'];
+            $_SESSION['sname'] = $data['sname'];
+
+            
+
             header('location: index.php');
         }else {
             array_push($error, "Wrong username/password combination. please try again!!!");

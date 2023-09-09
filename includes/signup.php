@@ -65,13 +65,18 @@ if(isset($_POST['register2'])) {
         // end check
 
         if(count($error) === 0){
+
             $password = md5($pass_1);
+            
             $query = "INSERT INTO admin (username, sname, email, pass, `auth`) VALUES('$username','$sname','$email','$password', 2)";
+            
             $run_sql = mysqli_query($con, $query);
             
             $_SESSION['email'] = $email;
             $_SESSION['success'] = "You're logged in";
+            
             header('Location: index.php');
+        
         }
         
     }
@@ -94,15 +99,19 @@ if(isset($_POST['register'])){
     if($pass_1 != $pass_2){array_push($error, "Password doesn't match");}
 
     if(count($error) === 0){
+        
         $check = mysqli_query($con, "SELECT * FROM admin");
-        $datas = @mysqli_fetch_array($check);
+        $data = @mysqli_fetch_array($check);
 
-        if($username === @$datas['username']){array_push($error, "This Username is taken");}
-        if($email === @$datas['email']){array_push($error, "This E-mail is taken");}
+        if($username === @$data['username']){array_push($error, "This Username is taken");}
+        if($email === @$data['email']){array_push($error, "This E-mail is taken");}
 
         if(count($error) === 0){
+            
             $password = md5($pass_1);
-            $query = "INSERT INTO admin (username, sname, email, `password`, `auth`) VALUES('$username','$sname','$email','$password', 2)";
+            
+            $query = "INSERT INTO `admin` (`username`, `sname`, `email`, `pass`, `status`) VALUES('$username','$sname','$email','$password', 2)";
+            
             $run_sql = mysqli_query($con, $query);
 
             if($run_sql){

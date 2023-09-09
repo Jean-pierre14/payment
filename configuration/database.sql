@@ -170,12 +170,11 @@ CREATE TABLE `student`
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`
-id_student`,
+INSERT INTO `student` (
 `username
 `, `sname`, `email`, `class`, `depart`, `create_at`, `sex`, `created_at`) VALUES
-(6, 'Blessing', 'rwabukamba', 'blessing@gmail.com', '4', 'computer science', '2021-03-30 11:28:42', 'Female', '2021-03-30 11:28:42'),
-(7, 'Tona ANAISE', 'condo', 'tona@isoko.net', '7', 'computer science', '2021-03-30 11:36:07', 'Female', '2021-03-30 11:36:07');
+( 'Blessing', 'rwabukamba', 'blessing@gmail.com', '4', 'computer science', '2021-03-30 11:28:42', 'Female', '2021-03-30 11:28:42'),
+( 'Tona ANAISE', 'condo', 'tona@isoko.net', '7', 'computer science', '2021-03-30 11:36:07', 'Female', '2021-03-30 11:36:07');
 
 -- --------------------------------------------------------
 
